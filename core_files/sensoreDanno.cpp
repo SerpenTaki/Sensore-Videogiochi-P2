@@ -1,12 +1,13 @@
 #include "headers/sensoreDanno.h"
 #include <random>
 
-sensoreDanno::sensoreDanno(double d, int ph, int pc, vector<int> tpt)
-    : danno(d), probHit(ph), probCrit(pc), attacchiPerTurno(tpt) {
+sensoreDanno::sensoreDanno(double d, int ph, int pc, vector<int> tpt): danno(d), probHit(ph), probCrit(pc), attacchiPerTurno(tpt) {
   std::cout << "Oggetto Creato" << std::endl;
 }
 
-double sensoreDanno::getDanno() const { return danno; }
+double sensoreDanno::getDanno() const { 
+  return danno;
+}
 
 int sensoreDanno::getProbCrit() const {
   /*random*/
@@ -30,8 +31,8 @@ int sensoreDanno::getRand() {
 
 vector<double> sensoreDanno::getValoriGrafico() {
   vector<double> result;
-  for (unsigned int i = 0; i < attacchiPerTurno.size(); i++) {
-    double dannoPerTurno = attacchiPerTurno[i] * calcolaDanno();
+  for (auto i = attacchiPerTurno.begin(); i < attacchiPerTurno.size(); i++) {
+    double dannoPerTurno = attacchiPerTurno[*i] * calcolaDanno();
     result.push_back(dannoPerTurno);
   }
   return result;

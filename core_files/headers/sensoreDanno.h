@@ -16,9 +16,8 @@ private:
   int probHit;  // random
   int probCrit; // random
   int randN;
-  vector<int> attacchiPerTurno;
 public:
-  
+  vector<int> attacchiPerTurno;
   sensoreDanno(double d, int ph, int pc, vector<int> tpt);
   virtual ~sensoreDanno();
 
