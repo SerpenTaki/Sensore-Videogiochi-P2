@@ -2,18 +2,6 @@
 #include <iostream>
 #include <random>
 
-const std::string sacro::tipo = "Sacro";
-
-int sacro::getLvFede() const { return lvFede; }
-
-int sacro::getlimitBreak() const { return limitbreak; }
-
-sacro::sacro(double d, int ph, int pc, std::vector<int> tpt, int lvFede,
-             int limitbreak)
-    : sensoreDanno(d, ph, pc, tpt), lvFede(lvFede), limitbreak(limitbreak) {
-  std::cout << "Oggetto sacro Creato" << std::endl;
-}
-
 sacro::sacro(double d, int ph, int pc, vector<int> tpt, int lvFede,
              int limitbreak, vector<int> limitBar)
     : sensoreDanno(d, ph, pc, tpt), lvFede(lvFede), limitbreak(limitbreak),
@@ -21,9 +9,9 @@ sacro::sacro(double d, int ph, int pc, vector<int> tpt, int lvFede,
   std::cout << "Oggetto sacro Creato" << std::endl;
 }
 
-sacro::sacro() : sensoreDanno() {
-  std::cout << "Oggetto sacro Creato" << std::endl;
-}
+const std::string sacro::tipo = "Sacro";
+int sacro::getLvFede() const { return lvFede; }
+int sacro::getlimitBreak() const { return limitbreak; }
 
 bool sacro::checkLimit() { /*Gestito dalla UI mi fa vincere magari pop-up*/
   if (limitbreak < 100)
@@ -64,14 +52,7 @@ void sacro::updateLimitbreak() {
   int n = 7;
   limitbreak = limitbreak + 7;
 }
-/*PER mostrare il grafico di limit la UI farà un cast da sensore a sacro. Se
- * il cast va a buon fine chiama la funzione get grafico limit specifica di
- * sacro*/
-// SU SACRO GABRIELE QUINDI DOVRAI IMPLEMENTARTI UNA TUA FUNZIONE CHE
-// COMUNQUE SARà SIMILE a quella di sensore danno (nel senso che ritorna un
-// vettore di qualcosa)
 
-void sacro::accept(visitor &sensore) { sensore.visit(this); }
 /*PER mostrare il grafico di limit la UI farà un cast da sensore a sacro. Se
  * il cast va a buon fine chiama la funzione get grafico limit specifica di
  * sacro*/
@@ -88,7 +69,3 @@ vector<int> sacro::getValoriLimitBar() {
   return result;
 }
 
-/*
-void sacro::accept(visitor &visitor){
-
-}*/

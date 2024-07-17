@@ -12,14 +12,17 @@ private:
   bool isInStatus;
 
 public:
-  magico(double, int, int, vector<int>, int, string, bool);
+  magico(double d, int ph, int pc, vector<int> tpt, int lvM, string stat, bool isInSta);
   ~magico();
 
   int getLvMagia() const;
   string getStatus() const;
   bool checkCondition() const;
 
-  virtual string setStatus();
+  string setStatus();
+
+  double calcolaDanno();
+  double getHit();
 };
 
 #endif

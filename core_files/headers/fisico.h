@@ -11,8 +11,7 @@ private:
 public:
   static const std::string tipo;
   // per implementazione grafica
-  void accept(visitor &) override;
-  fisico(double, int, int, vector<int>, int);
+  fisico(double d, int ph, int pc, vector<int> tpt, int aff);
   fisico();
   ~fisico();
   int getAffilatura() const;

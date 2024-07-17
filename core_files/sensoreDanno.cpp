@@ -2,8 +2,6 @@
 #include <iostream>
 #include <random>
 
-sensoreDanno::sensoreDanno() { std::cout << "Oggetto creato" << std::endl; }
-
 sensoreDanno::sensoreDanno(double d, int ph, int pc, vector<int> tpt)
     : danno(d), probHit(ph), probCrit(pc), attacchiPerTurno(tpt) {
   std::cout << "Oggetto Creato" << std::endl;
@@ -32,12 +30,7 @@ int sensoreDanno::getRand() {
 }
 
 vector<double>
-sensoreDanno::getValoriGrafico() { // l'interfaccia grafica avrà una lista di
-                                   // sensori e la ui andrà a chiamare il get
-                                   // sensore grafico che è condiviso
-  // con il discorso che chiamano il calcola danno, definisco comportamento
-  // generico nella classe astratta ma di specifico ci sarà il calcola danno
-  // che cambierà
+sensoreDanno::getValoriGrafico() {
   vector<double> result;
   for (unsigned int i = 0; i < attacchiPerTurno.size(); i++) {
     double dannoPerTurno = attacchiPerTurno[i] * calcolaDanno();

@@ -4,8 +4,7 @@
 // #include <iostream>
 #include <string>
 #include <vector>
-
-#include "../../visitor/visitor.h"
+#include <iostream>
 
 using std::string;
 using std::vector;
@@ -17,14 +16,10 @@ private:
   int probHit;  // random
   int probCrit; // random
   int randN;
-
-protected:
   vector<int> attacchiPerTurno;
-
 public:
-  sensoreDanno(double, int, int, vector<int>);
-
-  sensoreDanno();
+  
+  sensoreDanno(double d, int ph, int pc, vector<int> tpt);
   virtual ~sensoreDanno();
 
   virtual vector<double> getValoriGrafico() final; // metodo per il grafico
@@ -33,12 +28,10 @@ public:
   int getProbHit() const;
   int getProbCrit() const;
   int getRand();
-  std::string getNome() const;
+  string getNome() const;
   // altro
   virtual double calcolaDanno();
   virtual double getHit();
-  // per implementazione grafica
-  virtual void accept(visitor &visitor) = 0;
 };
 
 #endif

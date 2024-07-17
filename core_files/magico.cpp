@@ -1,5 +1,4 @@
 #include "headers/magico.h"
-#include <iostream>
 
 magico::magico(double d, int ph, int pc, vector<int> tpt, int lvM, string stat,
                bool isInSta)
@@ -13,3 +12,32 @@ int magico::getLvMagia() const { return lvMagia; }
 string magico::getStatus() const { return status; }
 
 bool magico::checkCondition() const { return isInStatus; }
+
+double magico::getHit() {
+  if (getProbHit() > 45) {
+    return this->calcolaDanno();
+  }
+  return 0.0;
+}
+
+double magico::calcolaDanno() {
+  double nDanni = getDanno();
+  nDanni = nDanni + ((getLvMagia() / 2) * 2);
+  if (checkCondition() == true) {
+    nDanni = nDanni + nDanni * 0.3;
+    if (getProbCrit() > 85) {
+      nDanni = (nDanni * 20) / 100;
+    }
+    return nDanni;
+  }
+  setStatus();
+  return nDanni;
+}
+
+string magico::setStatus() {
+  if (getRand() > 70) {
+    checkCondition() == true;
+    return "Bruciato";
+  } else
+    return "nope";
+}
