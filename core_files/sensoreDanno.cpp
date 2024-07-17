@@ -31,7 +31,7 @@ int sensoreDanno::getRand() {
 
 vector<double> sensoreDanno::getValoriGrafico() {
   vector<double> result;
-  for (auto i = attacchiPerTurno.begin(); i < attacchiPerTurno.size(); i++) {
+  for (auto i = attacchiPerTurno.begin(); i != attacchiPerTurno.end(); i++) {
     double dannoPerTurno = *i * calcolaDanno();
     result.push_back(dannoPerTurno);
   }
