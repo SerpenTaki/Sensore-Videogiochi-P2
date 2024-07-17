@@ -1,8 +1,7 @@
 #include "headers/fisico.h"
 #include <iostream>
 
-fisico::fisico(double d, int ph, int pc, vector<int> tpt, int aff)
-    : sensoreDanno(d, ph, pc, tpt), affilatura(aff) {
+fisico::fisico(double d, int ph, int pc, vector<int> tpt, int aff): sensoreDanno(d, ph, pc, tpt), affilatura(aff) {
   std::cout << "Oggetto fisico Creato" << std::endl;
 }
 

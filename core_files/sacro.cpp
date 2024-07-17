@@ -2,14 +2,10 @@
 #include <iostream>
 #include <random>
 
-sacro::sacro(double d, int ph, int pc, vector<int> tpt, int lvFede,
-             int limitbreak, vector<int> limitBar)
-    : sensoreDanno(d, ph, pc, tpt), lvFede(lvFede), limitbreak(limitbreak),
-      limitBar(limitBar) {
+sacro::sacro(double d, int ph, int pc, vector<int> tpt, int lvFede, int limitbreak, vector<int> limitBar): sensoreDanno(d, ph, pc, tpt), lvFede(lvFede), limitbreak(limitbreak),limitBar(limitBar) {
   std::cout << "Oggetto sacro Creato" << std::endl;
 }
 
-const std::string sacro::tipo = "Sacro";
 int sacro::getLvFede() const { return lvFede; }
 int sacro::getlimitBreak() const { return limitbreak; }
 

@@ -12,8 +12,6 @@ private:
   vector<int> limitBar; // mostra nuovo grafico del limit break
   enum { fedeBassa, fedeMedia, fedeAlta };
 public:
-  static const std::string tipo;
-
   sacro(double d, int ph, int pc, vector<int> tpt, int lvFede, int limitbreak,vector<int> limitBar);
   ~sacro();
 
