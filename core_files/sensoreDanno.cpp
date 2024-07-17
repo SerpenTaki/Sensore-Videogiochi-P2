@@ -1,5 +1,4 @@
 #include "headers/sensoreDanno.h"
-#include <iostream>
 #include <random>
 
 sensoreDanno::sensoreDanno(double d, int ph, int pc, vector<int> tpt)
