@@ -29,8 +29,7 @@ int sensoreDanno::getRand() {
   return randN;
 }
 
-vector<double>
-sensoreDanno::getValoriGrafico() {
+vector<double> sensoreDanno::getValoriGrafico() {
   vector<double> result;
   for (unsigned int i = 0; i < attacchiPerTurno.size(); i++) {
     double dannoPerTurno = attacchiPerTurno[i] * calcolaDanno();

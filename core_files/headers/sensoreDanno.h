@@ -29,9 +29,9 @@ public:
   int getProbCrit() const;
   int getRand();
   string getNome() const;
-  // altro
-  virtual double calcolaDanno();
-  virtual double getHit();
+  // metodi virtuali puri
+  virtual double calcolaDanno() =0;
+  virtual double getHit() =0;
 };
 
 #endif

@@ -19,10 +19,10 @@ public:
   int getlimitBreak() const;
 
   double getHit() override;
+  double calcolaDanno() override;
+  
   bool checkLimit();
   void updateLimitbreak();
-  double calcolaDanno() override;
-
   vector<int> getValoriLimitBar();
 };
 
