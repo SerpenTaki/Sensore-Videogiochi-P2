@@ -1,0 +1,9 @@
+.DS_Store
+*.o
+ProgettoP2
+.qmake.stash
+Makefile
+*.app
+*.pro
+# si, voglio essere sicuro che non metta ProgettoP2.app
+ProgettoP2.app  
