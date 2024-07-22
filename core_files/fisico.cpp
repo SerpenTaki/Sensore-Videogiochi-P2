@@ -4,6 +4,8 @@ fisico::fisico(double d, int ph, int pc, vector<int> tpt, int aff): sensoreDanno
   std::cout << "Oggetto fisico Creato" << std::endl;
 }
 
+
+
 int fisico::getAffilatura() const { return affilatura; }
 
 double fisico::getHit() { /*si collega all'interfaccia grafica*/

@@ -4,6 +4,8 @@ magico::magico(double d, int ph, int pc, vector<int> tpt, int lvM, string stat, 
   std::cout << "Oggetto magico creato" << std::endl;
 }
 
+
+
 int magico::getLvMagia() const { return lvMagia; }
 
 string magico::getStatus() const { return status; }

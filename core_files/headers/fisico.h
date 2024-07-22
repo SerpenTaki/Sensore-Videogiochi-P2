@@ -11,7 +11,7 @@ private:
 public:
   // per implementazione grafica
   fisico(double d, int ph, int pc, vector<int> tpt, int aff);
-  ~fisico() = default;
+
   int getAffilatura() const;
 
   double getHit() override;

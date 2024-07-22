@@ -5,6 +5,8 @@ sacro::sacro(double d, int ph, int pc, vector<int> tpt, int lvFede, int limitbre
   std::cout << "Oggetto sacro Creato" << std::endl;
 }
 
+
+
 int sacro::getLvFede() const { return lvFede; }
 int sacro::getlimitBreak() const { return limitbreak; }
 

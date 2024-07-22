@@ -5,6 +5,8 @@ sensoreDanno::sensoreDanno(double d, int ph, int pc, vector<int> tpt): danno(d),
   std::cout << "Oggetto Creato" << std::endl;
 }
 
+
+
 double sensoreDanno::getDanno() const { 
   return danno;
 }
