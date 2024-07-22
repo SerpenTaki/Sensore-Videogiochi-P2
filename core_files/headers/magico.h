@@ -13,7 +13,7 @@ private:
 
 public:
   magico(double d, int ph, int pc, vector<int> tpt, int lvM, string stat, bool isInSta);
-  ~magico();
+  ~magico() = default;
 
   int getLvMagia() const;
   string getStatus() const;

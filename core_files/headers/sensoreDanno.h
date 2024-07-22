@@ -19,7 +19,7 @@ private:
 public:
   vector<int> attacchiPerTurno;
   sensoreDanno(double d, int ph, int pc, vector<int> tpt);
-  virtual ~sensoreDanno();
+  virtual ~sensoreDanno() = default;
 
   virtual vector<double> getValoriGrafico() final; // metodo per il grafico
   // Metodi getter

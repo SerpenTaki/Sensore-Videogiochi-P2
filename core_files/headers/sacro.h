@@ -13,7 +13,7 @@ private:
   enum { fedeBassa, fedeMedia, fedeAlta };
 public:
   sacro(double d, int ph, int pc, vector<int> tpt, int lvFede, int limitbreak,vector<int> limitBar);
-  ~sacro();
+  ~sacro() = default;
 
   int getLvFede() const;
   int getlimitBreak() const;
