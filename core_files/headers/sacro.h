@@ -3,8 +3,6 @@
 
 #include "sensoreDanno.h"
 
-class sensoreDanno;
-
 class sacro : public sensoreDanno {
 private:
   int lvFede;     /* 0 , 1, 2 */

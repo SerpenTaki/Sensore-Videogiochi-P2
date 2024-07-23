@@ -3,8 +3,6 @@
 
 #include "sensoreDanno.h"
 
-class sensoreDanno;
-
 class magico : virtual public sensoreDanno {
 private:
   int lvMagia; // dall' 1 al 5

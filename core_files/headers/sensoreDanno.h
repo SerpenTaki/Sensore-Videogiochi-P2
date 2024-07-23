@@ -21,7 +21,6 @@ private:
   int randN;
 public:
   vector<int> attacchiPerTurno;
-
   sensoreDanno(double d, int ph, int pc, vector<int> tpt);
   virtual ~sensoreDanno();
 
@@ -32,6 +31,9 @@ public:
   int getProbCrit() const;
   int getRand();
   string getNome() const;
+  //Metodi setter per modifica sensore
+
+  
   // metodi virtuali puri
   virtual double calcolaDanno()=0;
   virtual double getHit() =0;
