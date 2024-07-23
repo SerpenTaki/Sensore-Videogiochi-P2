@@ -5,9 +5,12 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include <random>
 
 using std::string;
 using std::vector;
+using std::cout;
+using std::endl;
 
 class sensoreDanno {
 private:
@@ -18,8 +21,9 @@ private:
   int randN;
 public:
   vector<int> attacchiPerTurno;
+
   sensoreDanno(double d, int ph, int pc, vector<int> tpt);
-  virtual ~sensoreDanno() = default;
+  virtual ~sensoreDanno();
 
   virtual vector<double> getValoriGrafico() final; // metodo per il grafico
   // Metodi getter
@@ -29,7 +33,7 @@ public:
   int getRand();
   string getNome() const;
   // metodi virtuali puri
-  virtual double calcolaDanno() =0;
+  virtual double calcolaDanno()=0;
   virtual double getHit() =0;
 };
 

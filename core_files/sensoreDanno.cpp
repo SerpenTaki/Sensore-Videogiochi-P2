@@ -2,10 +2,10 @@
 #include <random>
 
 sensoreDanno::sensoreDanno(double d, int ph, int pc, vector<int> tpt): danno(d), probHit(ph), probCrit(pc), attacchiPerTurno(tpt) {
-  std::cout << "Oggetto Creato" << std::endl;
+  cout << "Oggetto Creato" << endl;
 }
 
-
+sensoreDanno::~sensoreDanno() {}
 
 double sensoreDanno::getDanno() const { 
   return danno;

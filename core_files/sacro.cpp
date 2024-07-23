@@ -50,13 +50,6 @@ void sacro::updateLimitbreak() {
   limitbreak = limitbreak + 7;
 }
 
-/*PER mostrare il grafico di limit la UI farà un cast da sensore a sacro. Se
- * il cast va a buon fine chiama la funzione get grafico limit specifica di
- * sacro*/
-// SU SACRO GABRIELE QUINDI DOVRAI IMPLEMENTARTI UNA TUA FUNZIONE CHE
-// COMUNQUE SARà SIMILE a quella di sensore danno (nel senso che ritorna un
-// vettore di qualcosa)
-
 vector<int> sacro::getValoriLimitBar() {
   vector<int> result;
   for (auto i = limitBar.begin(); i != limitBar.end(); i++) {

@@ -10,6 +10,15 @@ int main(){
     sacro c(2.2, 3, 20, p, 4, 9, p);
 
     std::cout << a.getAffilatura() << std::endl;
-    
-    
+
+    cout << a.calcolaDanno() << endl;
+    cout << b.calcolaDanno() << endl;
+
+    cout << a.getAffilatura() << endl;
+    cout << a.getHit() << "" << b.getHit() << endl;
+
+    cout << b.calcolaDanno() << b.getLvMagia() << b.checkCondition() << endl;
+
+    cout << c.checkLimit() << endl;
 }
+    

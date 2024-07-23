@@ -4,8 +4,6 @@ magico::magico(double d, int ph, int pc, vector<int> tpt, int lvM, string stat, 
   std::cout << "Oggetto magico creato" << std::endl;
 }
 
-
-
 int magico::getLvMagia() const { return lvMagia; }
 
 string magico::getStatus() const { return status; }
@@ -14,7 +12,7 @@ bool magico::checkCondition() const { return isInStatus; }
 
 double magico::getHit() {
   if (getProbHit() > 45) {
-    return this->calcolaDanno();
+    return calcolaDanno();
   }
   return 0.0;
 }
@@ -22,7 +20,7 @@ double magico::getHit() {
 double magico::calcolaDanno() {
   double nDanni = getDanno();
   nDanni = nDanni + ((getLvMagia() / 2) * 2);
-  if (checkCondition() == true) {
+  if (checkCondition()) {
     nDanni = nDanni + nDanni * 0.3;
     if (getProbCrit() > 85) {
       nDanni = (nDanni * 20) / 100;
@@ -35,8 +33,9 @@ double magico::calcolaDanno() {
 
 string magico::setStatus() {
   if (getRand() > 70) {
-    checkCondition() == true;
-    return "Bruciato";
-  } else
+    //checkCondition() = true; //da sistemare
+    return "incantato";
+  }
+  else
     return "nope";
 }

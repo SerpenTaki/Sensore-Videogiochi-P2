@@ -3,8 +3,6 @@
 
 #include "sensoreDanno.h"
 
-class sensoreDanno;
-
 class fisico : virtual public sensoreDanno {
 private:
   int affilatura; //% da richiedere all'utente altrimenti random

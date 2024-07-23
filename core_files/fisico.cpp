@@ -1,10 +1,8 @@
 #include "headers/fisico.h"
 
 fisico::fisico(double d, int ph, int pc, vector<int> tpt, int aff): sensoreDanno(d, ph, pc, tpt), affilatura(aff) {
-  std::cout << "Oggetto fisico Creato" << std::endl;
+  cout << "Oggetto fisico Creato" << endl;
 }
-
-
 
 int fisico::getAffilatura() const { return affilatura; }
 
