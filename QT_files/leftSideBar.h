@@ -13,13 +13,10 @@ private:
 public:
     leftSideBar(QWidget* parent = nullptr): QWidget(parent){
         left = new QVBoxLayout(this);
-        aggiungiSensoreBottone = new QPushButton("Aggiungi Sensore");
-        //aggiungiSensoreBottone->setFixedSize(200, 100);  // Imposta la dimensione fissa del bottone (larghezza, altezza)
+        aggiungiSensoreBottone = new QPushButton("Aggiungi Sensore"); //pulsante si vede piccolo pazienza
         left->addWidget(aggiungiSensoreBottone);
         connect(aggiungiSensoreBottone, &QPushButton::clicked, this, &leftSideBar::stampaSelSensore);
     }
-
-    QVBoxLayout* getLeftLayout() { return left; }
 
 public slots:
     void stampaSelSensore(){
