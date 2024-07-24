@@ -4,6 +4,7 @@
 #include<QVBoxLayout>
 #include<QPushButton>
 #include<QLabel>
+#include<QLineEdit>
 #include<QApplication>
 
 #include"content.h"
