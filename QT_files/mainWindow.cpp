@@ -1,20 +1,7 @@
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#include"headers/mainWindow.h"
 
-#include "leftSideBar.h"
-#include "content.h"
-#include "rightSideBar.h"
-#include <QSplitter>
-
-class MainW: public QWidget{
-private:
-  QHBoxLayout* mainWindow;
-  QSplitter* splitter;
-  leftSideBar* leftSideBarWidget;
-  content* contentWidget;
-  rightSideBar* rightSideBarWidget;
-public:
-    MainW(QWidget* parent = nullptr):QWidget(parent){
+MainW::MainW(QWidget* parent)
+:QWidget(parent){
         mainWindow = new QHBoxLayout(this);
         //splitter = new QSplitter(Qt::Horizontal, this);
         //leftSideBarWidget = new leftSideBar(this);
@@ -34,8 +21,4 @@ public:
         mainWindow->addWidget(splitter);
 
         setLayout(mainWindow);
-    }
-};
-
-
-#endif
+}
