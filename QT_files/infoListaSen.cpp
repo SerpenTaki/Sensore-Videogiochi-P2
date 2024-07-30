@@ -1,4 +1,4 @@
-#include "headers/infoListaSen.h"
+#include "infoListaSen.h"
 
 infoListaSen::infoListaSen(QWidget* parent = 0)
     : QWidget(parent)
