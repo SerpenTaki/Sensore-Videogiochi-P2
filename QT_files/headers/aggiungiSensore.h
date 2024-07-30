@@ -14,13 +14,19 @@ class aggiungiSensore: public QDialog{
 private:
     QVBoxLayout* nuovoSens;
     QPushButton* conferma;
-    QLineEdit* specifica;
+    QLineEdit* nomeSensoreInserimento;
     QCheckBox *checkBoxFisico;
     QCheckBox *checkBoxMagico;
     QCheckBox *checkBoxSacro;
 public:
     aggiungiSensore(QWidget* parent = nullptr){
         nuovoSens = new QVBoxLayout(this);
+        QLabel* insNome = new QLabel("inserisci Nome Sensore:");
+        nuovoSens->addWidget(insNome);
+        nomeSensoreInserimento = new QLineEdit;
+        nuovoSens->addWidget(nomeSensoreInserimento);
+        QLabel* selezionaTipo = new QLabel("Seleziona tipo Sensore");
+        nuovoSens->addWidget(selezionaTipo);
         QCheckBox *checkBoxFisico = new QCheckBox("Fisico");
         QCheckBox *checkBoxMagico = new QCheckBox("Magico");
         QCheckBox *checkBoxSacro = new QCheckBox("Sacro");

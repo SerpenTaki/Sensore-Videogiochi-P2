@@ -15,7 +15,6 @@ private:
     QVBoxLayout* left;
     QPushButton* aggiungiSensoreBottone;
     QLineEdit* searchBox;
-    aggiungiSensore* sensoreWidget;
 public:
     leftSideBar(QWidget* parent = nullptr);
 
