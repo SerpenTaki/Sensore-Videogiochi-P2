@@ -8,7 +8,16 @@ content::content(QWidget* parent)
 }
 
 void content::avviaSimulazione(){
-    QLabel* sim = new QLabel("Simulazione Avviata");
+        /* UTILE
+    if (sensoreWidget) {
+        sensoreWidget->deleteLater(); // Rimuove il widget esistente prima di crearne uno nuovo
+    }
+    sensoreWidget = new aggiungiSensore(this); // Crea un nuovo widget
+    left->addWidget(sensoreWidget); // Aggiungilo al layout*/
+    if(sim){
+        sim->deleteLater(); 
+    }
+    sim = new QLabel("Simulazione Avviata");
     center->addWidget(sim);
 }
 

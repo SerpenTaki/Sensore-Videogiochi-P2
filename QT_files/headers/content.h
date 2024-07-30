@@ -10,6 +10,7 @@ class content: public QWidget{
 private:
     QVBoxLayout* center;
     QLabel* grafichino;
+    QLabel* sim;
 public:
     content(QWidget* parent = nullptr);
 public slots:

@@ -13,8 +13,8 @@ leftSideBar::leftSideBar(QWidget* parent)
 }
 
 void leftSideBar::stampaSelSensore(){
-    QLabel* testo = new QLabel("Specifica il tipo di sensore");
-    testo->show();
+    aggiungiSensore* dialog = new aggiungiSensore(this); // Crea la finestra di dialogo
+    dialog->exec(); // Mostra la finestra di dialogo come modale
 }
 
 void leftSideBar::eseguiRicerca(const QString& text){ //DA FARE

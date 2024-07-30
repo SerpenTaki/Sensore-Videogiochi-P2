@@ -8,11 +8,14 @@
 #include<QApplication>
 #include<QDebug>
 
+#include"aggiungiSensore.h"
+
 class leftSideBar: public QWidget{
 private:
     QVBoxLayout* left;
     QPushButton* aggiungiSensoreBottone;
     QLineEdit* searchBox;
+    aggiungiSensore* sensoreWidget;
 public:
     leftSideBar(QWidget* parent = nullptr);
 
