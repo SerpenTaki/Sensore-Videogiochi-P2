@@ -14,9 +14,6 @@ void content::avviaSimulazione(){
     }
     sensoreWidget = new aggiungiSensore(this); // Crea un nuovo widget
     left->addWidget(sensoreWidget); // Aggiungilo al layout*/
-    if(sim){
-        sim->deleteLater(); 
-    }
     sim = new QLabel("Simulazione Avviata");
     center->addWidget(sim);
 }
