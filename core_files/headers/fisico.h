@@ -5,7 +5,7 @@
 
 class fisico : virtual public sensoreDanno {
 private:
-  int affilatura; //% da richiedere all'utente altrimenti random
+  int affilatura;
 public:
   // per implementazione grafica
   fisico(double d, int ph, int pc, vector<int> tpt, int aff);

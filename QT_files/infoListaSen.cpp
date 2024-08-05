@@ -1,6 +1,6 @@
-#include "infoListaSen.h"
+#include "headers/infoListaSen.h"
 
-infoListaSen::infoListaSen(QWidget* parent = 0)
+infoListaSen::infoListaSen(QWidget* parent)
     : QWidget(parent)
 {
     QVBoxLayout* layout = new QVBoxLayout(this);

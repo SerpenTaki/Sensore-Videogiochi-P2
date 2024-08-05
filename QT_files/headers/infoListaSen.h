@@ -11,7 +11,7 @@ private:
     QLabel* nome_sensore;
     QLabel* tipo_sensore;
 public:
-    infoListaSen(QWidget* parent = 0);
+    infoListaSen(QWidget* parent = nullptr);
 
     void show();
 };
