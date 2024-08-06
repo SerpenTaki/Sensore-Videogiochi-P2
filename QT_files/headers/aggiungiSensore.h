@@ -13,6 +13,7 @@
 #include <QSpinBox>
 
 class aggiungiSensore: public QDialog{
+    Q_OBJECT
 private:
     QVBoxLayout* nuovoSens;
     QRadioButton *checkBoxFisico;
@@ -36,6 +37,9 @@ public:
 
 public slots:
     void onRadioButtonToggled();
+    void confermaClicked();
+signals:
+    void sensoreAggiunto(const QString& sensoreName); 
 };
 
 

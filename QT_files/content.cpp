@@ -21,3 +21,20 @@ void content::aggiornaContenuto(const QString& sensoreName) {
     QLabel* nuovoSensore = new QLabel("Sensore creato: " + sensoreName);
     center->addWidget(nuovoSensore);
 }
+
+void content::visualizzaSensore(const QString& sensoreName) {
+    // Pulisci la visualizzazione corrente
+    QLayoutItem* item;
+    while ((item = layout()->takeAt(0)) != 0) {
+        delete item->widget();
+        delete item;
+    }
+
+    // Mostra i dettagli del sensore selezionato
+    QLabel* nomeLabel = new QLabel("Nome Sensore: " + sensoreName);
+    QLabel* tipoLabel = new QLabel("Tipo:");
+    
+    layout()->addWidget(nomeLabel);
+    layout()->addWidget(tipoLabel);
+    setLayout(layout());
+}

@@ -14,8 +14,11 @@ leftSideBar::leftSideBar(QWidget* parent)
 
     connect(aggiungiSensoreBottone, &QPushButton::clicked, this, &leftSideBar::stampaSelSensore);
     connect(searchBox, &QLineEdit::textChanged, this, &leftSideBar::eseguiRicerca);
+    connect(sensoreList, &QListWidget::itemClicked, [=](QListWidgetItem* item) {
+        emit sensoreSelezionato(item->text());
+    });
 }
-
+/*
 void leftSideBar::stampaSelSensore() {
     aggiungiSensore* dialog = new aggiungiSensore(this);
     connect(dialog->conferma, &QPushButton::clicked, [=]() {
@@ -25,6 +28,16 @@ void leftSideBar::stampaSelSensore() {
         dialog->accept(); // Chiudi il dialogo
     });
     dialog->exec(); // Mostra il dialogo
+}*/
+
+void leftSideBar::stampaSelSensore() {
+    // Crea e mostra la finestra di dialogo per aggiungere un sensore
+    aggiungiSensore* dialog = new aggiungiSensore(this);
+    
+    // Connetti il segnale del dialogo per aggiungere sensore
+    connect(dialog, &aggiungiSensore::sensoreAggiunto, this, &leftSideBar::aggiungiSensoreToList);
+    
+    dialog->exec(); // Mostra il dialogo come modale
 }
 
 void leftSideBar::aggiungiSensoreToList(const QString& sensoreName) {

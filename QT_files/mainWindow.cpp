@@ -19,5 +19,5 @@ MainW::MainW(QWidget* parent)
 
         setLayout(mainWindow);
 
-        connect(leftSideBarWidget, &leftSideBar::sensoreAggiunto, contentWidget, &content::aggiornaContenuto);
+        connect(leftSideBarWidget, &leftSideBar::sensoreSelezionato,contentWidget, &content::visualizzaSensore);
 }

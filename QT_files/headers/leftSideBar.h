@@ -27,7 +27,7 @@ public slots:
     void eseguiRicerca(const QString& text);
     void aggiungiSensoreToList(const QString& sensoreName);
 signals:
-    void sensoreAggiunto(const QString& sensoreName);
+    void sensoreSelezionato(const QString& sensoreName);
 };
 
 

@@ -17,6 +17,7 @@ public slots:
     void avviaSimulazione();
     void eliminaSensore();
     void aggiornaContenuto(const QString& sensoreName);
+    void visualizzaSensore(const QString& sensoreName);
 };
 
 

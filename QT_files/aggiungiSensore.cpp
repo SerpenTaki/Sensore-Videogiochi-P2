@@ -1,9 +1,9 @@
-#include"headers/aggiungiSensore.h"
+#include "headers/aggiungiSensore.h"
 
-aggiungiSensore::aggiungiSensore(QWidget* parent){
+aggiungiSensore::aggiungiSensore(QWidget* parent) : QDialog(parent) {
     setWindowTitle("Aggiungi Sensore");
     nuovoSens = new QVBoxLayout(this);
-    QLabel* insNome = new QLabel("inserisci Nome Sensore:");
+    QLabel* insNome = new QLabel("Inserisci Nome Sensore:");
     nuovoSens->addWidget(insNome);
     nomeSensoreInserimento = new QLineEdit;
     nuovoSens->addWidget(nomeSensoreInserimento);
@@ -15,9 +15,9 @@ aggiungiSensore::aggiungiSensore(QWidget* parent){
     nuovoSens->addWidget(checkBoxFisico);
     nuovoSens->addWidget(checkBoxMagico);
     nuovoSens->addWidget(checkBoxSacro);
-        
+    
     dynamicWidget = new QWidget(this);
-    dynamicLayout = new QVBoxLayout(dynamicWidget);  // Inizializza il layout dinamico
+    dynamicLayout = new QVBoxLayout(dynamicWidget);
     dynamicWidget->setLayout(dynamicLayout);
     nuovoSens->addWidget(dynamicWidget);
 
@@ -42,13 +42,19 @@ aggiungiSensore::aggiungiSensore(QWidget* parent){
     NumeroDiTurni->setValue(1);
     nuovoSens->addWidget(NumeroDiTurni);
 
-
     conferma = new QPushButton("Crea Sensore");
     annulla = new QPushButton("Annulla");
     nuovoSens->addWidget(conferma);
     nuovoSens->addWidget(annulla);
 
+    connect(conferma, &QPushButton::clicked, this, &aggiungiSensore::confermaClicked); // Connetti il pulsante "Conferma"
     connect(annulla, &QPushButton::clicked, this, &aggiungiSensore::close);
+}
+
+void aggiungiSensore::confermaClicked() {
+    QString nomeSensore = nomeSensoreInserimento->text();
+    emit sensoreAggiunto(nomeSensore); // Emmetti il segnale con il nome del sensore
+    accept(); // Chiudi il dialogo dopo aver aggiunto il sensore
 }
 
 void aggiungiSensore::changeUIForOption1() {
@@ -89,7 +95,7 @@ void aggiungiSensore::changeUIForOption3() {
     dynamicLayout->addWidget(SLvFede);
 }
 
-void aggiungiSensore::clearDynamicWidget(){
+void aggiungiSensore::clearDynamicWidget() {
     // Rimuove tutti i widget dal layout del dynamicWidget
     QLayoutItem *child;
     while ((child = dynamicWidget->layout()->takeAt(0)) != 0) {
@@ -98,7 +104,7 @@ void aggiungiSensore::clearDynamicWidget(){
     }
 }
 
-void aggiungiSensore::onRadioButtonToggled(){
+void aggiungiSensore::onRadioButtonToggled() {
     QRadioButton *radioButton = qobject_cast<QRadioButton *>(sender());
     if (radioButton && radioButton->isChecked()) {
         QLabel* label = new QLabel();
