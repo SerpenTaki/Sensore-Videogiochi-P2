@@ -1,4 +1,4 @@
-#include "QT_files/mainWindow.h"
+#include "QT_files/headers/mainWindow.h"
 
 int main(int argv, char** argc){
   QApplication SensoreGioco(argv, argc);
