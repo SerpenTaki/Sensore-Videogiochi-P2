@@ -1,6 +1,7 @@
 #include"headers/aggiungiSensore.h"
 
 aggiungiSensore::aggiungiSensore(QWidget* parent){
+    setWindowTitle("Aggiungi Sensore");
     nuovoSens = new QVBoxLayout(this);
     QLabel* insNome = new QLabel("inserisci Nome Sensore:");
     nuovoSens->addWidget(insNome);

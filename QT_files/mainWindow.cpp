@@ -2,12 +2,9 @@
 
 MainW::MainW(QWidget* parent)
 :QWidget(parent){
+        setWindowTitle("Sensore Danni Gioco");
         mainWindow = new QHBoxLayout(this);
-        //splitter = new QSplitter(Qt::Horizontal, this);
-        //leftSideBarWidget = new leftSideBar(this);
-        //mainWindow->addLayout(leftSideBarWidget->getLeftLayout());
         
-        //splitter->addWidget(leftSidebarWidget);
         splitter = new QSplitter(Qt::Horizontal, this);
 
         leftSideBarWidget = new leftSideBar(this);

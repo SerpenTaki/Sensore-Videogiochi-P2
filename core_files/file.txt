@@ -1,0 +1,286 @@
+#ifndef SENSOREDANNO_H
+#define SENSOREDANNO_H
+
+// #include <iostream>
+#include <string>
+#include <vector>
+#include <iostream>
+#include <random>
+
+using std::string;
+using std::vector;
+using std::cout;
+using std::endl;
+
+class sensoreDanno {
+private:
+  std::string nome;
+  double danno;
+  int probHit;  // random
+  int probCrit; // random
+  int randN;
+public:
+  vector<int> attacchiPerTurno;
+  sensoreDanno(double d, int ph, int pc, vector<int> tpt);
+  virtual ~sensoreDanno();
+
+  virtual vector<double> getValoriGrafico() final; // metodo per il grafico
+  // Metodi getter
+  double getDanno() const;
+  int getProbHit() const;
+  int getProbCrit() const;
+  int getRand();
+  string getNome() const;
+  //Metodi setter per modifica sensore
+
+  
+  // metodi virtuali puri
+  virtual double calcolaDanno()=0;
+  virtual double getHit() =0;
+};
+
+#endif
+
+#include "headers/sensoreDanno.h"
+#include <random>
+
+sensoreDanno::sensoreDanno(double d, int ph, int pc, vector<int> tpt): danno(d), probHit(ph), probCrit(pc), attacchiPerTurno(tpt) {
+  cout << "Oggetto Creato" << endl;
+}
+
+sensoreDanno::~sensoreDanno() {}
+
+double sensoreDanno::getDanno() const { 
+  return danno;
+}
+
+int sensoreDanno::getProbCrit() const {
+  /*random*/
+  return probCrit;
+}
+
+int sensoreDanno::getProbHit() const {
+  /*random*/
+  return probHit;
+}
+
+std::string sensoreDanno::getNome() const { return nome; }
+
+int sensoreDanno::getRand() {
+  std::random_device rd;
+  std::mt19937 gen(rd());
+  std::uniform_int_distribution<> dis(1, 100);
+  randN = dis(gen);
+  return randN;
+}
+
+vector<double> sensoreDanno::getValoriGrafico() {
+  vector<double> result;
+  for (auto i = attacchiPerTurno.begin(); i != attacchiPerTurno.end(); i++) {
+    double dannoPerTurno = *i * calcolaDanno();
+    result.push_back(dannoPerTurno);
+  }
+  return result;
+} // Questa non si ovverrida da nessuna parte
+
+#ifndef FISICO_H
+#define FISICO_H
+
+#include "sensoreDanno.h"
+
+class fisico : virtual public sensoreDanno {
+private:
+  int affilatura;
+public:
+  // per implementazione grafica
+  fisico(double d, int ph, int pc, vector<int> tpt, int aff);
+
+  int getAffilatura() const;
+
+  double getHit() override;
+  double calcolaDanno() override;
+};
+
+#endif
+
+#include "headers/fisico.h"
+
+fisico::fisico(double d, int ph, int pc, vector<int> tpt, int aff): sensoreDanno(d, ph, pc, tpt), affilatura(aff) {
+  cout << "Oggetto fisico Creato" << endl;
+}
+
+int fisico::getAffilatura() const { return affilatura; }
+
+double fisico::getHit() { /*si collega all'interfaccia grafica*/
+  if (getProbHit() > 30) {
+    return this->calcolaDanno();
+  }
+  return 0.0;
+}
+
+double fisico::calcolaDanno() { // assestante
+  double nDanni = getDanno();
+  nDanni = nDanni * affilatura / 10;
+  if (getProbCrit() > 75) {
+    nDanni = (nDanni * 30) / 100;
+    return nDanni;
+  } else
+    return nDanni;
+}
+#ifndef MAGICO_H
+#define MAGICO_H
+
+#include "sensoreDanno.h"
+
+class magico : virtual public sensoreDanno {
+private:
+  int lvMagia; // dall' 1 al 5
+  string status;
+  bool isInStatus;
+
+public:
+  magico(double d, int ph, int pc, vector<int> tpt, int lvM, string stat, bool isInSta);
+
+
+  int getLvMagia() const;
+  string getStatus() const;
+  bool checkCondition() const;
+
+  string setStatus();
+
+  double calcolaDanno();
+  double getHit();
+};
+
+#endif
+
+#include "headers/magico.h"
+
+magico::magico(double d, int ph, int pc, vector<int> tpt, int lvM, string stat, bool isInSta): sensoreDanno(d, ph, pc, tpt), lvMagia(lvM), status(stat),isInStatus(isInSta) {
+  std::cout << "Oggetto magico creato" << std::endl;
+}
+
+int magico::getLvMagia() const { return lvMagia; }
+
+string magico::getStatus() const { return status; }
+
+bool magico::checkCondition() const { return isInStatus; }
+
+double magico::getHit() {
+  if (getProbHit() > 45) {
+    return calcolaDanno();
+  }
+  return 0.0;
+}
+
+double magico::calcolaDanno() {
+  double nDanni = getDanno();
+  nDanni = nDanni + ((getLvMagia() / 2) * 2);
+  if (checkCondition()) {
+    nDanni = nDanni + nDanni * 0.3;
+    if (getProbCrit() > 85) {
+      nDanni = (nDanni * 20) / 100;
+    }
+    return nDanni;
+  }
+  setStatus();
+  return nDanni;
+}
+
+string magico::setStatus() {
+  if (getRand() > 70) {
+    //checkCondition() = true; //da sistemare
+    return "incantato";
+  }
+  else
+    return "nope";
+}
+
+#ifndef SACRO_H
+#define SACRO_H
+
+#include "sensoreDanno.h"
+
+class sacro : public sensoreDanno {
+private:
+  int lvFede;     /* 0 , 1, 2 */
+  int limitbreak; // quando il parametro raggiunge 10 hai vinto la partita,
+  vector<int> limitBar; // mostra nuovo grafico del limit break
+  enum { fedeBassa, fedeMedia, fedeAlta };
+public:
+  sacro(double d, int ph, int pc, vector<int> tpt, int lvFede, int limitbreak,vector<int> limitBar);
+
+
+  int getLvFede() const;
+  int getlimitBreak() const;
+
+  double getHit() override;
+  double calcolaDanno() override;
+  
+  bool checkLimit();
+  void updateLimitbreak();
+  vector<int> getValoriLimitBar();
+};
+
+#endif
+#include "headers/sacro.h"
+#include <random>
+
+sacro::sacro(double d, int ph, int pc, vector<int> tpt, int lvFede, int limitbreak, vector<int> limitBar): sensoreDanno(d, ph, pc, tpt), lvFede(lvFede), limitbreak(limitbreak),limitBar(limitBar) {
+  std::cout << "Oggetto sacro Creato" << std::endl;
+}
+
+
+
+int sacro::getLvFede() const { return lvFede; }
+int sacro::getlimitBreak() const { return limitbreak; }
+
+bool sacro::checkLimit() { /*Gestito dalla UI mi fa vincere magari pop-up*/
+  if (limitbreak < 100)
+    return false;
+  else
+    return true;
+}
+
+double sacro::getHit() { /*si collega all'interfaccia grafica*/
+  if (getProbHit() > 80) {
+    return this->calcolaDanno();
+  }
+  return 0.0;
+}
+
+double sacro::calcolaDanno() {
+  double nDanni = getDanno();
+  if (lvFede == fedeBassa) {
+    nDanni = nDanni * 20 / 10;
+  } else if (lvFede == fedeMedia) {
+    nDanni = nDanni * 40 / 10;
+  } else {
+    nDanni = nDanni * 65 / 10;
+  }
+  if (getProbCrit() > 40) {
+    nDanni = (nDanni * 15) / 100;
+  }
+  updateLimitbreak();
+  return nDanni;
+}
+
+void sacro::updateLimitbreak() {
+  /*Questo metodo mi calcola un numero random da 1 a 10 e mi restituisce il
+   * valore aggiornato di limit*/
+  std::random_device rd;
+  std::mt19937 gen(rd());
+  std::uniform_int_distribution<> dis(1, 10);
+  int n = 7;
+  limitbreak = limitbreak + 7;
+}
+
+vector<int> sacro::getValoriLimitBar() {
+  vector<int> result;
+  for (auto i = limitBar.begin(); i != limitBar.end(); i++) {
+    int limitPerTurno = *i + limitbreak;
+    result.push_back(limitbreak);
+  }
+  return result;
+}
+

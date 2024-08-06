@@ -8,3 +8,4 @@ Makefile
 # si, voglio essere sicuro che non metta ProgettoP2.app
 ProgettoP2.app  
 .out
+.txt
