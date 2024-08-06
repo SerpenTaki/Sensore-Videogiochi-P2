@@ -15,8 +15,6 @@
 class aggiungiSensore: public QDialog{
 private:
     QVBoxLayout* nuovoSens;
-    QPushButton* conferma;
-    QLineEdit* nomeSensoreInserimento;
     QRadioButton *checkBoxFisico;
     QRadioButton *checkBoxMagico;
     QRadioButton *checkBoxSacro;
@@ -26,6 +24,9 @@ private:
     QWidget *dynamicWidget;
     QVBoxLayout *dynamicLayout;
 public:
+    QPushButton* conferma;
+    QLineEdit* nomeSensoreInserimento;
+
     aggiungiSensore(QWidget* parent = nullptr);
 
     void changeUIForOption1();

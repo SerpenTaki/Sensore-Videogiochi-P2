@@ -15,8 +15,8 @@ public:
     content(QWidget* parent = nullptr);
 public slots:
     void avviaSimulazione();
-
     void eliminaSensore();
+    void aggiornaContenuto(const QString& sensoreName);
 };
 
 

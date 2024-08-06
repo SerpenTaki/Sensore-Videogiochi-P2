@@ -18,4 +18,6 @@ MainW::MainW(QWidget* parent)
         mainWindow->addWidget(splitter);
 
         setLayout(mainWindow);
+
+        connect(leftSideBarWidget, &leftSideBar::sensoreAggiunto, contentWidget, &content::aggiornaContenuto);
 }
