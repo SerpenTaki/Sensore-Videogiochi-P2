@@ -1,25 +1,27 @@
 #ifndef RIGHTSIDEBAR_H
 #define RIGHTSIDEBAR_H
 
-#include<QVBoxLayout>
-#include<QPushButton>
-#include<QLabel>
-#include<QLineEdit>
-#include<QApplication>
+#include <QVBoxLayout>
+#include <QPushButton>
+#include <QWidget>
+#include "content.h"
+#include "leftSideBar.h"
 
-#include"content.h"
-
-class rightSideBar: public QWidget{
+class rightSideBar : public QWidget {
+    Q_OBJECT
 private:
     QVBoxLayout* right;
     QPushButton* avviaSimulaButt;
     QPushButton* modificaSensButt;
     QPushButton* eliminaSensButt;
     content* cont;
+    leftSideBar* leftSide;
 public:
-    rightSideBar(content* c,QWidget* parent = nullptr);
+    explicit rightSideBar(content* c, leftSideBar* l, QWidget* parent = nullptr);
+
 public slots:
     void modificaSensore();
+    void eliminaSensore();
 };
 
 #endif

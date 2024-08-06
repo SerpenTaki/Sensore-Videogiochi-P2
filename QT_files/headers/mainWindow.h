@@ -6,16 +6,16 @@
 #include "rightSideBar.h"
 #include <QSplitter>
 
-class MainW: public QWidget{
+class MainW : public QWidget {
 private:
-  QHBoxLayout* mainWindow;
-  QSplitter* splitter;
-  leftSideBar* leftSideBarWidget;
-  content* contentWidget;
-  rightSideBar* rightSideBarWidget;
-public:
-    MainW(QWidget* parent = nullptr);
-};
+    QHBoxLayout* mainWindow;
+    QSplitter* splitter;
+    leftSideBar* leftSideBarWidget;
+    content* contentWidget;
+    rightSideBar* rightSideBarWidget;
 
+public:
+    explicit MainW(QWidget* parent = nullptr);
+};
 
 #endif

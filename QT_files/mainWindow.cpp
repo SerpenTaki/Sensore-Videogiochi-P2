@@ -1,23 +1,22 @@
-#include"headers/mainWindow.h"
+#include "headers/mainWindow.h"
 
 MainW::MainW(QWidget* parent)
-:QWidget(parent){
-        setWindowTitle("Sensore Danni Gioco");
-        mainWindow = new QHBoxLayout(this);
-        
-        splitter = new QSplitter(Qt::Horizontal, this);
+    : QWidget(parent) {
+    setWindowTitle("Sensore Danni Gioco");
 
-        leftSideBarWidget = new leftSideBar(this);
-        contentWidget = new content(this);
-        rightSideBarWidget = new rightSideBar(contentWidget, this);
+    mainWindow = new QHBoxLayout(this);
+    splitter = new QSplitter(Qt::Horizontal, this);
 
-        splitter->addWidget(leftSideBarWidget);
-        splitter->addWidget(contentWidget);
-        splitter->addWidget(rightSideBarWidget);
+    leftSideBarWidget = new leftSideBar(this);
+    contentWidget = new content(this);
+    rightSideBarWidget = new rightSideBar(contentWidget, leftSideBarWidget, this); // Passa leftSideBarWidget
 
-        mainWindow->addWidget(splitter);
+    splitter->addWidget(leftSideBarWidget);
+    splitter->addWidget(contentWidget);
+    splitter->addWidget(rightSideBarWidget);
 
-        setLayout(mainWindow);
+    mainWindow->addWidget(splitter);
+    setLayout(mainWindow);
 
-        connect(leftSideBarWidget, &leftSideBar::sensoreSelezionato,contentWidget, &content::visualizzaSensore);
+    connect(leftSideBarWidget, &leftSideBar::sensoreSelezionato, contentWidget, &content::visualizzaSensore);
 }

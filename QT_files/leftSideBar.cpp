@@ -18,17 +18,6 @@ leftSideBar::leftSideBar(QWidget* parent)
         emit sensoreSelezionato(item->text());
     });
 }
-/*
-void leftSideBar::stampaSelSensore() {
-    aggiungiSensore* dialog = new aggiungiSensore(this);
-    connect(dialog->conferma, &QPushButton::clicked, [=]() {
-        QString nomeSensore = dialog->nomeSensoreInserimento->text();
-        aggiungiSensoreToList(nomeSensore);
-        emit sensoreAggiunto(nomeSensore); // Emetti il segnale quando un sensore è aggiunto
-        dialog->accept(); // Chiudi il dialogo
-    });
-    dialog->exec(); // Mostra il dialogo
-}*/
 
 void leftSideBar::stampaSelSensore() {
     // Crea e mostra la finestra di dialogo per aggiungere un sensore
@@ -49,5 +38,13 @@ void leftSideBar::eseguiRicerca(const QString& text) {
     for (int i = 0; i < sensoreList->count(); ++i) {
         QListWidgetItem* item = sensoreList->item(i);
         item->setHidden(!item->text().contains(text, Qt::CaseInsensitive));
+    }
+}
+
+void leftSideBar::eliminaSensore(const QString& sensoreName) {
+    QList<QListWidgetItem*> items = sensoreList->findItems(sensoreName, Qt::MatchExactly);
+    for (QListWidgetItem* item : items) {
+        delete item;
+        sensori.removeOne(sensoreName);
     }
 }

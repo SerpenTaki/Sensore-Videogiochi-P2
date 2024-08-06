@@ -26,6 +26,7 @@ public slots:
     void stampaSelSensore();
     void eseguiRicerca(const QString& text);
     void aggiungiSensoreToList(const QString& sensoreName);
+    void eliminaSensore(const QString& sensoreName);
 signals:
     void sensoreSelezionato(const QString& sensoreName);
 };
