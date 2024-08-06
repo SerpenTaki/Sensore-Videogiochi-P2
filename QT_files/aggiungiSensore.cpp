@@ -53,9 +53,20 @@ aggiungiSensore::aggiungiSensore(QWidget* parent) : QDialog(parent) {
 
 void aggiungiSensore::confermaClicked() {
     QString nomeSensore = nomeSensoreInserimento->text();
-    emit sensoreAggiunto(nomeSensore); // Emmetti il segnale con il nome del sensore
-    accept(); // Chiudi il dialogo dopo aver aggiunto il sensore
+
+    if (nomeSensore.isEmpty()) {
+        QMessageBox::warning(this, "Dati Mancanti", "Per favore, inserisci un nome per il sensore.");
+        return;
+    }
+
+    if (!checkBoxFisico->isChecked() && !checkBoxMagico->isChecked() && !checkBoxSacro->isChecked()) {
+        QMessageBox::warning(this, "Tipo di Sensore Mancante", "Per favore, seleziona un tipo di sensore.");
+        return;
+    }
+    emit sensoreAggiunto(nomeSensore);
+    accept();
 }
+
 
 void aggiungiSensore::changeUIForOption1() {
     clearDynamicWidget();

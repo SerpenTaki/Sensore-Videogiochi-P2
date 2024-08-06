@@ -11,6 +11,7 @@
 #include<QRadioButton>
 #include<QDebug>
 #include <QSpinBox>
+#include <QMessageBox>
 
 class aggiungiSensore: public QDialog{
     Q_OBJECT
