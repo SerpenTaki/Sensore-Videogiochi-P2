@@ -44,7 +44,9 @@ constexpr auto qt_meta_stringdata_CLASSleftSideBarENDCLASS = QtMocHelpers::strin
     "eseguiRicerca",
     "text",
     "aggiungiSensoreToList",
-    "eliminaSensore"
+    "eliminaSensore",
+    "salvaSensori",
+    "salvaSensoriJson"
 );
 #else  // !QT_MOC_HAS_STRINGDATA
 #error "qtmochelpers.h not found or too old."
@@ -57,7 +59,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSleftSideBarENDCLASS[] = {
       12,       // revision
        0,       // classname
        0,    0, // classinfo
-       5,   14, // methods
+       7,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -65,13 +67,15 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSleftSideBarENDCLASS[] = {
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    1,   44,    2, 0x06,    1 /* Public */,
+       1,    1,   56,    2, 0x06,    1 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       4,    0,   47,    2, 0x0a,    3 /* Public */,
-       5,    1,   48,    2, 0x0a,    4 /* Public */,
-       7,    1,   51,    2, 0x0a,    6 /* Public */,
-       8,    1,   54,    2, 0x0a,    8 /* Public */,
+       4,    0,   59,    2, 0x0a,    3 /* Public */,
+       5,    1,   60,    2, 0x0a,    4 /* Public */,
+       7,    1,   63,    2, 0x0a,    6 /* Public */,
+       8,    1,   66,    2, 0x0a,    8 /* Public */,
+       9,    0,   69,    2, 0x0a,   10 /* Public */,
+      10,    0,   70,    2, 0x0a,   11 /* Public */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QString,    3,
@@ -81,6 +85,8 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSleftSideBarENDCLASS[] = {
     QMetaType::Void, QMetaType::QString,    6,
     QMetaType::Void, QMetaType::QString,    3,
     QMetaType::Void, QMetaType::QString,    3,
+    QMetaType::Void,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -107,7 +113,11 @@ Q_CONSTINIT const QMetaObject leftSideBar::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
         // method 'eliminaSensore'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        QtPrivate::TypeAndForceComplete<const QString &, std::false_type>
+        QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
+        // method 'salvaSensori'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'salvaSensoriJson'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
 } };
@@ -123,6 +133,8 @@ void leftSideBar::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         case 2: _t->eseguiRicerca((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
         case 3: _t->aggiungiSensoreToList((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
         case 4: _t->eliminaSensore((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
+        case 5: _t->salvaSensori(); break;
+        case 6: _t->salvaSensoriJson(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -156,13 +168,13 @@ int leftSideBar::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 5)
+        if (_id < 7)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 5;
+        _id -= 7;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 5)
+        if (_id < 7)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 5;
+        _id -= 7;
     }
     return _id;
 }
