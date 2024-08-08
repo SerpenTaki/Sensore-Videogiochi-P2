@@ -13,9 +13,9 @@ leftSideBar::leftSideBar(QWidget* parent)
 
     left->addWidget(searchBox);
     left->addWidget(aggiungiSensoreBottone);
+    left->addWidget(sensoreList); // Aggiungi la lista al layout
     left->addWidget(salvaSensoriBottone); // Aggiungi il pulsante "Salva Sensori"
     left->addWidget(salvaJsonBottone); // Aggiungi il pulsante "Salva in JSON"
-    left->addWidget(sensoreList); // Aggiungi la lista al layout
 
     connect(aggiungiSensoreBottone, &QPushButton::clicked, this, &leftSideBar::stampaSelSensore);
     connect(searchBox, &QLineEdit::textChanged, this, &leftSideBar::eseguiRicerca);
