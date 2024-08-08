@@ -19,8 +19,8 @@ public:
 
   string setStatus();
 
-  double calcolaDanno();
-  double getHit();
+  double calcolaDanno() override;
+  double getHit() override;
 
   void accept(Visitor* v) override { v->visit(this); }
 };
