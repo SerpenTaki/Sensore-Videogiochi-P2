@@ -5,7 +5,7 @@ sensoreDanno::sensoreDanno(double d, int ph, int pc, vector<int> tpt): danno(d),
   cout << "Oggetto Creato" << endl;
 }
 
-sensoreDanno::~sensoreDanno() {}
+sensoreDanno::~sensoreDanno() {cout << "Distrutto porcamadonna" << endl;} //ho notato che elimina sensore non distrugge il sensore alla fine
 
 double sensoreDanno::getDanno() const { 
   return danno;

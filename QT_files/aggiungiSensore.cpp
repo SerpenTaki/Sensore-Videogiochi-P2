@@ -50,7 +50,7 @@ aggiungiSensore::aggiungiSensore(QWidget* parent) : QDialog(parent) {
     connect(conferma, &QPushButton::clicked, this, &aggiungiSensore::confermaClicked); // Connetti il pulsante "Conferma"
     connect(annulla, &QPushButton::clicked, this, &aggiungiSensore::close);
 }
-
+/*
 void aggiungiSensore::confermaClicked() {
     QString nomeSensore = nomeSensoreInserimento->text();
 
@@ -65,6 +65,48 @@ void aggiungiSensore::confermaClicked() {
     }
     emit sensoreAggiunto(nomeSensore);
     accept();
+}*/
+
+void aggiungiSensore::confermaClicked() {
+    QString nomeSensore = nomeSensoreInserimento->text();
+    QString tipoSensore;
+    int extra1 = 0, extra2 = 0;
+    bool status = false;
+    QString statusStr;
+
+    if (checkBoxFisico->isChecked()) {
+        tipoSensore = "Fisico";
+        extra1 = DannoBase->value(); // Affilatura
+    } else if (checkBoxMagico->isChecked()) {
+        tipoSensore = "Magico";
+        extra1 = DannoBase->value(); // Livello Magia
+        status = StatusApp->isChecked();
+        statusStr = StatusApp->text(); // Presumendo che StatusApp sia una QCheckBox
+    } else if (checkBoxSacro->isChecked()) {
+        tipoSensore = "Sacro";
+        extra1 = DannoBase->value(); // Livello Fede
+        extra2 = 10; // Limit Break iniziale, o un valore di default
+    }
+
+    if (nomeSensore.isEmpty()) {
+        QMessageBox::warning(this, "Dati Mancanti", "Per favore, inserisci un nome per il sensore.");
+        return;
+    }
+
+    if (tipoSensore.isEmpty()) {
+        QMessageBox::warning(this, "Tipo di Sensore Mancante", "Per favore, seleziona un tipo di sensore.");
+        return;
+    }
+
+    GestoreSensori gestore;  // Istanza del gestore
+    sensoreDanno* sensore = gestore.creaSensore(tipoSensore, DannoBase->value(), 50, 50, { NumeroDiTurni->value() }, extra1, extra2, status, statusStr);
+
+    if (sensore) {
+        emit sensoreAggiunto(nomeSensore);
+        accept(); // Chiudi il dialogo
+    } else {
+        QMessageBox::warning(this, "Errore", "Impossibile creare il sensore.");
+    }
 }
 
 
@@ -90,7 +132,7 @@ void aggiungiSensore::changeUIForOption2() {
     SLvMagia->setSingleStep(1);
     SLvMagia->setValue(1);
     dynamicLayout->addWidget(SLvMagia);
-    QCheckBox* StatusApp = new QCheckBox("Vuoi l'avversario in status?");
+    StatusApp = new QCheckBox("Vuoi l'avversario in status?");
     dynamicLayout->addWidget(StatusApp);
 }
 

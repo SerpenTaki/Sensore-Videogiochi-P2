@@ -12,6 +12,8 @@
 #include<QDebug>
 #include <QSpinBox>
 #include <QMessageBox>
+#include"functions/gestoreSensori.h"
+
 
 class aggiungiSensore: public QDialog{
     Q_OBJECT
@@ -25,6 +27,7 @@ private:
     QPushButton* annulla;
     QWidget *dynamicWidget;
     QVBoxLayout *dynamicLayout;
+    QCheckBox* StatusApp;
 public:
     QPushButton* conferma;
     QLineEdit* nomeSensoreInserimento;
