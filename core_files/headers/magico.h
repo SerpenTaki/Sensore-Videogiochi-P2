@@ -21,6 +21,8 @@ public:
 
   double calcolaDanno();
   double getHit();
+
+  void accept(Visitor* v) override { v->visit(this); }
 };
 
 #endif

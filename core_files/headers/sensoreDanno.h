@@ -6,6 +6,7 @@
 #include <vector>
 #include <iostream>
 #include <random>
+#include"visitor.h"
 
 using std::string;
 using std::vector;
@@ -37,6 +38,8 @@ public:
   // metodi virtuali puri
   virtual double calcolaDanno()=0;
   virtual double getHit() =0;
+
+  virtual void accept(Visitor* v) = 0;
 };
 
 #endif

@@ -22,6 +22,9 @@ public:
   bool checkLimit();
   void updateLimitbreak();
   vector<int> getValoriLimitBar();
+
+  void accept(Visitor* v) override { v->visit(this); }
+  
 };
 
 #endif

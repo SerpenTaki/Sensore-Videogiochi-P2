@@ -2,6 +2,7 @@
 #define FISICO_H
 
 #include "sensoreDanno.h"
+#include "visitor.h"
 
 class fisico : virtual public sensoreDanno {
 private:
@@ -14,6 +15,8 @@ public:
 
   double getHit() override;
   double calcolaDanno() override;
+
+  void accept(Visitor* v) override { v->visit(this); }
 };
 
 #endif
