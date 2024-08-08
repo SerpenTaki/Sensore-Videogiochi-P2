@@ -41,20 +41,21 @@ double sacro::calcolaDanno() {
 }
 
 void sacro::updateLimitbreak() {
-  /*Questo metodo mi calcola un numero random da 1 a 10 e mi restituisce il
-   * valore aggiornato di limit*/
-  std::random_device rd;
-  std::mt19937 gen(rd());
-  std::uniform_int_distribution<> dis(1, 10);
-  int n = 7;
-  limitbreak = limitbreak + 7;
+    /* Questo metodo mi calcola un numero random da 1 a 10 e mi restituisce il
+     * valore aggiornato di limit */
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> dis(1, 10);
+    int randomValue = dis(gen);
+    limitbreak += randomValue;
 }
+
 
 vector<int> sacro::getValoriLimitBar() {
   vector<int> result;
   for (auto i = limitBar.begin(); i != limitBar.end(); i++) {
     int limitPerTurno = *i + limitbreak;
-    result.push_back(limitbreak);
+    result.push_back(limitPerTurno);
   }
   return result;
 }

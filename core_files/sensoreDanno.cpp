@@ -11,13 +11,15 @@ double sensoreDanno::getDanno() const {
   return danno;
 }
 
-int sensoreDanno::getProbCrit() const {
+int sensoreDanno::getProbCrit(){
   /*random*/
+  probCrit = getRand(); 
   return probCrit;
 }
 
-int sensoreDanno::getProbHit() const {
+int sensoreDanno::getProbHit(){
   /*random*/
+  probHit = getRand();
   return probHit;
 }
 

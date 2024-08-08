@@ -28,8 +28,8 @@ public:
   virtual vector<double> getValoriGrafico() final; // metodo per il grafico
   // Metodi getter
   double getDanno() const;
-  int getProbHit() const;
-  int getProbCrit() const;
+  int getProbHit();
+  int getProbCrit();
   int getRand();
   string getNome() const;
   //Metodi setter per modifica sensore
