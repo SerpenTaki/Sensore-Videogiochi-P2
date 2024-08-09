@@ -40,6 +40,9 @@ constexpr auto qt_meta_stringdata_CLASSaggiungiSensoreENDCLASS = QtMocHelpers::s
     "sensoreAggiunto",
     "",
     "sensoreName",
+    "sensoreAggiuntoStats",
+    "sensoreDanno*",
+    "nuovoSensore",
     "onRadioButtonToggled",
     "confermaClicked"
 );
@@ -54,22 +57,24 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSaggiungiSensoreENDCLASS[] = {
       12,       // revision
        0,       // classname
        0,    0, // classinfo
-       3,   14, // methods
+       4,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       1,       // signalCount
+       2,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    1,   32,    2, 0x06,    1 /* Public */,
+       1,    1,   38,    2, 0x06,    1 /* Public */,
+       4,    1,   41,    2, 0x06,    3 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       4,    0,   35,    2, 0x0a,    3 /* Public */,
-       5,    0,   36,    2, 0x0a,    4 /* Public */,
+       7,    0,   44,    2, 0x0a,    5 /* Public */,
+       8,    0,   45,    2, 0x0a,    6 /* Public */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QString,    3,
+    QMetaType::Void, 0x80000000 | 5,    6,
 
  // slots: parameters
     QMetaType::Void,
@@ -90,6 +95,9 @@ Q_CONSTINIT const QMetaObject aggiungiSensore::staticMetaObject = { {
         // method 'sensoreAggiunto'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
+        // method 'sensoreAggiuntoStats'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<sensoreDanno *, std::false_type>,
         // method 'onRadioButtonToggled'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'confermaClicked'
@@ -105,8 +113,9 @@ void aggiungiSensore::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
         (void)_t;
         switch (_id) {
         case 0: _t->sensoreAggiunto((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
-        case 1: _t->onRadioButtonToggled(); break;
-        case 2: _t->confermaClicked(); break;
+        case 1: _t->sensoreAggiuntoStats((*reinterpret_cast< std::add_pointer_t<sensoreDanno*>>(_a[1]))); break;
+        case 2: _t->onRadioButtonToggled(); break;
+        case 3: _t->confermaClicked(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -115,6 +124,13 @@ void aggiungiSensore::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
             using _t = void (aggiungiSensore::*)(const QString & );
             if (_t _q_method = &aggiungiSensore::sensoreAggiunto; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
                 *result = 0;
+                return;
+            }
+        }
+        {
+            using _t = void (aggiungiSensore::*)(sensoreDanno * );
+            if (_t _q_method = &aggiungiSensore::sensoreAggiuntoStats; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
+                *result = 1;
                 return;
             }
         }
@@ -140,13 +156,13 @@ int aggiungiSensore::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 3)
+        if (_id < 4)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 3;
+        _id -= 4;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 3)
+        if (_id < 4)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 3;
+        _id -= 4;
     }
     return _id;
 }
@@ -156,5 +172,12 @@ void aggiungiSensore::sensoreAggiunto(const QString & _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
+}
+
+// SIGNAL 1
+void aggiungiSensore::sensoreAggiuntoStats(sensoreDanno * _t1)
+{
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
+    QMetaObject::activate(this, &staticMetaObject, 1, _a);
 }
 QT_WARNING_POP

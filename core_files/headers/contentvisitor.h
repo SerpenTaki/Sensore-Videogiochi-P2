@@ -1,46 +1,48 @@
 #ifndef CONTENTVISITOR_H
 #define CONTENTVISITOR_H
 
-#include "Visitor.h"
+#include "visitor.h"
 #include "fisico.h"
 #include "magico.h"
 #include "sacro.h"
-#include<QString>
-#include<QApplication>
+#include <QWidget>
+#include <QLabel>
 
 class ContentVisitor : public Visitor {
 private:
     QWidget* dispWidget;
 public:
     ContentVisitor() = default;
+    ~ContentVisitor() {
+        delete dispWidget; // Assicurati di deallocare la memoria
+    }
 
     void visitFisico(fisico* f) override {
-        dispWidget = new QLabel("Sensore Fisico:\nNome:" + getNome() +
-         "\nDannoBase:" + getDanno() +
-         "\nNumero di Turni:"+ getNTurni() +
-         "\nAffilatura:" + getAffilatura()+ "%");
+        dispWidget = new QLabel("Sensore Fisico:\nNome:" + QString::fromStdString(f->getNome()) +
+         "\nDannoBase:" + QString::number(f->getDanno()) +
+         "\nNumero di Turni:" + QString::number(f->attacchiPerTurno.size()) +
+         "\nAffilatura:" + QString::number(f->getAffilatura()) + "%");
     }
 
     void visitMagico(magico* m) override {
-        dispWidget = new QLabel("Sensore Magico:\nNome:" + getNome() +
-         "\nDannoBase:" + getDanno() +
-         "\nNumero di Turni:"+ getNTurni() +
-         "\nLivello Magia:" + getLvMagia() +
-         "\nCondizione:" + checkCondition());
+        dispWidget = new QLabel("Sensore Magico:\nNome:" + QString::fromStdString(m->getNome()) +
+         "\nDannoBase:" + QString::number(m->getDanno()) +
+         "\nNumero di Turni:" + QString::number(m->attacchiPerTurno.size()) +
+         "\nLivello Magia:" + QString::number(m->getLvMagia()) +
+         "\nCondizione:" + (m->checkCondition() ? "Si" : "No"));
     }
 
     void visitSacro(sacro* s) override {
-        dispWidget = new QLabel("Sensore Magico:\nNome:" + getNome() +
-         "\nDannoBase:" + getDanno() +
-         "\nNumero di Turni:"+ getNTurni() +
-         "\nLivello Fede:" + getLvFede()+
-         "\nValore Limit:" + getLimitbreak());
+        dispWidget = new QLabel("Sensore Sacro:\nNome:" + QString::fromStdString(s->getNome()) +
+         "\nDannoBase:" + QString::number(s->getDanno()) +
+         "\nNumero di Turni:" + QString::number(s->attacchiPerTurno.size()) +
+         "\nLivello Fede:" + QString::number(s->getLvFede()) +
+         "\nValore Limit:" + QString::number(s->getlimitBreak()));
     }
 
-    QWidget* returnQWidget(){
+    QWidget* returnQWidget() {
         return dispWidget;
     }
-
 };
 
 #endif

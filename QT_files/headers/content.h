@@ -5,6 +5,8 @@
 #include <QPushButton>
 #include <QLabel>
 #include <QApplication>
+#include"core_files/headers/contentvisitor.h"
+#include"core_files/headers/sensoreDanno.h"
 
 class content : public QWidget {
     Q_OBJECT
@@ -17,9 +19,10 @@ public:
     explicit content(QWidget* parent = nullptr);
     void avviaSimulazione();
     void eliminaSensore(const QString& sensoreName);
-    void aggiornaContenuto(const QString& sensoreName);
-    void visualizzaSensore(const QString& sensoreName);
-    QString getSelectedSensore() const; // Aggiungi questo metodo
+    QString getSelectedSensore() const;
+public slots:
+    void aggiungiSensoreAlContenuto(sensoreDanno* nuovoSensore);
+
 };
 
 #endif
