@@ -50,7 +50,7 @@ aggiungiSensore::aggiungiSensore(QWidget* parent) : QDialog(parent) {
     connect(conferma, &QPushButton::clicked, this, &aggiungiSensore::confermaClicked); // Connetti il pulsante "Conferma"
     connect(annulla, &QPushButton::clicked, this, &aggiungiSensore::close);
 }
-/*
+
 void aggiungiSensore::confermaClicked() {
     QString nomeSensore = nomeSensoreInserimento->text();
 
@@ -65,8 +65,8 @@ void aggiungiSensore::confermaClicked() {
     }
     emit sensoreAggiunto(nomeSensore);
     accept();
-}*/
-
+}
+/* da problemi
 void aggiungiSensore::confermaClicked() {
     QString nomeSensore = nomeSensoreInserimento->text();
     QString tipoSensore;
@@ -108,7 +108,7 @@ void aggiungiSensore::confermaClicked() {
         QMessageBox::warning(this, "Errore", "Impossibile creare il sensore.");
     }
 }
-
+*/
 
 void aggiungiSensore::changeUIForOption1() {
     clearDynamicWidget();
