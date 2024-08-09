@@ -97,9 +97,9 @@ void aggiungiSensore::confermaClicked() {
         QMessageBox::warning(this, "Tipo di Sensore Mancante", "Per favore, seleziona un tipo di sensore.");
         return;
     }
+    
 
-    GestoreSensori gestore;  // Istanza del gestore
-    sensoreDanno* sensore = gestore.creaSensore(tipoSensore, DannoBase->value(), 50, 50, { NumeroDiTurni->value() }, extra1, extra2, status, statusStr);
+    sensoreDanno* sensore = ;
 
     if (sensore) {
         emit sensoreAggiunto(nomeSensore);

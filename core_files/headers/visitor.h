@@ -7,9 +7,9 @@ class sacro;
 
 class Visitor {
 public:
-    virtual void visit(fisico* f) = 0;
-    virtual void visit(magico* m) = 0;
-    virtual void visit(sacro* s) = 0;
+    virtual void visitFisico(fisico* f) = 0;
+    virtual void visitMagico(magico* m) = 0;
+    virtual void visitSacro(sacro* s) = 0;
 };
 
 #endif

@@ -6,15 +6,12 @@
 class magico : virtual public sensoreDanno {
 private:
   int lvMagia; // dall' 1 al 5
-  string status;
   bool isInStatus;
-
 public:
-  magico(double d, int ph, int pc, vector<int> tpt, int lvM, string stat, bool isInSta);
+  magico(string n, double d, int nT, int lvM, bool isInSta);
 
 
   int getLvMagia() const;
-  string getStatus() const;
   bool checkCondition() const;
 
   string setStatus();
@@ -22,7 +19,7 @@ public:
   double calcolaDanno() override;
   double getHit() override;
 
-  void accept(Visitor* v) override { v->visit(this); }
+  void accept(Visitor* v) override { v->visitMagico(this); }
 };
 
 #endif

@@ -1,11 +1,15 @@
 #include "headers/sensoreDanno.h"
 #include <random>
 
-sensoreDanno::sensoreDanno(double d, int ph, int pc, vector<int> tpt): danno(d), probHit(ph), probCrit(pc), attacchiPerTurno(tpt) {
+sensoreDanno::sensoreDanno(string n, double d, int nT): nome(n), danno(d), nTurni(nT) {
   cout << "Oggetto Creato" << endl;
 }
 
 sensoreDanno::~sensoreDanno() {cout << "Distrutto porcamadonna" << endl;} //ho notato che elimina sensore non distrugge il sensore alla fine
+
+int sensoreDanno::getNTurni() const{
+  return nTurni;
+}
 
 double sensoreDanno::getDanno() const { 
   return danno;
@@ -33,7 +37,7 @@ int sensoreDanno::getRand() {
   return randN;
 }
 
-vector<double> sensoreDanno::getValoriGrafico() {
+vector<double> sensoreDanno::getValoriGrafico() {//da rifare
   vector<double> result;
   for (auto i = attacchiPerTurno.begin(); i != attacchiPerTurno.end(); i++) {
     double dannoPerTurno = *i * calcolaDanno();

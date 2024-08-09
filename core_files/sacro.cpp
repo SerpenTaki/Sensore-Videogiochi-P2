@@ -1,7 +1,7 @@
 #include "headers/sacro.h"
 #include <random>
 
-sacro::sacro(double d, int ph, int pc, vector<int> tpt, int lvFede, int limitbreak, vector<int> limitBar): sensoreDanno(d, ph, pc, tpt), lvFede(lvFede), limitbreak(limitbreak),limitBar(limitBar) {
+sacro::sacro(string n, double d, int nT, int lvFede): sensoreDanno(n, d, nT), lvFede(lvFede){
   std::cout << "Oggetto sacro Creato" << std::endl;
 }
 

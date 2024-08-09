@@ -15,14 +15,15 @@ using std::endl;
 
 class sensoreDanno {
 private:
-  std::string nome;
+  string nome;
   double danno;
   int probHit;  // random
   int probCrit; // random
   int randN;
+  int nTurni;
 public:
   vector<int> attacchiPerTurno;
-  sensoreDanno(double d, int ph, int pc, vector<int> tpt);
+  sensoreDanno(string n, double d, int nT);
   virtual ~sensoreDanno();
 
   virtual vector<double> getValoriGrafico() final; // metodo per il grafico
@@ -32,6 +33,7 @@ public:
   int getProbCrit();
   int getRand();
   string getNome() const;
+  int getNTurni() const;
   //Metodi setter per modifica sensore
 
   

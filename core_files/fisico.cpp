@@ -1,6 +1,6 @@
 #include "headers/fisico.h"
 
-fisico::fisico(double d, int ph, int pc, vector<int> tpt, int aff): sensoreDanno(d, ph, pc, tpt), affilatura(aff) {
+fisico::fisico(string n, double d, int nT, int aff): sensoreDanno(n, d, nT), affilatura(aff) {
   cout << "Oggetto fisico Creato" << endl;
 }
 

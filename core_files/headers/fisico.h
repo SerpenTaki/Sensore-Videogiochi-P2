@@ -9,14 +9,14 @@ private:
   int affilatura;
 public:
   // per implementazione grafica
-  fisico(double d, int ph, int pc, vector<int> tpt, int aff);
+  fisico(string n, double d, int nT, int aff);
 
   int getAffilatura() const;
 
   double getHit() override;
   double calcolaDanno() override;
 
-  void accept(Visitor* v) override { v->visit(this); }
+  void accept(Visitor* v) override { v->visitFisico(this); }
 };
 
 #endif

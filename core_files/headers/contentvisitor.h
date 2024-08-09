@@ -2,18 +2,19 @@
 #define CONTENTVISITOR_H
 
 #include "Visitor.h"
-#include "content.h"
 #include "fisico.h"
 #include "magico.h"
-#include "sacro.h"
+#include "sacro
+#include<QString>
+#include<QApplication>
 
 class ContentVisitor : public Visitor {
 private:
-    content* contentWidget;
+    QWidget* dispWidget;
 public:
     ContentVisitor(content* c) : contentWidget(c) {}
 
-    void visit(fisico* f) override {
+    void visitFisico(fisico* f) override {
         QString info = QString("Sensore Fisico:\nNome: %1\nDanno: %2\nProbabilità Hit: %3\nAffilatura: %4")
                         .arg(QString::fromStdString(f->getNome()))
                         .arg(f->getDanno())
@@ -22,7 +23,7 @@ public:
         contentWidget->aggiornaContenuto(info);
     }
 
-    void visit(magico* m) override {
+    void visitMagico(magico* m) override {
         QString info = QString("Sensore Magico:\nNome: %1\nDanno: %2\nProbabilità Hit: %3\nLivello Magia: %4\nStatus: %5")
                         .arg(QString::fromStdString(m->getNome()))
                         .arg(m->getDanno())
@@ -32,7 +33,7 @@ public:
         contentWidget->aggiornaContenuto(info);
     }
 
-    void visit(sacro* s) override {
+    void visitSacro(sacro* s) override {
         QString info = QString("Sensore Sacro:\nNome: %1\nDanno: %2\nProbabilità Hit: %3\nLivello Fede: %4\nLimit Break: %5")
                         .arg(QString::fromStdString(s->getNome()))
                         .arg(s->getDanno())
@@ -41,6 +42,7 @@ public:
                         .arg(s->getlimitBreak());
         contentWidget->aggiornaContenuto(info);
     }
+
 };
 
 #endif

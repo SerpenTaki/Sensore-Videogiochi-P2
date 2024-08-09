@@ -12,7 +12,7 @@
 #include<QDebug>
 #include <QSpinBox>
 #include <QMessageBox>
-#include"functions/gestoreSensori.h"
+#include"core_files/headers/sensoreDanno.h"
 
 
 class aggiungiSensore: public QDialog{

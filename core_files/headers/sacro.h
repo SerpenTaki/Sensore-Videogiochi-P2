@@ -10,8 +10,7 @@ private:
   vector<int> limitBar; // mostra nuovo grafico del limit break
   enum { fedeBassa, fedeMedia, fedeAlta };
 public:
-  sacro(double d, int ph, int pc, vector<int> tpt, int lvFede, int limitbreak,vector<int> limitBar);
-
+  sacro(string n, double d, int nT, int lvFede);
 
   int getLvFede() const;
   int getlimitBreak() const;
@@ -23,7 +22,7 @@ public:
   void updateLimitbreak();
   vector<int> getValoriLimitBar();
 
-  void accept(Visitor* v) override { v->visit(this); }
+  void accept(Visitor* v) override { v->visitSacro(this); }
   
 };
 
