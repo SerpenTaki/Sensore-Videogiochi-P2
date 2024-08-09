@@ -4,7 +4,7 @@
 #include "Visitor.h"
 #include "fisico.h"
 #include "magico.h"
-#include "sacro
+#include "sacro.h"
 #include<QString>
 #include<QApplication>
 
@@ -12,35 +12,33 @@ class ContentVisitor : public Visitor {
 private:
     QWidget* dispWidget;
 public:
-    ContentVisitor(content* c) : contentWidget(c) {}
+    ContentVisitor() = default;
 
     void visitFisico(fisico* f) override {
-        QString info = QString("Sensore Fisico:\nNome: %1\nDanno: %2\nProbabilità Hit: %3\nAffilatura: %4")
-                        .arg(QString::fromStdString(f->getNome()))
-                        .arg(f->getDanno())
-                        .arg(f->getProbHit())
-                        .arg(f->getAffilatura());
-        contentWidget->aggiornaContenuto(info);
+        dispWidget = new QLabel("Sensore Fisico:\nNome:" + getNome() +
+         "\nDannoBase:" + getDanno() +
+         "\nNumero di Turni:"+ getNTurni() +
+         "\nAffilatura:" + getAffilatura()+ "%");
     }
 
     void visitMagico(magico* m) override {
-        QString info = QString("Sensore Magico:\nNome: %1\nDanno: %2\nProbabilità Hit: %3\nLivello Magia: %4\nStatus: %5")
-                        .arg(QString::fromStdString(m->getNome()))
-                        .arg(m->getDanno())
-                        .arg(m->getProbHit())
-                        .arg(m->getLvMagia())
-                        .arg(QString::fromStdString(m->getStatus()));
-        contentWidget->aggiornaContenuto(info);
+        dispWidget = new QLabel("Sensore Magico:\nNome:" + getNome() +
+         "\nDannoBase:" + getDanno() +
+         "\nNumero di Turni:"+ getNTurni() +
+         "\nLivello Magia:" + getLvMagia() +
+         "\nCondizione:" + checkCondition());
     }
 
     void visitSacro(sacro* s) override {
-        QString info = QString("Sensore Sacro:\nNome: %1\nDanno: %2\nProbabilità Hit: %3\nLivello Fede: %4\nLimit Break: %5")
-                        .arg(QString::fromStdString(s->getNome()))
-                        .arg(s->getDanno())
-                        .arg(s->getProbHit())
-                        .arg(s->getLvFede())
-                        .arg(s->getlimitBreak());
-        contentWidget->aggiornaContenuto(info);
+        dispWidget = new QLabel("Sensore Magico:\nNome:" + getNome() +
+         "\nDannoBase:" + getDanno() +
+         "\nNumero di Turni:"+ getNTurni() +
+         "\nLivello Fede:" + getLvFede()+
+         "\nValore Limit:" + getLimitbreak());
+    }
+
+    QWidget* returnQWidget(){
+        return dispWidget;
     }
 
 };
