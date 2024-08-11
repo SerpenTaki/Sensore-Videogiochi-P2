@@ -37,3 +37,7 @@ string magico::setStatus() {
   else
     return "nope";
 }
+
+void magico::accept(Visitor* v){
+  v->visitMagico(this);
+}

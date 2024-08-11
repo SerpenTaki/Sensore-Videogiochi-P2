@@ -1,11 +1,7 @@
 #ifndef RIGHTSIDEBAR_H
 #define RIGHTSIDEBAR_H
 
-#include <QVBoxLayout>
-#include <QPushButton>
-#include <QWidget>
-#include "content.h"
-#include "leftSideBar.h"
+#include "viewlib.h"
 
 class rightSideBar : public QWidget {
     Q_OBJECT

@@ -1,12 +1,7 @@
 #ifndef CONTENT_H
 #define CONTENT_H
 
-#include <QVBoxLayout>
-#include <QPushButton>
-#include <QLabel>
-#include <QApplication>
-#include"core_files/headers/contentvisitor.h"
-#include"core_files/headers/sensoreDanno.h"
+#include "viewlib.h"
 
 class content : public QWidget {
     Q_OBJECT

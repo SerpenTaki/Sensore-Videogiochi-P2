@@ -9,3 +9,7 @@ Makefile
 ProgettoP2.app  
 .out
 .txt
+moc_aggiungiSensore.cpp
+moc_content.cpp
+moc_leftSideBar.cpp
+moc_predefs.h

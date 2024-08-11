@@ -16,7 +16,7 @@ public:
   double getHit() override;
   double calcolaDanno() override;
 
-  void accept(Visitor* v) override { v->visitFisico(this); }
+  void accept(Visitor* v) override;
 };
 
 #endif

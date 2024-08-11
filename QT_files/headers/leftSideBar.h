@@ -1,20 +1,7 @@
 #ifndef LEFTSIDEBAR_H
 #define LEFTSIDEBAR_H
 
-#include <QVBoxLayout>
-#include <QPushButton>
-#include <QLineEdit>
-#include <QListWidget>
-#include <QMessageBox>
-#include <QFileDialog>
-#include <QJsonDocument>
-#include <QJsonObject>
-#include <QJsonArray>
-#include <QFile>
-#include <QTextStream>
-#include <QXmlStreamWriter>
-
-#include "aggiungiSensore.h"
+#include "viewlib.h"
 
 class leftSideBar : public QWidget {
     Q_OBJECT

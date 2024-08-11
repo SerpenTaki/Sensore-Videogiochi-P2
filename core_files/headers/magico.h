@@ -19,7 +19,7 @@ public:
   double calcolaDanno() override;
   double getHit() override;
 
-  void accept(Visitor* v) override { v->visitMagico(this); }
+  void accept(Visitor* v) override;
 };
 
 #endif

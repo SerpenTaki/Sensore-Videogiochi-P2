@@ -1,17 +1,7 @@
 #ifndef AGGIUNGISENSORE_H
 #define AGGIUNGISENSORE_H
 
-#include <QDialog>
-#include <QVBoxLayout>
-#include <QPushButton>
-#include <QLabel>
-#include <QLineEdit>
-#include <QCheckBox>
-#include <QRadioButton>
-#include <QSpinBox>
-#include <QMessageBox>
-#include "core_files/headers/sensoreDanno.h"  // Assicurati che i nomi siano corretti
-#include "core_files/headers/contentvisitor.h" // Assicurati che i nomi siano corretti
+#include"viewlib.h"
 
 class aggiungiSensore : public QDialog {
     Q_OBJECT

@@ -1,5 +1,4 @@
 #include "headers/sacro.h"
-#include <random>
 
 sacro::sacro(string n, double d, int nT, int lvFede): sensoreDanno(n, d, nT), lvFede(lvFede){
   std::cout << "Oggetto sacro Creato" << std::endl;
@@ -60,3 +59,6 @@ vector<int> sacro::getValoriLimitBar() {
   return result;
 }
 
+void sacro::accept(Visitor* v){
+  v->visitSacro(this);
+}

@@ -1,10 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include "leftSideBar.h"
-#include "content.h"
-#include "rightSideBar.h"
-#include <QSplitter>
+#include "viewlib.h"
 
 class MainW : public QWidget {
 private:
