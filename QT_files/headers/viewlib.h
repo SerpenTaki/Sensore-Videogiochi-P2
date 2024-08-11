@@ -16,6 +16,9 @@
 #include <QFile>
 #include <QTextStream>
 #include <QXmlStreamWriter>
+#include <QSplitter>
+#include <QWidget>
+
 
 //Core_files
 #include "core_files/headers/sensoreDanno.h"
@@ -24,11 +27,3 @@
 #include"core_files/headers/fisico.h"
 #include"core_files/headers/magico.h"
 #include"core_files/headers/sacro.h"
-
-//QT_files
-#include "aggiungiSensore.h"
-#include "leftSideBar.h"
-#include "content.h"
-#include "rightSideBar.h"
-#include <QSplitter>
-#include <QWidget>

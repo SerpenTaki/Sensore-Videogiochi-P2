@@ -2,6 +2,9 @@
 #define MAINWINDOW_H
 
 #include "viewlib.h"
+#include "leftSideBar.h"
+#include "content.h"
+#include "rightSideBar.h"
 
 class MainW : public QWidget {
 private:

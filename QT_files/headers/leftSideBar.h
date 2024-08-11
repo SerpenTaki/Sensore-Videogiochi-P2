@@ -2,6 +2,7 @@
 #define LEFTSIDEBAR_H
 
 #include "viewlib.h"
+#include"aggiungiSensore.h"
 
 class leftSideBar : public QWidget {
     Q_OBJECT

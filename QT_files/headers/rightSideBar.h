@@ -2,6 +2,8 @@
 #define RIGHTSIDEBAR_H
 
 #include "viewlib.h"
+#include "content.h"
+#include "leftSideBar.h"
 
 class rightSideBar : public QWidget {
     Q_OBJECT

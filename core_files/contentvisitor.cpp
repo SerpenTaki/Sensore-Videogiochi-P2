@@ -6,7 +6,7 @@ ContentVisitor::~ContentVisitor() {
     delete dispWidget;
 }
 
-void ContentVisitor::visitFisico(fisico* f) override {
+void ContentVisitor::visitFisico(fisico* f){
     dispWidget = new QLabel("Sensore Fisico:\nNome:" + QString::fromStdString(f->getNome()) +
      "\nDannoBase:" + QString::number(f->getDanno()) +
      "\nNumero di Turni:" + QString::number(f->getNTurni()) +
@@ -14,7 +14,7 @@ void ContentVisitor::visitFisico(fisico* f) override {
      "\nAffilatura:" + QString::number(f->getAffilatura()) + "%");
 }
 
-void ContentVisitor::visitMagico(magico* m) override {
+void ContentVisitor::visitMagico(magico* m){
     dispWidget = new QLabel("Sensore Magico:\nNome:" + QString::fromStdString(m->getNome()) +
      "\nDannoBase:" + QString::number(m->getDanno()) +
      "\nNumero di Turni:" + QString::number(m->getNTurni()) +
@@ -23,7 +23,7 @@ void ContentVisitor::visitMagico(magico* m) override {
      "\nCondizione:" + (m->checkCondition() ? "Si" : "No"));
 }
 
-void ContentVisitor::visitSacro(sacro* s) override {
+void ContentVisitor::visitSacro(sacro* s){
     dispWidget = new QLabel("Sensore Sacro:\nNome:" + QString::fromStdString(s->getNome()) +
      "\nDannoBase:" + QString::number(s->getDanno()) +
      "\nNumero di Turni:" + QString::number(s->getNTurni()) +
