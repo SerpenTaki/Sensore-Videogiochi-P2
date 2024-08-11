@@ -18,6 +18,9 @@
 #include <QXmlStreamWriter>
 #include <QSplitter>
 #include <QWidget>
+#include <QtCharts/QChartView>
+#include <QtCharts/QLineSeries>
+#include <QtCharts/QChart>
 
 
 //Core_files

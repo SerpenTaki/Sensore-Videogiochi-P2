@@ -10,7 +10,7 @@ rightSideBar::rightSideBar(content* c, leftSideBar* l, QWidget* parent)
     right->addWidget(modificaSensButt);
     right->addWidget(eliminaSensButt);
 
-    connect(avviaSimulaButt, &QPushButton::clicked, cont, &content::avviaSimulazione);
+    connect(avviaSimulaButt, &QPushButton::clicked, this, &rightSideBar::avviaSimulazione);
     connect(modificaSensButt, &QPushButton::clicked, this, &rightSideBar::modificaSensore);
     connect(eliminaSensButt, &QPushButton::clicked, this, &rightSideBar::eliminaSensore);
 }
@@ -21,8 +21,15 @@ void rightSideBar::modificaSensore() {
 }
 
 void rightSideBar::eliminaSensore() {
-    // Ottieni il sensore selezionato dal contenuto
-    QString sensoreName = cont->getSelectedSensore(); // Aggiungi un metodo in content per ottenere il sensore selezionato
+    QString sensoreName = cont->getSelectedSensore();
     leftSide->eliminaSensore(sensoreName);
-    cont->eliminaSensore(sensoreName); // Aggiungi un metodo in content per eliminare il sensore
+    cont->eliminaSensore(sensoreName);
+}
+
+void rightSideBar::avviaSimulazione() {
+    cont->avviaSimulazione();
+
+    // Qui dovresti passare i dati reali del grafico
+    QVector<QPointF> datiGrafico = { QPointF(0, 0), QPointF(1, 1), QPointF(2, 4) };  // Dati fittizi
+    cont->mostraGrafico(datiGrafico);
 }

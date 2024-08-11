@@ -4,6 +4,9 @@
 #include "viewlib.h"
 #include "content.h"
 #include "leftSideBar.h"
+#include <QWidget>
+#include <QVBoxLayout>
+#include <QPushButton>
 
 class rightSideBar : public QWidget {
     Q_OBJECT
@@ -20,6 +23,7 @@ public:
 public slots:
     void modificaSensore();
     void eliminaSensore();
+    void avviaSimulazione();  // Nuovo slot per avviare la simulazione e mostrare il grafico
 };
 
 #endif

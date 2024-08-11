@@ -1,4 +1,7 @@
 #include "headers/content.h"
+#include <QtCharts/QChartView>
+#include <QtCharts/QLineSeries>
+#include <QtCharts/QChart>
 
 content::content(QWidget* parent)
     : QWidget(parent), selectedSensore("") {
@@ -13,70 +16,60 @@ void content::avviaSimulazione() {
 }
 
 void content::eliminaSensore(const QString& sensoreName) {
-    // Pulisci la visualizzazione corrente
     QLayoutItem* item;
     while ((item = center->takeAt(0)) != nullptr) {
         delete item->widget();
         delete item;
     }
-    // Elimina il sensore selezionato se corrisponde a quello specificato
     if (selectedSensore == sensoreName) {
         selectedSensore = "";
     }
 }
-/*
-void content::aggiungiSensoreAlContenuto(sensoreDanno* nuovoSensore) {
-    QLabel* nuovoSensoreLabel = new QLabel("Sensore creato: " + QString::fromStdString(nuovoSensore->getNome()), this);
-    ContentVisitor RobertoBenigni;
-    nuovoSensore->accept(RobertoBenigni);
-    center->addWidget(nuovoSensoreLabel);
-    center->addWidget(RobertoBenigni.returnQWidget());
-    
-    // Aggiorna il contenuto visualizzato
-    selectedSensore = QString::fromStdString(nuovoSensore->getNome());
-}*/
 
 QString content::getSelectedSensore() const {
     return selectedSensore;
 }
-/*
-void content::aggiungiSensoreAlContenuto(sensoreDanno* nuovoSensore) {
-    QLabel* nuovoSensoreLabel = new QLabel("Sensore creato: " + QString::fromStdString(nuovoSensore->getNome()), this);
-    ContentVisitor RobertoBenigni;
-    nuovoSensore->accept(RobertoBenigni);
-    center->addWidget(nuovoSensoreLabel);
-    center->addWidget(RobertoBenigni.returnQWidget());
-    
-    // Aggiorna il contenuto visualizzato
-    selectedSensore = QString::fromStdString(nuovoSensore->getNome());
-}*/
 
 void content::aggiungiSensoreAlContenuto(sensoreDanno* nuovoSensore) {
     if (!nuovoSensore) {
-        // Gestisci il caso in cui il sensore è nullo
         return;
     }
 
-    // Creazione e aggiunta dell'etichetta per il sensore
     QLabel* nuovoSensoreLabel = new QLabel("Sensore creato: " + QString::fromStdString(nuovoSensore->getNome()), this);
     center->addWidget(nuovoSensoreLabel);
 
-    // Creazione del visitor
     ContentVisitor* visitor = new ContentVisitor();
-    nuovoSensore->accept(visitor);  // Passa il visitor al sensore
+    nuovoSensore->accept(visitor);
 
-    // Aggiungi il widget ottenuto dal visitor al layout
     QWidget* visitorWidget = visitor->returnQWidget();
     if (visitorWidget) {
         center->addWidget(visitorWidget);
     }
 
-    // Aggiorna il contenuto visualizzato
     selectedSensore = QString::fromStdString(nuovoSensore->getNome());
-
-    // Non dimenticare di deallocare il visitor se non lo usi più
     delete visitor;
 }
 
+void content::mostraGrafico(const QVector<QPointF>& data) {
+    QLayoutItem* item;
+    while ((item = center->takeAt(0)) != nullptr) {
+        delete item->widget();
+        delete item;
+    }
 
+    QLineSeries *series = new QLineSeries();
+    for (const QPointF &point : data) {
+        series->append(point);
+    }
 
+    QChart *chart = new QChart();
+    chart->legend()->hide();
+    chart->addSeries(series);
+    chart->createDefaultAxes();
+    chart->setTitle("Attacchi per Turno & Numero di Turni");
+
+    QChartView *chartView = new QChartView(chart);
+    chartView->setRenderHint(QPainter::Antialiasing);
+
+    center->addWidget(chartView);
+}

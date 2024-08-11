@@ -2,6 +2,11 @@
 #define CONTENT_H
 
 #include "viewlib.h"
+#include <QWidget>
+#include <QVBoxLayout>
+#include <QLabel>
+#include <QVector>
+#include <QPointF>
 
 class content : public QWidget {
     Q_OBJECT
@@ -15,9 +20,9 @@ public:
     void avviaSimulazione();
     void eliminaSensore(const QString& sensoreName);
     QString getSelectedSensore() const;
+    void mostraGrafico(const QVector<QPointF>& data);
 public slots:
     void aggiungiSensoreAlContenuto(sensoreDanno* nuovoSensore);
-
 };
 
 #endif
