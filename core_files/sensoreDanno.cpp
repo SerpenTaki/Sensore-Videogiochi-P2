@@ -27,7 +27,9 @@ int sensoreDanno::getProbHit(){
   return probHit;
 }
 
-std::string sensoreDanno::getNome() const { return nome; }
+std::string sensoreDanno::getNome() const {
+  return nome;
+}
 
 int sensoreDanno::getRand() {
   std::random_device rd;
@@ -37,10 +39,17 @@ int sensoreDanno::getRand() {
   return randN;
 }
 
-vector<double> sensoreDanno::getValoriGrafico() {//da rifare
+vector<int> sensoreDanno::getAttacchiPerTurno() const{
+  return attacchiPerTurno;
+}
+
+vector<double> sensoreDanno::getValoriGrafico(int nTurni) {
   vector<double> result;
-  for (auto i = attacchiPerTurno.begin(); i != attacchiPerTurno.end(); i++) {
-    double dannoPerTurno = *i * calcolaDanno();
+  for(int j=0; j<= nTurni; j++){
+    double dannoPerTurno = 0;
+    for (auto i = attacchiPerTurno.begin(); i != attacchiPerTurno.end(); i++) {
+      dannoPerTurno = *i * calcolaDanno();
+    }
     result.push_back(dannoPerTurno);
   }
   return result;

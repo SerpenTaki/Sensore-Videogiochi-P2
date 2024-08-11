@@ -26,7 +26,7 @@ public:
   sensoreDanno(string n, double d, int nT);
   virtual ~sensoreDanno();
 
-  virtual vector<double> getValoriGrafico() final; // metodo per il grafico
+  virtual vector<double> getValoriGrafico(int nTurni) final; // metodo per il grafico
   // Metodi getter
   double getDanno() const;
   int getProbHit();
@@ -35,7 +35,7 @@ public:
   string getNome() const;
   int getNTurni() const;
   //Metodi setter per modifica sensore
-
+  vector<int> getAttacchiPerTurno() const;
   
   // metodi virtuali puri
   virtual double calcolaDanno()=0;

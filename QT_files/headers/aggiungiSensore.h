@@ -22,6 +22,7 @@ private:
     QRadioButton *checkBoxSacro;
     QSpinBox *DannoBase;
     QSpinBox *NumeroDiTurni;
+    QSpinBox *AttPerTurno;
     QPushButton* annulla;
     QWidget *dynamicWidget;
     QVBoxLayout *dynamicLayout;

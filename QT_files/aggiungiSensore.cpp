@@ -47,6 +47,14 @@ aggiungiSensore::aggiungiSensore(QWidget* parent) : QDialog(parent) {
     NumeroDiTurni->setValue(1);
     nuovoSens->addWidget(NumeroDiTurni);
 
+    QLabel* AttacchiLabel = new QLabel("Seleziona il numero di attacchi per turno 1-5");
+    nuovoSens->addWidget(AttacchiLabel);
+    AttPerTurno = new QSpinBox();
+    AttPerTurno->setMinimum(1);
+    AttPerTurno->setMaximum(5);
+    AttPerTurno->setSingleStep(1);
+    AttPerTurno->setValue(1);
+    nuovoSens->addWidget(AttPerTurno);
     conferma = new QPushButton("Crea Sensore");
     annulla = new QPushButton("Annulla");
     nuovoSens->addWidget(conferma);
