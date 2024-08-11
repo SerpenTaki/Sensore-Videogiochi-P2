@@ -27,9 +27,5 @@ void rightSideBar::eliminaSensore() {
 }
 
 void rightSideBar::avviaSimulazione() {
-    cont->avviaSimulazione();
-
-    // Qui dovresti passare i dati reali del grafico
-    QVector<QPointF> datiGrafico = { QPointF(0, 0), QPointF(1, 1), QPointF(2, 4) };  // Dati fittizi
-    cont->mostraGrafico(datiGrafico);
+    cont->mostraGraficoSensore();
 }

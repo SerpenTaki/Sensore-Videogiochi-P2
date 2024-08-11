@@ -4,15 +4,10 @@
 #include <QtCharts/QChart>
 
 content::content(QWidget* parent)
-    : QWidget(parent), selectedSensore("") {
+    : QWidget(parent), selectedSensore(""), sensore(nullptr) {
     center = new QVBoxLayout(this);
     grafichino = new QLabel("Mostra qui il grafico", this);
     center->addWidget(grafichino);
-}
-
-void content::avviaSimulazione() {
-    sim = new QLabel("Simulazione Avviata", this);
-    center->addWidget(sim);
 }
 
 void content::eliminaSensore(const QString& sensoreName) {
@@ -23,6 +18,7 @@ void content::eliminaSensore(const QString& sensoreName) {
     }
     if (selectedSensore == sensoreName) {
         selectedSensore = "";
+        sensore = nullptr;
     }
 }
 
@@ -47,6 +43,7 @@ void content::aggiungiSensoreAlContenuto(sensoreDanno* nuovoSensore) {
     }
 
     selectedSensore = QString::fromStdString(nuovoSensore->getNome());
+    sensore = nuovoSensore; 
     delete visitor;
 }
 
@@ -66,10 +63,25 @@ void content::mostraGrafico(const QVector<QPointF>& data) {
     chart->legend()->hide();
     chart->addSeries(series);
     chart->createDefaultAxes();
-    chart->setTitle("Attacchi per Turno & Numero di Turni");
+    chart->setTitle("Danno per Turno");
 
     QChartView *chartView = new QChartView(chart);
     chartView->setRenderHint(QPainter::Antialiasing);
 
     center->addWidget(chartView);
+}
+
+void content::mostraGraficoSensore() {
+    if (!sensore) {
+        return; 
+    }
+
+    vector<double> valoriGrafico = sensore->getValoriGrafico(sensore->getNTurni());
+    QVector<QPointF> puntiGrafico;
+
+    for (int i = 0; i < valoriGrafico.size(); ++i) {
+        puntiGrafico.append(QPointF(i, valoriGrafico[i]));
+    }
+
+    mostraGrafico(puntiGrafico);
 }
