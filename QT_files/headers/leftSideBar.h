@@ -3,6 +3,7 @@
 
 #include "viewlib.h"
 #include"aggiungiSensore.h"
+#include"content.h"
 
 class leftSideBar : public QWidget {
     Q_OBJECT
@@ -14,8 +15,9 @@ private:
     QLineEdit* searchBox;
     QListWidget* sensoreList;
     QStringList sensori;
+    content* contentWidget;
 public:
-    leftSideBar(QWidget* parent = nullptr);
+    leftSideBar(content* contentWidget ,QWidget* parent = nullptr);
 
 public slots:
     void stampaSelSensore();

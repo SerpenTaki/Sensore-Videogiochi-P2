@@ -1,8 +1,9 @@
 #include "headers/leftSideBar.h"
 
-leftSideBar::leftSideBar(QWidget* parent)
+leftSideBar::leftSideBar(content* contentWidget, QWidget* parent)
     : QWidget(parent) {
     left = new QVBoxLayout(this);
+    this->contentWidget = contentWidget;
 
     aggiungiSensoreBottone = new QPushButton("Aggiungi Sensore");
     searchBox = new QLineEdit();
@@ -24,12 +25,15 @@ leftSideBar::leftSideBar(QWidget* parent)
     });
     connect(salvaSensoriBottone, &QPushButton::clicked, this, &leftSideBar::salvaSensori); // Connetti il pulsante "Salva Sensori"
     connect(salvaJsonBottone, &QPushButton::clicked, this, &leftSideBar::salvaSensoriJson); // Connetti il pulsante "Salva in JSON"
+
+    
 }
 
-void leftSideBar::stampaSelSensore() {
+void leftSideBar::stampaSelSensore() { //fa apparire la selezione del sensore
     aggiungiSensore* dialog = new aggiungiSensore(this);
 
     connect(dialog, &aggiungiSensore::sensoreAggiunto, this, &leftSideBar::aggiungiSensoreToList);
+    connect(dialog, &aggiungiSensore::sensoreAggiuntoStats, contentWidget, &content::aggiungiSensoreAlContenuto);
 
     dialog->exec(); // Mostra il dialogo come modale
 }

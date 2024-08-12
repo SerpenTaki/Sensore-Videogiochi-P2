@@ -7,8 +7,8 @@ MainW::MainW(QWidget* parent)
     mainWindow = new QHBoxLayout(this);
     splitter = new QSplitter(Qt::Horizontal, this);
 
-    leftSideBarWidget = new leftSideBar(this);
     contentWidget = new content(this);
+    leftSideBarWidget = new leftSideBar(contentWidget ,this);
     rightSideBarWidget = new rightSideBar(contentWidget, leftSideBarWidget, this); // Passa leftSideBarWidget
 
     splitter->addWidget(leftSideBarWidget);
@@ -20,6 +20,5 @@ MainW::MainW(QWidget* parent)
 
     connect(leftSideBarWidget, &leftSideBar::sensoreSelezionato, contentWidget, &content::eliminaSensore);
 
-    aggiungiSensore* dialog = new aggiungiSensore(this);
-    connect(dialog, &aggiungiSensore::sensoreAggiuntoStats, contentWidget, &content::aggiungiSensoreAlContenuto);
+    //aggiungiSensore* dialog = new aggiungiSensore(this);
 }
