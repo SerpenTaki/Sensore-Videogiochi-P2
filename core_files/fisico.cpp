@@ -6,6 +6,7 @@ fisico::fisico(string n, double d, int nT, int aff): sensoreDanno(n, d, nT), aff
          << "\nDanno Base: " << getDanno() 
          << "\nNTurni: " << getNTurni() 
          << "\nAff: " << affilatura 
+         << "\nAtt per Turno: " << getAttacchiPerTurno() 
          << endl;
 }
 

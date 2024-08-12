@@ -22,9 +22,23 @@ void rightSideBar::modificaSensore() {
 
 void rightSideBar::eliminaSensore() {
     QString sensoreName = cont->getSelectedSensore();
-    leftSide->eliminaSensore(sensoreName);
-    cont->eliminaSensore(sensoreName);
+    if (!sensoreName.isEmpty()) {
+        // Chiedi conferma all'utente
+        QMessageBox::StandardButton reply;
+        reply = QMessageBox::question(this, "Eliminazione Sensore", 
+                                      "Sei sicuro di voler eliminare il sensore " + sensoreName + "?",
+                                      QMessageBox::Yes|QMessageBox::No);
+        if (reply == QMessageBox::Yes) {
+            // Elimina il sensore dal contenuto
+            cont->eliminaSensore(sensoreName);
+            // Rimuovi il sensore dalla lista di sinistra
+            leftSide->eliminaSensore(sensoreName);
+        }
+    } else {
+        QMessageBox::warning(this, "Errore", "Nessun sensore selezionato per l'eliminazione.");
+    }
 }
+
 
 void rightSideBar::avviaSimulazione() {
     cont->mostraGraficoSensore();

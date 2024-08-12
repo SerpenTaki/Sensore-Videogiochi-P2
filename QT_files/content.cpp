@@ -11,16 +11,16 @@ content::content(QWidget* parent)
 }
 
 void content::eliminaSensore(const QString& sensoreName) {
-    QLayoutItem* item;
-    while ((item = center->takeAt(0)) != nullptr) {
-        delete item->widget();
-        delete item;
-    }
-    if (selectedSensore == sensoreName) {
-        selectedSensore = "";
+    if (sensore && sensore->getNome() == sensoreName.toStdString()) {
+        delete sensore;  // Chiama il distruttore del sensore
         sensore = nullptr;
+        selectedSensore.clear();
+        // Aggiungi qui codice per aggiornare l'interfaccia se necessario
+        grafichino->clear();
+        sim->clear();
     }
 }
+
 
 QString content::getSelectedSensore() const {
     return selectedSensore;

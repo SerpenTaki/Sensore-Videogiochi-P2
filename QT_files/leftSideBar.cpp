@@ -48,11 +48,12 @@ void leftSideBar::eseguiRicerca(const QString& text) {
 
 void leftSideBar::eliminaSensore(const QString& sensoreName) {
     QList<QListWidgetItem*> items = sensoreList->findItems(sensoreName, Qt::MatchExactly);
-    for (QListWidgetItem* item : items) {
-        delete item;
-        sensori.removeOne(sensoreName);
+    if (!items.empty()) {
+        delete items.first();  // Rimuovi l'elemento dalla QListWidget
+        sensori.removeAll(sensoreName);  // Rimuovi il sensore dalla QStringList
     }
 }
+
 
 void leftSideBar::salvaSensori() {
     QString fileName = QFileDialog::getSaveFileName(this, "Salva Sensori", "", "XML Files (*.xml)");
