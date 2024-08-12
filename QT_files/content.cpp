@@ -45,7 +45,7 @@ void content::aggiungiSensoreAlContenuto(sensoreDanno* nuovoSensore) {
     selectedSensore = QString::fromStdString(nuovoSensore->getNome());
     sensore = nuovoSensore; 
 }
-
+/*
 void content::mostraGrafico(const QVector<QPointF>& data) {
     QLayoutItem* item;
     while ((item = center->takeAt(0)) != nullptr) {
@@ -84,3 +84,4 @@ void content::mostraGraficoSensore() {
 
     mostraGrafico(puntiGrafico);
 }
+*/
