@@ -2,6 +2,14 @@
 
 magico::magico(string n, double d, int nT, int nA, int lvM, bool isInSta): sensoreDanno(n, d, nT, nA), lvMagia(lvM), isInStatus(isInSta) {
   std::cout << "Oggetto magico creato" << std::endl;
+    setSizeAttacchiPerTurno();
+   cout << "Nome: " << getNome() 
+         << "\nDanno Base: " << getDanno() 
+         << "\nNTurni: " << getAttacchiPerTurno().size()
+         << "\nlvMagia: " << getLvMagia()
+         << "\nisInSta: " << checkCondition()
+         << "\nAtt per Turno: " << getAtt()
+         << endl;
 }
 
 int magico::getLvMagia() const { return lvMagia; }

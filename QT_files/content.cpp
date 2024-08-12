@@ -76,11 +76,11 @@ void content::mostraGraficoSensore() {
         return; 
     }
 
-    vector<double> valoriGrafico = sensore->getValoriGrafico(sensore->getNTurni());
+    vector<double> valoriGrafico = sensore->getValoriGrafico();
     QVector<QPointF> puntiGrafico;
 
-    for (int i = 0; i < valoriGrafico.size(); ++i) {
-        puntiGrafico.append(QPointF(i, valoriGrafico[i]));
+    for (size_t i = 0; i < valoriGrafico.size(); ++i) {
+        puntiGrafico.append(QPointF(static_cast<qreal>(i), static_cast<qreal>(valoriGrafico[i])));
     }
 
     mostraGrafico(puntiGrafico);

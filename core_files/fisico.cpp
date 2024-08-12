@@ -5,7 +5,7 @@ fisico::fisico(string n, double d, int nT, int nA, int aff): sensoreDanno(n, d, 
   setSizeAttacchiPerTurno();
    cout << "Nome: " << getNome() 
          << "\nDanno Base: " << getDanno() 
-         << "\nNTurni: " << getNTurni() 
+         << "\nNTurni: " << getAttacchiPerTurno().size()
          << "\nAff: " << affilatura 
          << "\nAtt per Turno: " << getAtt()
          << endl;

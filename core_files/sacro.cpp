@@ -2,6 +2,13 @@
 
 sacro::sacro(string n, double d, int nT, int nA, int lvFede): sensoreDanno(n, d, nT, nA), lvFede(lvFede){
   std::cout << "Oggetto sacro Creato" << std::endl;
+    setSizeAttacchiPerTurno();
+   cout << "Nome: " << getNome() 
+         << "\nDanno Base: " << getDanno() 
+         << "\nNTurni: " << getAttacchiPerTurno().size()
+         << "\nAff: " << getLvFede()
+         << "\nAtt per Turno: " << getAtt()
+         << endl;
 }
 
 

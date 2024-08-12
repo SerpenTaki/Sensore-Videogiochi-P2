@@ -49,7 +49,7 @@ void sensoreDanno::setSizeAttacchiPerTurno(){
   attacchiPerTurno.resize(nTurni);
 }
 
-vector<double> sensoreDanno::getValoriGrafico(int nTurni) {
+vector<double> sensoreDanno::getValoriGrafico() {
   vector<double> result;
   setSizeAttacchiPerTurno();
   for (auto i = attacchiPerTurno.begin(); i != attacchiPerTurno.end(); i++) {
