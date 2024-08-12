@@ -165,8 +165,7 @@ void aggiungiSensore::confermaClicked() {
     }
 
     if (sensore) {
-        emit sensoreAggiunto(nomeSensoreQString);
-        emit sensoreAggiuntoStats(sensore);
+        emit sensoreAggiuntoStats(sensore);//content
         accept(); // Chiudi il dialogo
     } else {
         QMessageBox::warning(this, "Errore", "Impossibile creare il sensore.");

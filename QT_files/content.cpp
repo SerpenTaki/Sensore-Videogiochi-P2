@@ -4,26 +4,27 @@
 #include <QtCharts/QChart>
 
 content::content(QWidget* parent)
-    : QWidget(parent), selectedSensore(""), sensore(nullptr) {
+    : QWidget(parent), sensore(nullptr) {
     center = new QVBoxLayout(this);
     grafichino = new QLabel("Mostra qui il grafico", this);
     center->addWidget(grafichino);
 }
 
-void content::eliminaSensore(const QString& sensoreName) {
-    if (sensore && sensore->getNome() == sensoreName.toStdString()) {
-        delete sensore;  // Chiama il distruttore del sensore
+void content::eliminaSensore(sensoreDanno* sensore) {
+   if (sensore) {
+       /* delete sensore;  // Chiama il distruttore del sensore
         sensore = nullptr;
-        selectedSensore.clear();
+
         // Aggiungi qui codice per aggiornare l'interfaccia se necessario
         grafichino->clear();
-        sim->clear();
+        sim->clear();*/
+        cout << "è stato eliminato il" << sensore->getNome() << endl;
     }
 }
 
 
-QString content::getSelectedSensore() const {
-    return selectedSensore;
+sensoreDanno* content::getSelectedSensore() const {
+    return sensore;
 }
 
 void content::aggiungiSensoreAlContenuto(sensoreDanno* nuovoSensore) {
@@ -42,7 +43,6 @@ void content::aggiungiSensoreAlContenuto(sensoreDanno* nuovoSensore) {
         center->addWidget(visitorWidget);
     }
 
-    selectedSensore = QString::fromStdString(nuovoSensore->getNome());
     sensore = nuovoSensore; 
 }
 /*

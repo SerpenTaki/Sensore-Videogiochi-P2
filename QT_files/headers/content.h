@@ -15,13 +15,11 @@ private:
     QVBoxLayout* center;
     QLabel* grafichino;
     QLabel* sim;
-    QString selectedSensore;
     sensoreDanno* sensore; 
-
 public:
     explicit content(QWidget* parent = nullptr);
-    void eliminaSensore(const QString& sensoreName);
-    QString getSelectedSensore() const;
+    void eliminaSensore(sensoreDanno* sensore);
+    sensoreDanno* getSelectedSensore() const;
    // void mostraGrafico(const QVector<QPointF>& data);
 
 public slots:

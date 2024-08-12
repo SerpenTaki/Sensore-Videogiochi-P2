@@ -21,18 +21,18 @@ void rightSideBar::modificaSensore() {
 }
 
 void rightSideBar::eliminaSensore() {
-    QString sensoreName = cont->getSelectedSensore();
-    if (!sensoreName.isEmpty()) {
+    sensoreDanno* sensore = cont->getSelectedSensore();
+    if (sensore) {
         // Chiedi conferma all'utente
         QMessageBox::StandardButton reply;
         reply = QMessageBox::question(this, "Eliminazione Sensore", 
-                                      "Sei sicuro di voler eliminare il sensore " + sensoreName + "?",
+                                      "Sei sicuro di voler eliminare il sensore " + QString::fromStdString(sensore->getNome()) + "?",
                                       QMessageBox::Yes|QMessageBox::No);
         if (reply == QMessageBox::Yes) {
             // Elimina il sensore dal contenuto
-            cont->eliminaSensore(sensoreName);
+            cont->eliminaSensore(sensore);
             // Rimuovi il sensore dalla lista di sinistra
-            leftSide->eliminaSensore(sensoreName);
+            leftSide->eliminaSensore(sensore);
         }
     } else {
         QMessageBox::warning(this, "Errore", "Nessun sensore selezionato per l'eliminazione.");
