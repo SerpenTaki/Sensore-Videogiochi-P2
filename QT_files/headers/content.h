@@ -22,11 +22,11 @@ public:
     explicit content(QWidget* parent = nullptr);
     void eliminaSensore(const QString& sensoreName);
     QString getSelectedSensore() const;
-    void mostraGrafico(const QVector<QPointF>& data);
+   // void mostraGrafico(const QVector<QPointF>& data);
 
 public slots:
     void aggiungiSensoreAlContenuto(sensoreDanno* nuovoSensore);
-    void mostraGraficoSensore(); 
+   // void mostraGraficoSensore(); 
 };
 
 #endif
