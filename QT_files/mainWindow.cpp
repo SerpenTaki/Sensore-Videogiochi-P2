@@ -18,8 +18,8 @@ MainW::MainW(QWidget* parent)
     mainWindow->addWidget(splitter);
     setLayout(mainWindow);
 
-    aggiungiSensore* dialog = new aggiungiSensore(parent);
-    content* contenuto = new content(parent);
-    QObject::connect(dialog, &aggiungiSensore::sensoreAggiuntoStats, contenuto, &content::aggiungiSensoreAlContenuto);
+    connect(leftSideBarWidget, &leftSideBar::sensoreSelezionato, contentWidget, &content::eliminaSensore);
 
+    aggiungiSensore* dialog = new aggiungiSensore(this);
+    connect(dialog, &aggiungiSensore::sensoreAggiuntoStats, contentWidget, &content::aggiungiSensoreAlContenuto);
 }

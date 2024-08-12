@@ -2,6 +2,11 @@
 
 fisico::fisico(string n, double d, int nT, int aff): sensoreDanno(n, d, nT), affilatura(aff) {
   cout << "Oggetto fisico Creato" << endl;
+   cout << "Nome: " << getNome() 
+         << "\nDanno Base: " << getDanno() 
+         << "\nNTurni: " << getNTurni() 
+         << "\nAff: " << affilatura 
+         << endl;
 }
 
 int fisico::getAffilatura() const { return affilatura; }
