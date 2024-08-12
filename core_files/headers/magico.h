@@ -8,7 +8,7 @@ private:
   int lvMagia; // dall' 1 al 5
   bool isInStatus;
 public:
-  magico(string n, double d, int nT, int lvM, bool isInSta);
+  magico(string n, double d, int nT, int nA, int lvM, bool isInSta);
 
 
   int getLvMagia() const;

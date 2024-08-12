@@ -1,12 +1,13 @@
 #include "headers/fisico.h"
 
-fisico::fisico(string n, double d, int nT, int aff): sensoreDanno(n, d, nT), affilatura(aff) {
+fisico::fisico(string n, double d, int nT, int nA, int aff): sensoreDanno(n, d, nT, nA), affilatura(aff) {
   cout << "Oggetto fisico Creato" << endl;
+  setSizeAttacchiPerTurno();
    cout << "Nome: " << getNome() 
          << "\nDanno Base: " << getDanno() 
          << "\nNTurni: " << getNTurni() 
          << "\nAff: " << affilatura 
-         << "\nAtt per Turno: " << getAttacchiPerTurno() 
+         << "\nAtt per Turno: " << getAtt()
          << endl;
 }
 

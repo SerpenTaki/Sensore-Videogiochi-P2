@@ -10,7 +10,7 @@ private:
   vector<int> limitBar; // mostra nuovo grafico del limit break
   enum { fedeBassa, fedeMedia, fedeAlta };
 public:
-  sacro(string n, double d, int nT, int lvFede);
+  sacro(string n, double d, int nT, int nA, int lvFede);
 
   int getLvFede() const;
   int getlimitBreak() const;

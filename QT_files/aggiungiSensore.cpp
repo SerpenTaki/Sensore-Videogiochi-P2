@@ -133,21 +133,21 @@ void aggiungiSensore::confermaClicked() {
 
     if (checkBoxFisico->isChecked()) {
         if (PAffilatura) {
-            sensore = new fisico(nomeSensore, DannoBase->value(), NumeroDiTurni->value(), PAffilatura->value());
+            sensore = new fisico(nomeSensore, DannoBase->value(), NumeroDiTurni->value(), AttPerTurno->value(), PAffilatura->value());
         } else {
             QMessageBox::warning(this, "Errore", "Valore di affilatura non impostato.");
             return;
         }
     } else if (checkBoxMagico->isChecked()) {
         if (SLvMagia) {
-            sensore = new magico(nomeSensore, DannoBase->value(), NumeroDiTurni->value(), SLvMagia->value(), StatusApp ? StatusApp->isChecked() : false);
+            sensore = new magico(nomeSensore, DannoBase->value(), NumeroDiTurni->value(), AttPerTurno->value(), SLvMagia->value(), StatusApp ? StatusApp->isChecked() : false);
         } else {
             QMessageBox::warning(this, "Errore", "Valore di magia non impostato.");
             return;
         }
     } else if (checkBoxSacro->isChecked()) {
         if (SLvFede) {
-            sensore = new sacro(nomeSensore, DannoBase->value(), NumeroDiTurni->value(), SLvFede->value());
+            sensore = new sacro(nomeSensore, DannoBase->value(), NumeroDiTurni->value(), AttPerTurno->value(), SLvFede->value());
         } else {
             QMessageBox::warning(this, "Errore", "Valore di fede non impostato.");
             return;

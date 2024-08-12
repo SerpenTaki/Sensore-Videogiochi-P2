@@ -1,6 +1,6 @@
 #include "headers/sacro.h"
 
-sacro::sacro(string n, double d, int nT, int lvFede): sensoreDanno(n, d, nT), lvFede(lvFede){
+sacro::sacro(string n, double d, int nT, int nA, int lvFede): sensoreDanno(n, d, nT, nA), lvFede(lvFede){
   std::cout << "Oggetto sacro Creato" << std::endl;
 }
 

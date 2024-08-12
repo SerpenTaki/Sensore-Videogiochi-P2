@@ -1,11 +1,9 @@
 #include "headers/sensoreDanno.h"
 #include <random>
 
-sensoreDanno::sensoreDanno(string n, double d, int nT): nome(n), danno(d), nTurni(nT) {
-  cout << "Oggetto Creato" << endl;
-}
+sensoreDanno::sensoreDanno(string n, double d, int nT, int nA): nome(n), danno(d), nTurni(nT), nAtt(nA) {}
 
-sensoreDanno::~sensoreDanno() {cout << "Distrutto porcamadonna" << endl;} //ho notato che elimina sensore non distrugge il sensore alla fine
+sensoreDanno::~sensoreDanno() {cout << "Distrutto" << endl;} //ho notato che elimina sensore non distrugge il sensore alla fine
 
 int sensoreDanno::getNTurni() const{
   return nTurni;
@@ -43,12 +41,21 @@ vector<int> sensoreDanno::getAttacchiPerTurno() const{
   return attacchiPerTurno;
 }
 
+int sensoreDanno::getAtt() const{
+  return nAtt;
+}
+
+void sensoreDanno::setSizeAttacchiPerTurno(){
+  attacchiPerTurno.resize(nTurni);
+}
+
 vector<double> sensoreDanno::getValoriGrafico(int nTurni) {
   vector<double> result;
-  for(int j=0; j<= nTurni; j++){
+  setSizeAttacchiPerTurno();
+  for (auto i = attacchiPerTurno.begin(); i != attacchiPerTurno.end(); i++) {
     double dannoPerTurno = 0;
-    for (auto i = attacchiPerTurno.begin(); i != attacchiPerTurno.end(); i++) {
-      dannoPerTurno = *i * getHit();
+    for(int n=0; n < nAtt; n++){
+      dannoPerTurno += *i * getHit();
     }
     result.push_back(dannoPerTurno);
   }

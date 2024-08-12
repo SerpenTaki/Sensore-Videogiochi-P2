@@ -21,9 +21,10 @@ private:
   int probCrit; // random
   int randN;
   int nTurni;
-public:
+  int nAtt; 
   vector<int> attacchiPerTurno;
-  sensoreDanno(string n, double d, int nT);
+public:
+  sensoreDanno(string n, double d, int nT, int nA);
   virtual ~sensoreDanno();
 
   virtual vector<double> getValoriGrafico(int nTurni) final; // metodo per il grafico
@@ -34,8 +35,10 @@ public:
   int getRand();
   string getNome() const;
   int getNTurni() const;
-  //Metodi setter per modifica sensore
   vector<int> getAttacchiPerTurno() const;
+  int getAtt() const;
+  //Metodi setter per modifica sensore
+  void setSizeAttacchiPerTurno();
   
   // metodi virtuali puri
   virtual double calcolaDanno()=0;

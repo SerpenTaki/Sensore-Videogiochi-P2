@@ -9,7 +9,7 @@ private:
   int affilatura;
 public:
   // per implementazione grafica
-  fisico(string n, double d, int nT, int aff);
+  fisico(string n, double d, int nT, int nA, int aff);
 
   int getAffilatura() const;
 

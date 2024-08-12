@@ -1,6 +1,6 @@
 #include "headers/magico.h"
 
-magico::magico(string n, double d, int nT, int lvM, bool isInSta): sensoreDanno(n, d, nT), lvMagia(lvM), isInStatus(isInSta) {
+magico::magico(string n, double d, int nT, int nA, int lvM, bool isInSta): sensoreDanno(n, d, nT, nA), lvMagia(lvM), isInStatus(isInSta) {
   std::cout << "Oggetto magico creato" << std::endl;
 }
 
