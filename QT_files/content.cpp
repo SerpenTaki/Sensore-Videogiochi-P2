@@ -44,7 +44,6 @@ void content::aggiungiSensoreAlContenuto(sensoreDanno* nuovoSensore) {
 
     selectedSensore = QString::fromStdString(nuovoSensore->getNome());
     sensore = nuovoSensore; 
-    delete visitor;
 }
 
 void content::mostraGrafico(const QVector<QPointF>& data) {
