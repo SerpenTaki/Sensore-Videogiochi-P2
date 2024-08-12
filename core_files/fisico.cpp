@@ -1,6 +1,10 @@
 #include "headers/fisico.h"
 
 fisico::fisico(string n, double d, int nT, int nA, int aff): sensoreDanno(n, d, nT, nA), affilatura(aff) {
+  if(getNome().empty()){
+    std::cerr << "Oggetto non creato, nome vuoto" << endl;
+    return;
+  }
   cout << "Oggetto fisico Creato" << endl;
   setSizeAttacchiPerTurno();
    cout << "Nome: " << getNome() 

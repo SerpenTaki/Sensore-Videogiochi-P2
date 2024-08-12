@@ -1,7 +1,11 @@
 #include "headers/sacro.h"
 
 sacro::sacro(string n, double d, int nT, int nA, int lvFede): sensoreDanno(n, d, nT, nA), lvFede(lvFede){
-  std::cout << "Oggetto sacro Creato" << std::endl;
+  if(getNome().empty()){
+    std::cerr << "Oggetto non creato, nome vuoto" << endl;
+    return;
+  }
+  cout << "Oggetto sacro Creato" << endl;
     setSizeAttacchiPerTurno();
    cout << "Nome: " << getNome() 
          << "\nDanno Base: " << getDanno() 

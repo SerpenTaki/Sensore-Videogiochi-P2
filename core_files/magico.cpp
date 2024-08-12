@@ -1,7 +1,11 @@
 #include "headers/magico.h"
 
 magico::magico(string n, double d, int nT, int nA, int lvM, bool isInSta): sensoreDanno(n, d, nT, nA), lvMagia(lvM), isInStatus(isInSta) {
-  std::cout << "Oggetto magico creato" << std::endl;
+  if(getNome().empty()){
+    std::cerr << "Oggetto non creato, nome vuoto" << endl;
+    return;
+  }
+  cout << "Oggetto magico creato" << endl;
     setSizeAttacchiPerTurno();
    cout << "Nome: " << getNome() 
          << "\nDanno Base: " << getDanno() 
