@@ -29,7 +29,121 @@
 #include"core_files/headers/visitor.h"
 #include"core_files/headers/fisico.h"
 #include"core_files/headers/magico.h"
-#include"core_files/headers/sacro.h"#ifndef AGGIUNGISENSORE_H
+#include"core_files/headers/sacro.h"
+#ifndef RIGHTSIDEBAR_H
+#define RIGHTSIDEBAR_H
+
+#include "viewlib.h"
+#include "content.h"
+#include "leftSideBar.h"
+#include <QWidget>
+#include <QVBoxLayout>
+#include <QPushButton>
+
+class rightSideBar : public QWidget {
+    Q_OBJECT
+private:
+    QVBoxLayout* right;
+    QPushButton* avviaSimulaButt;
+    QPushButton* modificaSensButt;
+    QPushButton* eliminaSensButt;
+    content* cont;
+    leftSideBar* leftSide;
+public:
+    explicit rightSideBar(content* c, leftSideBar* l, QWidget* parent = nullptr);
+
+public slots:
+    void modificaSensore();
+    void eliminaSensore();
+    void avviaSimulazione();  // Nuovo slot per avviare la simulazione e mostrare il grafico
+};
+
+#endif
+#ifndef MAINWINDOW_H
+#define MAINWINDOW_H
+
+#include "viewlib.h"
+#include "leftSideBar.h"
+#include "content.h"
+#include "rightSideBar.h"
+
+class MainW : public QWidget {
+private:
+    QHBoxLayout* mainWindow;
+    QSplitter* splitter;
+    leftSideBar* leftSideBarWidget;
+    content* contentWidget;
+    rightSideBar* rightSideBarWidget;
+
+public:
+    explicit MainW(QWidget* parent = nullptr);
+};
+
+#endif
+#ifndef LEFTSIDEBAR_H
+#define LEFTSIDEBAR_H
+
+#include "viewlib.h"
+#include"aggiungiSensore.h"
+
+class leftSideBar : public QWidget {
+    Q_OBJECT
+private:
+    QVBoxLayout* left;
+    QPushButton* aggiungiSensoreBottone;
+    QPushButton* salvaSensoriBottone; // Pulsante per XML
+    QPushButton* salvaJsonBottone; // Nuovo pulsante per JSON
+    QLineEdit* searchBox;
+    QListWidget* sensoreList;
+    QStringList sensori;
+public:
+    leftSideBar(QWidget* parent = nullptr);
+
+public slots:
+    void stampaSelSensore();
+    void eseguiRicerca(const QString& text);
+    void aggiungiSensoreToList(const QString& sensoreName);
+    void eliminaSensore(const QString& sensoreName);
+    void salvaSensori(); // Funzione per salvare in XML
+    void salvaSensoriJson(); // Funzione per salvare in JSON
+signals:
+    void sensoreSelezionato(const QString& sensoreName);
+};
+
+#endif // LEFTSIDEBAR_H
+#ifndef CONTENT_H
+#define CONTENT_H
+
+#include "viewlib.h"
+#include <QWidget>
+#include <QVBoxLayout>
+#include <QLabel>
+#include <QVector>
+#include <QPointF>
+#include "core_files/headers/sensoreDanno.h" 
+
+class content : public QWidget {
+    Q_OBJECT
+private:
+    QVBoxLayout* center;
+    QLabel* grafichino;
+    QLabel* sim;
+    QString selectedSensore;
+    sensoreDanno* sensore; 
+
+public:
+    explicit content(QWidget* parent = nullptr);
+    void eliminaSensore(const QString& sensoreName);
+    QString getSelectedSensore() const;
+    void mostraGrafico(const QVector<QPointF>& data);
+
+public slots:
+    void aggiungiSensoreAlContenuto(sensoreDanno* nuovoSensore);
+    void mostraGraficoSensore(); 
+};
+
+#endif
+#ifndef AGGIUNGISENSORE_H
 #define AGGIUNGISENSORE_H
 
 #include"viewlib.h"
@@ -71,119 +185,6 @@ signals:
 };
 
 #endif // AGGIUNGISENSORE_H
-#ifndef CONTENT_H
-#define CONTENT_H
-
-#include "viewlib.h"
-#include <QWidget>
-#include <QVBoxLayout>
-#include <QLabel>
-#include <QVector>
-#include <QPointF>
-#include "core_files/headers/sensoreDanno.h" 
-
-class content : public QWidget {
-    Q_OBJECT
-private:
-    QVBoxLayout* center;
-    QLabel* grafichino;
-    QLabel* sim;
-    QString selectedSensore;
-    sensoreDanno* sensore; 
-
-public:
-    explicit content(QWidget* parent = nullptr);
-    void eliminaSensore(const QString& sensoreName);
-    QString getSelectedSensore() const;
-    void mostraGrafico(const QVector<QPointF>& data);
-
-public slots:
-    void aggiungiSensoreAlContenuto(sensoreDanno* nuovoSensore);
-    void mostraGraficoSensore(); 
-};
-
-#endif
-#ifndef LEFTSIDEBAR_H
-#define LEFTSIDEBAR_H
-
-#include "viewlib.h"
-#include"aggiungiSensore.h"
-
-class leftSideBar : public QWidget {
-    Q_OBJECT
-private:
-    QVBoxLayout* left;
-    QPushButton* aggiungiSensoreBottone;
-    QPushButton* salvaSensoriBottone; // Pulsante per XML
-    QPushButton* salvaJsonBottone; // Nuovo pulsante per JSON
-    QLineEdit* searchBox;
-    QListWidget* sensoreList;
-    QStringList sensori;
-public:
-    leftSideBar(QWidget* parent = nullptr);
-
-public slots:
-    void stampaSelSensore();
-    void eseguiRicerca(const QString& text);
-    void aggiungiSensoreToList(const QString& sensoreName);
-    void eliminaSensore(const QString& sensoreName);
-    void salvaSensori(); // Funzione per salvare in XML
-    void salvaSensoriJson(); // Funzione per salvare in JSON
-signals:
-    void sensoreSelezionato(const QString& sensoreName);
-};
-
-#endif // LEFTSIDEBAR_H
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
-
-#include "viewlib.h"
-#include "leftSideBar.h"
-#include "content.h"
-#include "rightSideBar.h"
-
-class MainW : public QWidget {
-private:
-    QHBoxLayout* mainWindow;
-    QSplitter* splitter;
-    leftSideBar* leftSideBarWidget;
-    content* contentWidget;
-    rightSideBar* rightSideBarWidget;
-
-public:
-    explicit MainW(QWidget* parent = nullptr);
-};
-
-#endif
-#ifndef RIGHTSIDEBAR_H
-#define RIGHTSIDEBAR_H
-
-#include "viewlib.h"
-#include "content.h"
-#include "leftSideBar.h"
-#include <QWidget>
-#include <QVBoxLayout>
-#include <QPushButton>
-
-class rightSideBar : public QWidget {
-    Q_OBJECT
-private:
-    QVBoxLayout* right;
-    QPushButton* avviaSimulaButt;
-    QPushButton* modificaSensButt;
-    QPushButton* eliminaSensButt;
-    content* cont;
-    leftSideBar* leftSide;
-public:
-    explicit rightSideBar(content* c, leftSideBar* l, QWidget* parent = nullptr);
-
-public slots:
-    void modificaSensore();
-    void eliminaSensore();
-    void avviaSimulazione();  // Nuovo slot per avviare la simulazione e mostrare il grafico
-};
-
-#endif
 #include "headers/aggiungiSensore.h"
 
 aggiungiSensore::aggiungiSensore(QWidget* parent) : QDialog(parent) {
@@ -319,21 +320,21 @@ void aggiungiSensore::confermaClicked() {
 
     if (checkBoxFisico->isChecked()) {
         if (PAffilatura) {
-            sensore = new fisico(nomeSensore, DannoBase->value(), NumeroDiTurni->value(), PAffilatura->value());
+            sensore = new fisico(nomeSensore, DannoBase->value(), NumeroDiTurni->value(), AttPerTurno->value(), PAffilatura->value());
         } else {
             QMessageBox::warning(this, "Errore", "Valore di affilatura non impostato.");
             return;
         }
     } else if (checkBoxMagico->isChecked()) {
         if (SLvMagia) {
-            sensore = new magico(nomeSensore, DannoBase->value(), NumeroDiTurni->value(), SLvMagia->value(), StatusApp ? StatusApp->isChecked() : false);
+            sensore = new magico(nomeSensore, DannoBase->value(), NumeroDiTurni->value(), AttPerTurno->value(), SLvMagia->value(), StatusApp ? StatusApp->isChecked() : false);
         } else {
             QMessageBox::warning(this, "Errore", "Valore di magia non impostato.");
             return;
         }
     } else if (checkBoxSacro->isChecked()) {
         if (SLvFede) {
-            sensore = new sacro(nomeSensore, DannoBase->value(), NumeroDiTurni->value(), SLvFede->value());
+            sensore = new sacro(nomeSensore, DannoBase->value(), NumeroDiTurni->value(), AttPerTurno->value(), SLvFede->value());
         } else {
             QMessageBox::warning(this, "Errore", "Valore di fede non impostato.");
             return;
@@ -371,16 +372,16 @@ content::content(QWidget* parent)
 }
 
 void content::eliminaSensore(const QString& sensoreName) {
-    QLayoutItem* item;
-    while ((item = center->takeAt(0)) != nullptr) {
-        delete item->widget();
-        delete item;
-    }
-    if (selectedSensore == sensoreName) {
-        selectedSensore = "";
+    if (sensore && sensore->getNome() == sensoreName.toStdString()) {
+        delete sensore;  // Chiama il distruttore del sensore
         sensore = nullptr;
+        selectedSensore.clear();
+        // Aggiungi qui codice per aggiornare l'interfaccia se necessario
+        grafichino->clear();
+        sim->clear();
     }
 }
+
 
 QString content::getSelectedSensore() const {
     return selectedSensore;
@@ -404,7 +405,6 @@ void content::aggiungiSensoreAlContenuto(sensoreDanno* nuovoSensore) {
 
     selectedSensore = QString::fromStdString(nuovoSensore->getNome());
     sensore = nuovoSensore; 
-    delete visitor;
 }
 
 void content::mostraGrafico(const QVector<QPointF>& data) {
@@ -436,11 +436,11 @@ void content::mostraGraficoSensore() {
         return; 
     }
 
-    vector<double> valoriGrafico = sensore->getValoriGrafico(sensore->getNTurni());
+    vector<double> valoriGrafico = sensore->getValoriGrafico();
     QVector<QPointF> puntiGrafico;
 
-    for (int i = 0; i < valoriGrafico.size(); ++i) {
-        puntiGrafico.append(QPointF(i, valoriGrafico[i]));
+    for (size_t i = 0; i < valoriGrafico.size(); ++i) {
+        puntiGrafico.append(QPointF(static_cast<qreal>(i), static_cast<qreal>(valoriGrafico[i])));
     }
 
     mostraGrafico(puntiGrafico);
@@ -495,11 +495,12 @@ void leftSideBar::eseguiRicerca(const QString& text) {
 
 void leftSideBar::eliminaSensore(const QString& sensoreName) {
     QList<QListWidgetItem*> items = sensoreList->findItems(sensoreName, Qt::MatchExactly);
-    for (QListWidgetItem* item : items) {
-        delete item;
-        sensori.removeOne(sensoreName);
+    if (!items.empty()) {
+        delete items.first();  // Rimuovi l'elemento dalla QListWidget
+        sensori.removeAll(sensoreName);  // Rimuovi il sensore dalla QStringList
     }
 }
+
 
 void leftSideBar::salvaSensori() {
     QString fileName = QFileDialog::getSaveFileName(this, "Salva Sensori", "", "XML Files (*.xml)");
@@ -574,10 +575,10 @@ MainW::MainW(QWidget* parent)
     mainWindow->addWidget(splitter);
     setLayout(mainWindow);
 
-    aggiungiSensore* dialog = new aggiungiSensore(parent);
-    content* contenuto = new content(parent);
-    QObject::connect(dialog, &aggiungiSensore::sensoreAggiuntoStats, contenuto, &content::aggiungiSensoreAlContenuto);
+    connect(leftSideBarWidget, &leftSideBar::sensoreSelezionato, contentWidget, &content::eliminaSensore);
 
+    aggiungiSensore* dialog = new aggiungiSensore(this);
+    connect(dialog, &aggiungiSensore::sensoreAggiuntoStats, contentWidget, &content::aggiungiSensoreAlContenuto);
 }
 #include "headers/rightSideBar.h"
 
@@ -603,9 +604,23 @@ void rightSideBar::modificaSensore() {
 
 void rightSideBar::eliminaSensore() {
     QString sensoreName = cont->getSelectedSensore();
-    leftSide->eliminaSensore(sensoreName);
-    cont->eliminaSensore(sensoreName);
+    if (!sensoreName.isEmpty()) {
+        // Chiedi conferma all'utente
+        QMessageBox::StandardButton reply;
+        reply = QMessageBox::question(this, "Eliminazione Sensore", 
+                                      "Sei sicuro di voler eliminare il sensore " + sensoreName + "?",
+                                      QMessageBox::Yes|QMessageBox::No);
+        if (reply == QMessageBox::Yes) {
+            // Elimina il sensore dal contenuto
+            cont->eliminaSensore(sensoreName);
+            // Rimuovi il sensore dalla lista di sinistra
+            leftSide->eliminaSensore(sensoreName);
+        }
+    } else {
+        QMessageBox::warning(this, "Errore", "Nessun sensore selezionato per l'eliminazione.");
+    }
 }
+
 
 void rightSideBar::avviaSimulazione() {
     cont->mostraGraficoSensore();
