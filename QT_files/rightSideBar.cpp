@@ -41,5 +41,5 @@ void rightSideBar::eliminaSensore() {
 
 
 void rightSideBar::avviaSimulazione() {
-    cont->mostraGraficoSensore();
+  //  cont->mostraGraficoSensore();
 }
