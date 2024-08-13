@@ -7,29 +7,29 @@ ContentVisitor::~ContentVisitor() {
 }
 
 void ContentVisitor::visitFisico(fisico* f){
-    dispWidget = new QLabel("Sensore Fisico:\nNome:" + QString::fromStdString(f->getNome()) +
-     "\nDannoBase:" + QString::number(f->getDanno()) +
-     "\nNumero di Turni:" + QString::number(f->getNTurni()) +
-     "\nAttacchi per Turno:" + QString::number(f->getAtt()) + 
-     "\nAffilatura:" + QString::number(f->getAffilatura()) + "%");
+    dispWidget = new QLabel("Sensore Fisico \n\nNome:\t" + QString::fromStdString(f->getNome()) +
+     "\n\nDannoBase:\t" + QString::number(f->getDanno()) +
+     "\n\nNumero di Turni:\t" + QString::number(f->getNTurni()) +
+     "\n\nAttacchi per Turno:\t" + QString::number(f->getAtt()) + 
+     "\n\nAffilatura:\t" + QString::number(f->getAffilatura()) + "%");
 }
 
 void ContentVisitor::visitMagico(magico* m){
-    dispWidget = new QLabel("Sensore Magico:\nNome:" + QString::fromStdString(m->getNome()) +
-     "\nDannoBase:" + QString::number(m->getDanno()) +
-     "\nNumero di Turni:" + QString::number(m->getNTurni()) +
-     "\nAttacchi per Turno:" + QString::number(m->getAtt()) + 
-     "\nLivello Magia:" + QString::number(m->getLvMagia()) +
-     "\nCondizione:" + (m->checkCondition() ? "Si" : "No"));
+    dispWidget = new QLabel("Sensore Magico \n\nNome:\t" + QString::fromStdString(m->getNome()) +
+     "\n\nDannoBase:\t" + QString::number(m->getDanno()) +
+     "\n\nNumero di Turni:\t" + QString::number(m->getNTurni()) +
+     "\n\nAttacchi per Turno:\t" + QString::number(m->getAtt()) + 
+     "\n\nLivello Magia:\t" + QString::number(m->getLvMagia()) +
+     "\n\nCondizione:\t" + (m->checkCondition() ? "Si" : "No"));
 }
 
 void ContentVisitor::visitSacro(sacro* s){
-    dispWidget = new QLabel("Sensore Sacro:\nNome:" + QString::fromStdString(s->getNome()) +
-     "\nDannoBase:" + QString::number(s->getDanno()) +
-     "\nNumero di Turni:" + QString::number(s->getNTurni()) +
-     "\nAttacchi per Turno:" + QString::number(s->getAtt()) + 
-     "\nLivello Fede:" + QString::number(s->getLvFede()) +
-     "\nValore Limit:" + QString::number(s->getlimitBreak()));
+    dispWidget = new QLabel("Sensore Sacro \nNome:\t" + QString::fromStdString(s->getNome()) +
+     "\n\nDannoBase:\t" + QString::number(s->getDanno()) +
+     "\n\nNumero di Turni:\t" + QString::number(s->getNTurni()) +
+     "\n\nAttacchi per Turno:\t" + QString::number(s->getAtt()) + 
+     "\n\nLivello Fede:\t" + QString::number(s->getLvFede()) +
+     "\n\nValore Limit:\t" + QString::number(s->getlimitBreak()));
 }
 
 QWidget* ContentVisitor::returnQWidget() {

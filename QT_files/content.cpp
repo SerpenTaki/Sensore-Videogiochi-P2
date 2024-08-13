@@ -6,8 +6,8 @@
 content::content(QWidget* parent)
     : QWidget(parent), sensore(nullptr) {
     center = new QVBoxLayout(this);
-    grafichino = new QLabel("Mostra qui il grafico", this);
-    center->addWidget(grafichino);
+    welcome = new QLabel("Benvenuto nel programma di sensori", this);
+    center->addWidget(welcome);
 }
 
 void content::eliminaSensore(sensoreDanno* sensore) {
@@ -18,7 +18,12 @@ void content::eliminaSensore(sensoreDanno* sensore) {
         // Aggiungi qui codice per aggiornare l'interfaccia se necessario
         grafichino->clear();
         sim->clear();*/
-        cout << "è stato eliminato il" << sensore->getNome() << endl;
+        cout << "è stato eliminato:\t" << sensore->getNome() << endl;
+    }
+    QLayoutItem* item; //pulisci la visualizzazione alla selezione del sensore
+    while ((item = layout()->takeAt(0)) != 0) {
+        delete item->widget();
+        delete item;
     }
 }
 
@@ -32,8 +37,13 @@ void content::aggiungiSensoreAlContenuto(sensoreDanno* nuovoSensore) {
         return;
     }
 
+    QLayoutItem* item; //resetta la visualizzazione alla selezione del sensore
+    while ((item = layout()->takeAt(0)) != 0) {
+        delete item->widget();
+        delete item;
+    }
+
     QLabel* nuovoSensoreLabel = new QLabel("Sensore creato: " + QString::fromStdString(nuovoSensore->getNome()), this);
-    center->addWidget(nuovoSensoreLabel);
 
     ContentVisitor* visitor = new ContentVisitor();
     nuovoSensore->accept(visitor);

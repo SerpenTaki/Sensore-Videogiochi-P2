@@ -44,7 +44,7 @@ aggiungiSensore::aggiungiSensore(QWidget* parent) : QDialog(parent) {
     NumeroDiTurni->setMinimum(1);
     NumeroDiTurni->setMaximum(30);
     NumeroDiTurni->setSingleStep(1);
-    NumeroDiTurni->setValue(1);
+    NumeroDiTurni->setValue(5);
     nuovoSens->addWidget(NumeroDiTurni);
 
     QLabel* AttacchiLabel = new QLabel("Seleziona il numero di attacchi per turno 1-5");

@@ -13,7 +13,7 @@ class content : public QWidget {
     Q_OBJECT
 private:
     QVBoxLayout* center;
-    QLabel* grafichino;
+    QLabel* welcome;
     QLabel* sim;
     sensoreDanno* sensore; 
 public:
