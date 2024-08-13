@@ -10,8 +10,8 @@ class leftSideBar : public QWidget {
 private:
     QVBoxLayout* left;
     QPushButton* aggiungiSensoreBottone;
-    QPushButton* salvaSensoriBottone; // Pulsante per XML
-    QPushButton* salvaJsonBottone; // Nuovo pulsante per JSON
+    QPushButton* importaSensoreBottone;
+    QPushButton* salvaSensoreBottone;
     QLineEdit* searchBox;
     vector<sensoreDanno*>* sensoreList;
     QListWidget* sensoreListLabel;

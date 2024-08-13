@@ -5,8 +5,12 @@
 #include <QWidget>
 #include <QVBoxLayout>
 #include <QLabel>
-#include <QVector>
-#include <QPointF>
+#include <QtCharts/QChartView>
+#include <QtCharts/QLineSeries>
+#include <QtCharts/QChart>
+
+//QT_CHARTS_USE_NAMESPACE
+
 #include "core_files/headers/sensoreDanno.h" 
 
 class content : public QWidget {
@@ -15,16 +19,20 @@ private:
     QVBoxLayout* center;
     QLabel* welcome;
     QLabel* sim;
-    sensoreDanno* sensore; 
+    sensoreDanno* sensore;
+    //per grafico
+    /*QLineSeries::*/QLineSeries* series; //per inserire i dati
+    /*QChart::*/QChart* chart; //crea chart per interagire con la serie
+    /*QChartView::*/QChartView* chartView; //per proiettare il grafico
 public:
     explicit content(QWidget* parent = nullptr);
     void eliminaSensore(sensoreDanno* sensore);
     sensoreDanno* getSelectedSensore() const;
-   // void mostraGrafico(const QVector<QPointF>& data);
+    void inizializzaChart();
 
 public slots:
     void aggiungiSensoreAlContenuto(sensoreDanno* nuovoSensore);
-   // void mostraGraficoSensore(); 
+
 };
 
 #endif

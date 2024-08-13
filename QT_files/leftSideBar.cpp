@@ -6,6 +6,8 @@ leftSideBar::leftSideBar(content* contentWidget, QWidget* parent)
     this->contentWidget = contentWidget;
 
     aggiungiSensoreBottone = new QPushButton("Aggiungi Sensore");
+    importaSensoreBottone = new QPushButton("Importa Sensore");
+    salvaSensoreBottone = new QPushButton("Salva Sensore");
     searchBox = new QLineEdit();
     searchBox->setPlaceholderText("Cerca sensore...");
     sensoreList = new vector<sensoreDanno*>; // Inizializza la lista dei sensori
@@ -14,8 +16,9 @@ leftSideBar::leftSideBar(content* contentWidget, QWidget* parent)
 
     left->addWidget(searchBox);
     left->addWidget(aggiungiSensoreBottone);
-    left->addWidget(sensoreListLabel); // Aggiungi la lista al layout
-
+    left->addWidget(importaSensoreBottone);
+    left->addWidget(sensoreListLabel);
+    left->addWidget(salvaSensoreBottone);
 
     connect(aggiungiSensoreBottone, &QPushButton::clicked, this, &leftSideBar::stampaSelSensore);
     connect(searchBox, &QLineEdit::textChanged, this, &leftSideBar::eseguiRicerca);

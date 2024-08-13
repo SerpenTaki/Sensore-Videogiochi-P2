@@ -12,12 +12,6 @@ content::content(QWidget* parent)
 
 void content::eliminaSensore(sensoreDanno* sensore) {
    if (sensore) {
-       /* delete sensore;  // Chiama il distruttore del sensore
-        sensore = nullptr;
-
-        // Aggiungi qui codice per aggiornare l'interfaccia se necessario
-        grafichino->clear();
-        sim->clear();*/
         cout << "è stato eliminato:\t" << sensore->getNome() << endl;
     }
     QLayoutItem* item; //pulisci la visualizzazione alla selezione del sensore
@@ -53,45 +47,21 @@ void content::aggiungiSensoreAlContenuto(sensoreDanno* nuovoSensore) {
         center->addWidget(visitorWidget);
     }
 
+    inizializzaChart();
+
     sensore = nuovoSensore; 
 }
-/*
-void content::mostraGrafico(const QVector<QPointF>& data) {
-    QLayoutItem* item;
-    while ((item = center->takeAt(0)) != nullptr) {
-        delete item->widget();
-        delete item;
-    }
 
-    QLineSeries *series = new QLineSeries();
-    for (const QPointF &point : data) {
-        series->append(point);
-    }
+void content::inizializzaChart() {
+    series = new /*QLineSeries::*/QLineSeries();
 
-    QChart *chart = new QChart();
-    chart->legend()->hide();
+    chart = new /*QChart::*/QChart();
     chart->addSeries(series);
     chart->createDefaultAxes();
-    chart->setTitle("Danno per Turno");
+    chart->setTitle("Danni per numero di turni");
 
-    QChartView *chartView = new QChartView(chart);
+    chartView = new /*QtChartsView::*/QChartView(chart);
     chartView->setRenderHint(QPainter::Antialiasing);
 
-    center->addWidget(chartView);
+    center->addWidget(chartView);  // Aggiungere il chartView al layout
 }
-
-void content::mostraGraficoSensore() {
-    if (!sensore) {
-        return; 
-    }
-
-    vector<double> valoriGrafico = sensore->getValoriGrafico();
-    QVector<QPointF> puntiGrafico;
-
-    for (size_t i = 0; i < valoriGrafico.size(); ++i) {
-        puntiGrafico.append(QPointF(static_cast<qreal>(i), static_cast<qreal>(valoriGrafico[i])));
-    }
-
-    mostraGrafico(puntiGrafico);
-}
-*/
