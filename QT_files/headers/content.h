@@ -29,10 +29,9 @@ public:
     void eliminaSensore(sensoreDanno* sensore);
     sensoreDanno* getSelectedSensore() const;
     void inizializzaChart();
-
+    void displayVector(sensoreDanno* sensore);
 public slots:
     void aggiungiSensoreAlContenuto(sensoreDanno* nuovoSensore);
-
 };
 
 #endif

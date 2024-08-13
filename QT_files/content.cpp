@@ -56,12 +56,30 @@ void content::inizializzaChart() {
     series = new /*QLineSeries::*/QLineSeries();
 
     chart = new /*QChart::*/QChart();
+    chart->legend()->hide();
     chart->addSeries(series);
     chart->createDefaultAxes();
     chart->setTitle("Danni per numero di turni");
+    chart->axes(Qt::Horizontal).first()->setRange(0, 30);
 
     chartView = new /*QtChartsView::*/QChartView(chart);
     chartView->setRenderHint(QPainter::Antialiasing);
 
     center->addWidget(chartView);  // Aggiungere il chartView al layout
+}
+
+void content::displayVector(sensoreDanno *sensore){
+    if (!series) {
+        inizializzaChart();
+    }
+    series->clear();
+    if (sensore) {
+        auto valori = /*dynamic_cast<fisico*>*/(sensore)->getValoriGrafico(); //non so perchè non mi displaya i valori giusti debug da fare....
+        for (size_t it = 0; it < valori.size(); ++it) {
+            series->append((it), valori[it]);
+        }
+        chart->update();
+    } else {
+        QMessageBox::warning(this, "Errore", "Sensore non valido.");
+    }
 }

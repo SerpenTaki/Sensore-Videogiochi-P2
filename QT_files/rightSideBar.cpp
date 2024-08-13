@@ -10,7 +10,14 @@ rightSideBar::rightSideBar(content* c, leftSideBar* l, QWidget* parent)
     right->addWidget(modificaSensButt);
     right->addWidget(eliminaSensButt);
 
-    connect(avviaSimulaButt, &QPushButton::clicked, this, &rightSideBar::avviaSimulazione);
+    connect(avviaSimulaButt, &QPushButton::clicked, [this]() {
+        sensoreDanno* sensor = cont->getSelectedSensore(); 
+        if (sensor) {
+            cont->displayVector(sensor); 
+        } else {
+            QMessageBox::warning(this, "Errore", "Nessun sensore selezionato per la simulazione.");
+        }
+    });
     connect(modificaSensButt, &QPushButton::clicked, this, &rightSideBar::modificaSensore);
     connect(eliminaSensButt, &QPushButton::clicked, this, &rightSideBar::eliminaSensore);
 }
