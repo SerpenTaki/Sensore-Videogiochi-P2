@@ -15,7 +15,7 @@ MainW::MainW(QWidget* parent)
     splitter->addWidget(rightSideBarWidget);
 
     QList<int> sizes;
-    sizes << 175 << 500 << 150; // Dimensione leftSideBarWidget, contentWidget, rightSideBarWidget
+    sizes << 175 << 500 << 100; // Dimensione leftSideBarWidget, contentWidget, rightSideBarWidget
     splitter->setSizes(sizes);
 
     mainWindow->addWidget(splitter);

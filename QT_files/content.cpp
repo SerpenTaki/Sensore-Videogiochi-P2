@@ -62,16 +62,14 @@ void content::inizializzaChart() {
     
     axisX = new QValueAxis();
     axisX->setRange(0, 5);
-    axisX->setLabelFormat("%d");  
-    //axisX->setTickCount();       
+    axisX->setLabelFormat("%d");        
     axisX->setTitleText("Turni");
     chart->addAxis(axisX, Qt::AlignBottom);
     series->attachAxis(axisX); 
 
     axisY = new QValueAxis();
     axisY->setRange(0, 100);      
-    axisY->setLabelFormat("%d");
-    axisY->setTickCount(10);       
+    axisY->setLabelFormat("%d");      
     axisY->setTitleText("Danni");
     chart->addAxis(axisY, Qt::AlignLeft);  
     series->attachAxis(axisY); 
