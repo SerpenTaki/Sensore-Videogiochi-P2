@@ -37,7 +37,7 @@ void content::aggiungiSensoreAlContenuto(sensoreDanno* nuovoSensore) {
         delete item;
     }
 
-    QLabel* nuovoSensoreLabel = new QLabel("Sensore creato: " + QString::fromStdString(nuovoSensore->getNome()), this);
+    //QLabel* nuovoSensoreLabel = new QLabel("Sensore creato: " + QString::fromStdString(nuovoSensore->getNome()), this);
 
     ContentVisitor* visitor = new ContentVisitor();
     nuovoSensore->accept(visitor);
@@ -58,9 +58,24 @@ void content::inizializzaChart() {
     chart = new /*QChart::*/QChart();
     chart->legend()->hide();
     chart->addSeries(series);
-    chart->createDefaultAxes();
     chart->setTitle("Danni per numero di turni");
-    chart->axes(Qt::Horizontal).first()->setRange(0, 30);
+    
+    axisX = new QValueAxis();
+    axisX->setRange(0, 5);
+    axisX->setLabelFormat("%d");  
+    //axisX->setTickCount();       
+    axisX->setTitleText("Turni");
+    chart->addAxis(axisX, Qt::AlignBottom);
+    series->attachAxis(axisX); 
+
+    axisY = new QValueAxis();
+    axisY->setRange(0, 100);      
+    axisY->setLabelFormat("%d");
+    axisY->setTickCount(10);       
+    axisY->setTitleText("Danni");
+    chart->addAxis(axisY, Qt::AlignLeft);  
+    series->attachAxis(axisY); 
+
 
     chartView = new /*QtChartsView::*/QChartView(chart);
     chartView->setRenderHint(QPainter::Antialiasing);
@@ -75,9 +90,13 @@ void content::displayVector(sensoreDanno *sensore){
     series->clear();
     if (sensore) {
         auto valori = /*dynamic_cast<fisico*>*/(sensore)->getValoriGrafico(); //non so perchè non mi displaya i valori giusti debug da fare....
-        for (size_t it = 0; it < valori.size(); ++it) {
+        for (size_t it = 0; it <= valori.size(); ++it) {
             series->append((it), valori[it]);
         }
+        auto max_danno = std::max_element(valori.begin(), valori.end());
+        cout << "il valore massimo è: " << *max_danno << endl;
+        axisY->setRange(0, static_cast<double>(*max_danno));
+        axisX->setRange(0, static_cast<double>(valori.size()));
         chart->update();
     } else {
         QMessageBox::warning(this, "Errore", "Sensore non valido.");

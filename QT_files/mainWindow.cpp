@@ -3,7 +3,6 @@
 MainW::MainW(QWidget* parent)
     : QWidget(parent) {
     setWindowTitle("Sensore Danni Gioco");
-
     mainWindow = new QHBoxLayout(this);
     splitter = new QSplitter(Qt::Horizontal, this);
 
@@ -14,6 +13,10 @@ MainW::MainW(QWidget* parent)
     splitter->addWidget(leftSideBarWidget);
     splitter->addWidget(contentWidget);
     splitter->addWidget(rightSideBarWidget);
+
+    QList<int> sizes;
+    sizes << 175 << 500 << 150; // Dimensione leftSideBarWidget, contentWidget, rightSideBarWidget
+    splitter->setSizes(sizes);
 
     mainWindow->addWidget(splitter);
     setLayout(mainWindow);

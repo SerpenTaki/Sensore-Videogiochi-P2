@@ -8,6 +8,7 @@
 #include <QtCharts/QChartView>
 #include <QtCharts/QLineSeries>
 #include <QtCharts/QChart>
+#include <QtCharts/QValueAxis>
 
 //QT_CHARTS_USE_NAMESPACE
 
@@ -20,6 +21,8 @@ private:
     QLabel* welcome;
     QLabel* sim;
     sensoreDanno* sensore;
+    QValueAxis *axisX;
+    QValueAxis *axisY;
     //per grafico
     /*QLineSeries::*/QLineSeries* series; //per inserire i dati
     /*QChart::*/QChart* chart; //crea chart per interagire con la serie

@@ -55,7 +55,7 @@ vector<double> sensoreDanno::getValoriGrafico() {
   for (auto i = attacchiPerTurno.begin(); i != attacchiPerTurno.end(); i++) {
     double dannoPerTurno = 0;
     for(int n=0; n < nAtt; n++){
-      dannoPerTurno += *i * getHit();
+      dannoPerTurno += getHit();
     }
     result.push_back(dannoPerTurno);
   }
