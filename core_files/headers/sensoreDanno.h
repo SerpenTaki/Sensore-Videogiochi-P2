@@ -5,6 +5,7 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include <sstream>
 #include <random>
 #include"visitor.h"
 
@@ -48,6 +49,8 @@ public:
   // metodi virtuali puri
   virtual double calcolaDanno()=0;
   virtual double getHit() =0;
+  virtual string toXML() const =0;
+
   virtual void accept(Visitor* v) = 0;
 };
 

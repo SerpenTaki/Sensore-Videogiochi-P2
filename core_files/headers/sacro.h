@@ -11,16 +11,19 @@ private:
   enum { fedeBassa, fedeMedia, fedeAlta };
 public:
   sacro(string n, double d, int nT, int nA, int lvFede);
-  sacro(string n, double d, int nT, int nA, vector<double> rDPT, int lvFede);
+  sacro(string n, double d, int nT, int nA, vector<double> rDPT, int lvFede, vector<int> limit);
   int getLvFede() const;
   int getlimitBreak() const;
 
   double getHit() override;
   double calcolaDanno() override;
+
+  void setLimit();
   
   bool checkLimit();
   void updateLimitbreak();
   vector<int> getValoriLimitBar();
+  string toXML() const override;
 
   void accept(Visitor* v) override;
   

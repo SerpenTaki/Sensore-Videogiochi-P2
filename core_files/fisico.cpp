@@ -51,6 +51,26 @@ double fisico::calcolaDanno() { // assestante
     return nDanni;
 }
 
+string fisico::toXML() const{
+  std::ostringstream oss;
+  oss << "<fisico>\n";
+  oss << "  <nome>" << getNome() << "</nome>\n";
+  oss << "  <danno_base>" << getDanno() << "</danno_base>\n";
+  oss << "  <numero_turni>" << getAttacchiPerTurno().size() << "</numero_turni>\n";
+  oss << "  <affilatura>" << affilatura << "</affilatura>\n";
+  oss << "  <attacchi_per_turno>" << getAtt() << "</attacchi_per_turno>\n";
+    
+  // Aggiungiamo i dati del vettore rDPT (se esiste)
+  oss << "  <danni_per_turno>\n";
+  for (const auto& danno : getAttacchiPerTurno()) {
+      oss << "    <danno>" << danno << "</danno>\n";
+  }
+  oss << "  </danni_per_turno>\n";
+
+  oss << "</fisico>";
+  return oss.str();
+}
+
 void fisico::accept(Visitor* v) {
   v->visitFisico(this);
 }

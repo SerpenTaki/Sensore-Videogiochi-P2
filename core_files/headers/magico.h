@@ -18,6 +18,7 @@ public:
 
   double calcolaDanno() override;
   double getHit() override;
+  string toXML() const override;
 
   void accept(Visitor* v) override;
 };
