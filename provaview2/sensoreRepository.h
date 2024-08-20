@@ -1,22 +1,20 @@
-public class SensoreRepository{
-    List<sensoriDanno> sensoriDanno;
-//dependecy injection non la uso nella relazione
-    public:
-        SensoreDanno GetSensoreByName(string name){
-            for(i = sensoriDanno.begin(); i == sensori.end(); ++i){
-                if i.getNome() == name{
-                    return i;
-                }
-            }
-        }
+#ifndef SENSOREREPOSITORY_H
+#define SENSOREREPOSITORY_H
+//una sorta di dependecy injection
+#include<list>
 
-        void AddSensore(SensoreDanno* sensore){
-            // il chiamante ha già verificato che non esiste un sensore avente lo stesso nome
-            sensoriDanno.push_back(sensore);
-        }
+#include"core_files/headers/sensoreDanno.h"
 
-        RemoveSensore(SensoreDanno* sensore){
-            //il chiamante ha chiamato la GetSensoreByName, riceve il sensore per puntatore quindi posso provare a rimuoverlo direttamente
-            sensoriDanno.erease(sensore);
-        }
-}
+using std::list;
+
+class SensoreRepository{
+private:
+    list<sensoreDanno> listaSensoriDanno;
+public:
+    //sensoreDanno getSensoreByName(string name);
+    void addSensore(sensoreDanno* sensore);
+    void removeSensore(sensoreDanno* sensore);
+};
+
+
+#endif
