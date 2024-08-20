@@ -11,7 +11,7 @@ private:
   enum { fedeBassa, fedeMedia, fedeAlta };
 public:
   sacro(string n, double d, int nT, int nA, int lvFede);
-
+  sacro(string n, double d, int nT, int nA, vector<double> rDPT, int lvFede);
   int getLvFede() const;
   int getlimitBreak() const;
 

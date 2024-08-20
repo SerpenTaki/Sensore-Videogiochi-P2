@@ -1,11 +1,28 @@
 #include "headers/fisico.h"
 
-fisico::fisico(string n, double d, int nT, int nA, int aff): sensoreDanno(n, d, nT, nA), affilatura(aff) {
+fisico::fisico(string n, double d, int nT, int nA, int aff)
+: sensoreDanno(n, d, nT, nA), affilatura(aff) {
   if(getNome().empty()){
     std::cerr << "Oggetto non creato, nome vuoto" << endl;
     return;
   }
   cout << "Oggetto fisico Creato" << endl;
+  setSizeAttacchiPerTurno();
+   cout << "Nome: " << getNome() 
+         << "\nDanno Base: " << getDanno() 
+         << "\nNTurni: " << getAttacchiPerTurno().size()
+         << "\nAff: " << affilatura 
+         << "\nAtt per Turno: " << getAtt()
+         << endl;
+}
+
+fisico::fisico(string n, double d, int nT, int nA, vector<double> rDPT, int aff)
+: sensoreDanno(n, d, nT, nA, rDPT), affilatura(aff) {
+  if(getNome().empty()){
+    std::cerr << "Oggetto non creato, nome vuoto" << endl;
+    return;
+  }
+  cout << "Oggetto fisico Importato" << endl;
   setSizeAttacchiPerTurno();
    cout << "Nome: " << getNome() 
          << "\nDanno Base: " << getDanno() 

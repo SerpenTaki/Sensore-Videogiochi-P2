@@ -1,11 +1,29 @@
 #include "headers/magico.h"
 
-magico::magico(string n, double d, int nT, int nA, int lvM, bool isInSta): sensoreDanno(n, d, nT, nA), lvMagia(lvM), isInStatus(isInSta) {
+magico::magico(string n, double d, int nT, int nA, int lvM, bool isInSta)
+: sensoreDanno(n, d, nT, nA), lvMagia(lvM), isInStatus(isInSta) {
   if(getNome().empty()){
     std::cerr << "Oggetto non creato, nome vuoto" << endl;
     return;
   }
   cout << "Oggetto magico creato" << endl;
+    setSizeAttacchiPerTurno();
+   cout << "Nome: " << getNome() 
+         << "\nDanno Base: " << getDanno() 
+         << "\nNTurni: " << getAttacchiPerTurno().size()
+         << "\nlvMagia: " << getLvMagia()
+         << "\nisInSta: " << checkCondition()
+         << "\nAtt per Turno: " << getAtt()
+         << endl;
+}
+
+magico::magico(string n, double d, int nT, int nA, vector<double> rDPT, int lvM, bool isInSta)
+: sensoreDanno(n, d, nT, nA, rDPT), lvMagia(lvM), isInStatus(isInSta) {
+  if(getNome().empty()){
+    std::cerr << "Oggetto non creato, nome vuoto" << endl;
+    return;
+  }
+  cout << "Oggetto magico Importato" << endl;
     setSizeAttacchiPerTurno();
    cout << "Nome: " << getNome() 
          << "\nDanno Base: " << getDanno() 

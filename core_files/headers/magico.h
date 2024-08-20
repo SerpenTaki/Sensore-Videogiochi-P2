@@ -9,7 +9,7 @@ private:
   bool isInStatus;
 public:
   magico(string n, double d, int nT, int nA, int lvM, bool isInSta);
-
+  magico(string n, double d, int nT, int nA, vector<double> rDPT, int lvM, bool isInSta);
 
   int getLvMagia() const;
   bool checkCondition() const;

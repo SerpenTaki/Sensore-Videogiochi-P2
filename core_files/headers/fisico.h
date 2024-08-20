@@ -10,7 +10,7 @@ private:
 public:
   // per implementazione grafica
   fisico(string n, double d, int nT, int nA, int aff);
-
+  fisico(string n, double d, int nT, int nA, vector<double> rDPT, int aff);
   int getAffilatura() const;
 
   double getHit() override;

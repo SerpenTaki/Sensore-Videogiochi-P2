@@ -1,6 +1,7 @@
 #include "headers/sacro.h"
 
-sacro::sacro(string n, double d, int nT, int nA, int lvFede): sensoreDanno(n, d, nT, nA), lvFede(lvFede){
+sacro::sacro(string n, double d, int nT, int nA, int lvFede)
+: sensoreDanno(n, d, nT, nA), lvFede(lvFede){
   if(getNome().empty()){
     std::cerr << "Oggetto non creato, nome vuoto" << endl;
     return;
@@ -15,7 +16,21 @@ sacro::sacro(string n, double d, int nT, int nA, int lvFede): sensoreDanno(n, d,
          << endl;
 }
 
-
+sacro::sacro(string n, double d, int nT, int nA, vector<double> rDPT, int lvFede)
+: sensoreDanno(n, d, nT, nA, rDPT), lvFede(lvFede){
+  if(getNome().empty()){
+    std::cerr << "Oggetto non creato, nome vuoto" << endl;
+    return;
+  }
+  cout << "Oggetto sacro Importato" << endl;
+    setSizeAttacchiPerTurno();
+   cout << "Nome: " << getNome() 
+         << "\nDanno Base: " << getDanno() 
+         << "\nNTurni: " << getAttacchiPerTurno().size()
+         << "\nAff: " << getLvFede()
+         << "\nAtt per Turno: " << getAtt()
+         << endl;
+}
 
 int sacro::getLvFede() const { return lvFede; }
 int sacro::getlimitBreak() const { return limitbreak; }
