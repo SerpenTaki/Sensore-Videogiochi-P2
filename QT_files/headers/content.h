@@ -33,6 +33,7 @@ public:
     sensoreDanno* getSelectedSensore() const;
     void inizializzaChart();
     void displayVector(sensoreDanno* sensore);
+    void avviaSimulazione(sensoreDanno* sensore);
 public slots:
     void aggiungiSensoreAlContenuto(sensoreDanno* nuovoSensore);
 };

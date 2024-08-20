@@ -165,14 +165,6 @@ void aggiungiSensore::confermaClicked() {
     }
 
     if (sensore) {
-        for(auto it = setNameSensori.begin(); it != setNameSensori.end(); ++it){//mi da problemi con un pop up
-            if(nomeSensore == (*it)){
-                QMessageBox::warning(this, "Errore", "Sensore con lo stesso nome già creato");
-                reject();
-            }
-        }
-        setNameSensori.push_back(nomeSensore);
-
         emit sensoreAggiuntoStats(sensore);//content
         accept(); // Chiudi il dialogo
     } else {

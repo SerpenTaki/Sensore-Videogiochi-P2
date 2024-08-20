@@ -23,13 +23,12 @@ leftSideBar::leftSideBar(content* contentWidget, QWidget* parent)
     connect(aggiungiSensoreBottone, &QPushButton::clicked, this, &leftSideBar::stampaSelSensore);
     connect(searchBox, &QLineEdit::textChanged, this, &leftSideBar::eseguiRicerca);
     connect(sensoreListLabel, &QListWidget::itemClicked, [=](QListWidgetItem* item) {
-        sensoreDanno* temp;
-        for(vector<sensoreDanno*>::iterator i = sensoreList->begin(); i != sensoreList->end(); ++i){
+        vector<sensoreDanno*>::iterator i;
+        for(i = sensoreList->begin(); i != sensoreList->end(); ++i){
             if(QString::fromStdString((*i)->getNome()) == item->text()){
-                temp = *i;
+                emit sensoreSelezionato(*i);
             }
         }
-        emit sensoreSelezionato(temp);
     });
 
     

@@ -1,7 +1,9 @@
 #include "headers/sensoreDanno.h"
 #include <random>
 
-sensoreDanno::sensoreDanno(string n, double d, int nT, int nA): nome(n), danno(d), nTurni(nT), nAtt(nA) {}
+sensoreDanno::sensoreDanno(string n, double d, int nT, int nA): nome(n), danno(d), nTurni(nT), nAtt(nA) {
+  
+}
 
 sensoreDanno::~sensoreDanno() {cout << "Distrutto" << endl;} //ho notato che elimina sensore non distrugge il sensore alla fine
 
@@ -48,16 +50,20 @@ int sensoreDanno::getAtt() const{
 void sensoreDanno::setSizeAttacchiPerTurno(){
   attacchiPerTurno.resize(nTurni);
 }
-
-vector<double> sensoreDanno::getValoriGrafico() {
-  vector<double> result;
+void sensoreDanno::generaValoriRandomGrafico() {
   setSizeAttacchiPerTurno();
+  if(recordDanniPerTurno.empty() == false){
+    recordDanniPerTurno.clear();
+  }
   for (auto i = attacchiPerTurno.begin(); i != attacchiPerTurno.end(); i++) {
     double dannoPerTurno = 0;
     for(int n=0; n < nAtt; n++){
       dannoPerTurno += getHit();
     }
-    result.push_back(dannoPerTurno);
+    recordDanniPerTurno.push_back(dannoPerTurno);
   }
-  return result;
 } // Questa non si ovverrida da nessuna parte
+
+vector<double> sensoreDanno::getRecordDanniPerTurno() const{
+  return recordDanniPerTurno;
+}

@@ -41,13 +41,16 @@ void content::aggiungiSensoreAlContenuto(sensoreDanno* nuovoSensore) {
 
     ContentVisitor* visitor = new ContentVisitor();
     nuovoSensore->accept(visitor);
-
+    cout << "Debug";
     QWidget* visitorWidget = visitor->returnQWidget();
     if (visitorWidget) {
         center->addWidget(visitorWidget);
     }
 
-    inizializzaChart();
+    if(nuovoSensore != nullptr){
+        inizializzaChart();
+        //displayVector(nuovoSensore);
+    }
 
     sensore = nuovoSensore; 
 }
@@ -87,7 +90,7 @@ void content::displayVector(sensoreDanno *sensore){
     }
     series->clear();
     if (sensore) {
-        auto valori = /*dynamic_cast<fisico*>*/(sensore)->getValoriGrafico(); //non so perchè non mi displaya i valori giusti debug da fare....
+        auto valori = (sensore)->getRecordDanniPerTurno(); //non so perchè non mi displaya i valori giusti debug da fare....
         for (size_t it = 0; it <= valori.size(); ++it) {
             series->append((it), valori[it]);
         }
@@ -99,4 +102,11 @@ void content::displayVector(sensoreDanno *sensore){
     } else {
         QMessageBox::warning(this, "Errore", "Sensore non valido.");
     }
+}
+
+void content::avviaSimulazione(sensoreDanno* sensore){
+    if(sensore)
+        sensore->generaValoriRandomGrafico();
+    else
+        QMessageBox::warning(this, "Errore", "Sensore non valido.");
 }

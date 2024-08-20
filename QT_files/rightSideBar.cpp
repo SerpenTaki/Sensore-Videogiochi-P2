@@ -13,6 +13,7 @@ rightSideBar::rightSideBar(content* c, leftSideBar* l, QWidget* parent)
     connect(avviaSimulaButt, &QPushButton::clicked, [this]() {
         sensoreDanno* sensor = cont->getSelectedSensore(); 
         if (sensor) {
+            cont->avviaSimulazione(sensor);
             cont->displayVector(sensor); 
         } else {
             QMessageBox::warning(this, "Errore", "Nessun sensore selezionato per la simulazione.");
