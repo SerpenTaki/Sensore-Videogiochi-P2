@@ -13,3 +13,4 @@ moc_content.cpp
 moc_leftSideBar.cpp
 moc_predefs.h
 moc_rightSideBar.cpp
+moc_modificaSensore.cpp

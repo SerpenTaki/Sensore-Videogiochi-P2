@@ -5,6 +5,7 @@
 
 class aggiungiSensore : public QDialog {
     Q_OBJECT
+    friend class modificaSensore;
 private:
     QVBoxLayout* nuovoSens;
     QRadioButton *checkBoxFisico;

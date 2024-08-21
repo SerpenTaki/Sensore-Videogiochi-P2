@@ -69,3 +69,23 @@ void sensoreDanno::generaValoriRandomGrafico() {
 vector<double> sensoreDanno::getRecordDanniPerTurno() const{
   return recordDanniPerTurno;
 }
+
+void sensoreDanno::setNome(const string& n) {
+    nome = n;
+}
+
+void sensoreDanno::setDanno(double d) {
+    danno = d;
+}
+
+void sensoreDanno::setNTurni(int nT) {
+    nTurni = nT;
+}
+
+void sensoreDanno::setAttacchiPerTurno(const vector<int>& att) {
+    attacchiPerTurno = att;
+}
+
+void sensoreDanno::setRecordDanniPerTurno(const vector<double>& record) {
+    recordDanniPerTurno = record;
+}

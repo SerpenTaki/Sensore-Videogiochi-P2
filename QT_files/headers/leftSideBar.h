@@ -25,6 +25,7 @@ public slots:
     void aggiungiSensoreToList(sensoreDanno* sensore);
     void eliminaSensore(sensoreDanno* sensore);
     void salvaSensoreXML();
+    void updateSensore(sensoreDanno* updatedSensore);
 signals:
     void sensoreSelezionato(sensoreDanno* sensore);
 };

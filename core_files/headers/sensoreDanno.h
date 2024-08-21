@@ -46,6 +46,11 @@ public:
 
   //Metodi setter per modifica sensore
   void setSizeAttacchiPerTurno();
+  void setNome(const string& n);
+  void setDanno(double d);
+  void setNTurni(int nT);
+  void setAttacchiPerTurno(const vector<int>& att);
+  void setRecordDanniPerTurno(const vector<double>& record);
 
   // metodi virtuali puri
   virtual double calcolaDanno()=0;

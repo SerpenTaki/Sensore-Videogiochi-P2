@@ -1,4 +1,6 @@
 #include "headers/rightSideBar.h"
+#include "headers/modificaSensore.h"
+
 
 rightSideBar::rightSideBar(content* c, leftSideBar* l, QWidget* parent)
     : QWidget(parent), cont(c), leftSide(l) {
@@ -24,9 +26,18 @@ rightSideBar::rightSideBar(content* c, leftSideBar* l, QWidget* parent)
 }
 
 void rightSideBar::modificaSensore() {
-    QLabel* testoModifica = new QLabel("Modifica Sensore");
-    testoModifica->show();
+    sensoreDanno* sensore = cont->getSelectedSensore();
+    if (sensore) {
+        class modificaSensore dialog(this, sensore); 
+        if (dialog.exec() == QDialog::Accepted) {
+            cont->updateSensore(sensore); 
+            leftSide->updateSensore(sensore); 
+        }
+    } else {
+        QMessageBox::warning(this, "Errore", "Nessun sensore selezionato per la modifica.");
+    }
 }
+
 
 void rightSideBar::eliminaSensore() {
     sensoreDanno* sensore = cont->getSelectedSensore();

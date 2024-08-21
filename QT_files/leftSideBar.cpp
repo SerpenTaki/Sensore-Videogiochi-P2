@@ -97,3 +97,26 @@ void leftSideBar::salvaSensoreXML() {
         QMessageBox::warning(this, "Attenzione", "Nessun sensore selezionato!");
     }
 }
+
+void leftSideBar::updateSensore(sensoreDanno* updatedSensore) {
+    if (!updatedSensore) return;
+
+    for (size_t i = 0; i < sensoreList->size(); ++i) {
+        sensoreDanno* sensor = (*sensoreList)[i];
+        if (sensor->getNome() == updatedSensore->getNome()) {
+            // Update the sensor attributes
+            sensor->setNome(updatedSensore->getNome());
+            sensor->setDanno(updatedSensore->getDanno());
+            sensor->setNTurni(updatedSensore->getNTurni());
+            sensor->setAttacchiPerTurno(updatedSensore->getAttacchiPerTurno());
+            sensor->setRecordDanniPerTurno(updatedSensore->getRecordDanniPerTurno());
+
+            // Update the QListWidget display
+            sensoreListLabel->clear();
+            for (const auto& s : *sensoreList) {
+                sensoreListLabel->addItem(QString::fromStdString(s->getNome()));
+            }
+            break;
+        }
+    }
+}

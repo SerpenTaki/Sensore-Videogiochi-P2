@@ -27,6 +27,7 @@ private:
     /*QLineSeries::*/QLineSeries* series; //per inserire i dati
     /*QChart::*/QChart* chart; //crea chart per interagire con la serie
     /*QChartView::*/QChartView* chartView; //per proiettare il grafico
+    std::vector<sensoreDanno*> sensors;
 public:
     explicit content(QWidget* parent = nullptr);
     void eliminaSensore(sensoreDanno* sensore);
@@ -34,6 +35,8 @@ public:
     void inizializzaChart();
     void displayVector(sensoreDanno* sensore);
     void avviaSimulazione(sensoreDanno* sensore);
+    void updateSensore(sensoreDanno* updatedSensore);
+    void addSensore(sensoreDanno* sensor);
 public slots:
     void aggiungiSensoreAlContenuto(sensoreDanno* nuovoSensore);
 };

@@ -2,6 +2,7 @@
 #include <QtCharts/QChartView>
 #include <QtCharts/QLineSeries>
 #include <QtCharts/QChart>
+#include<algorithm>
 
 content::content(QWidget* parent)
     : QWidget(parent), sensore(nullptr) {
@@ -109,4 +110,26 @@ void content::avviaSimulazione(sensoreDanno* sensore){
         sensore->generaValoriRandomGrafico();
     else
         QMessageBox::warning(this, "Errore", "Sensore non valido.");
+}
+
+void content::updateSensore(sensoreDanno* updatedSensore) {
+        if (!updatedSensore) return;
+
+        for (sensoreDanno* sensor : sensors) {
+            if (sensor->getNome() == updatedSensore->getNome()) {
+                // Update attributes
+                sensor->setNome(updatedSensore->getNome());
+                sensor->setDanno(updatedSensore->getDanno());
+                sensor->setNTurni(updatedSensore->getNTurni());
+                sensor->setAttacchiPerTurno(updatedSensore->getAttacchiPerTurno());
+                sensor->setRecordDanniPerTurno(updatedSensore->getRecordDanniPerTurno());
+
+                // Optionally, refresh the display or other necessary actions
+                break;
+            }
+        }
+}
+
+void content::addSensore(sensoreDanno* sensor) {
+    sensors.push_back(sensor);
 }
