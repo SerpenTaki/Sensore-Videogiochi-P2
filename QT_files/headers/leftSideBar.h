@@ -24,6 +24,7 @@ public slots:
     void eseguiRicerca(const QString& text);
     void aggiungiSensoreToList(sensoreDanno* sensore);
     void eliminaSensore(sensoreDanno* sensore);
+    void salvaSensoreXML();
 signals:
     void sensoreSelezionato(sensoreDanno* sensore);
 };

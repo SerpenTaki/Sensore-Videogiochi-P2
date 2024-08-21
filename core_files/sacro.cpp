@@ -69,7 +69,7 @@ double sacro::calcolaDanno() {
   }
   updateLimitbreak();
   if(checkLimit() == true){
-    nDanni = 10000;
+    nDanni = nDanni * 33; //valore simbolico
     cout << "Hai superato la limit fai un mega danno" << endl;
     limitbreak = 0; //reset della limit
   }
@@ -107,29 +107,35 @@ vector<int> sacro::getValoriLimitBar() {
   return result;
 }
 
-string sacro::toXML() const {
-  std::ostringstream oss;
-  oss << "<sacro>\n";
-  oss << "  <nome>" << getNome() << "</nome>\n";
-  oss << "  <danno_base>" << getDanno() << "</danno_base>\n";
-  oss << "  <numero_turni>" << getAttacchiPerTurno().size() << "</numero_turni>\n";
-  oss << "  <lvFede>" << getLvFede() << "</lvFede>\n";
-  oss << "  <limitbreak>" << getlimitBreak() << "</limitbreak>\n";
+bool sacro::toXML(const std::string& filename) const {
+  std::ofstream file(filename);
+  if(!file.is_open()){
+    return false;
+  }
 
-  oss << "  <danni_per_turno>\n";
+  file << "<sacro>\n";
+  file << "  <nome>" << getNome() << "</nome>\n";
+  file << "  <danno_base>" << getDanno() << "</danno_base>\n";
+  file << "  <numero_turni>" << getAttacchiPerTurno().size() << "</numero_turni>\n";
+  file << "  <lvFede>" << getLvFede() << "</lvFede>\n";
+  file << "  <limitbreak>" << getlimitBreak() << "</limitbreak>\n";
+
+  file << "  <danni_per_turno>\n";
   for (double danno : getAttacchiPerTurno()) {
-    oss << "    <danno>" << danno << "</danno>\n";
+    file << "    <danno>" << danno << "</danno>\n";
   }
-  oss << "  </danni_per_turno>\n";
+  file << "  </danni_per_turno>\n";
 
-  oss << "  <limitBar>\n";
+  file << "  <limitBar>\n";
   for (int limit : limitBar) {
-    oss << "    <limit>" << limit << "</limit>\n";
+    file << "    <limit>" << limit << "</limit>\n";
   }
-  oss << "  </limitBar>\n";
+  file << "  </limitBar>\n";
 
-  oss << "</sacro>\n";
-  return oss.str();
+  file << "</sacro>\n";
+
+  file.close();
+  return true;
 }
 
 void sacro::accept(Visitor* v){

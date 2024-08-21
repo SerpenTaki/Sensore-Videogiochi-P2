@@ -2,11 +2,12 @@
 #define SENSOREDANNO_H
 
 // #include <iostream>
-#include <string>
-#include <vector>
-#include <iostream>
-#include <sstream>
-#include <random>
+#include<string>
+#include<vector>
+#include<iostream>
+#include<sstream>
+#include<fstream>
+#include<random>
 #include"visitor.h"
 
 using std::string;
@@ -49,7 +50,7 @@ public:
   // metodi virtuali puri
   virtual double calcolaDanno()=0;
   virtual double getHit() =0;
-  virtual string toXML() const =0;
+  virtual bool toXML(const std::string& filename) const =0;
 
   virtual void accept(Visitor* v) = 0;
 };

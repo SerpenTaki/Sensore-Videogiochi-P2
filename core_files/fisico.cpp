@@ -51,24 +51,30 @@ double fisico::calcolaDanno() { // assestante
     return nDanni;
 }
 
-string fisico::toXML() const{
-  std::ostringstream oss;
-  oss << "<fisico>\n";
-  oss << "  <nome>" << getNome() << "</nome>\n";
-  oss << "  <danno_base>" << getDanno() << "</danno_base>\n";
-  oss << "  <numero_turni>" << getAttacchiPerTurno().size() << "</numero_turni>\n";
-  oss << "  <affilatura>" << affilatura << "</affilatura>\n";
-  oss << "  <attacchi_per_turno>" << getAtt() << "</attacchi_per_turno>\n";
-    
-  // Aggiungiamo i dati del vettore rDPT (se esiste)
-  oss << "  <danni_per_turno>\n";
-  for (const auto& danno : getAttacchiPerTurno()) {
-      oss << "    <danno>" << danno << "</danno>\n";
-  }
-  oss << "  </danni_per_turno>\n";
+bool fisico::toXML(const std::string& filename) const {
+    std::ofstream file(filename);  // Apertura del file in modalità scrittura
+    if (!file.is_open()) {         // Controllo se il file è stato aperto correttamente
+        return false;              // Restituisce false se il file non è stato aperto
+    }
 
-  oss << "</fisico>";
-  return oss.str();
+    file << "<fisico>\n";
+    file << "  <nome>" << getNome() << "</nome>\n";
+    file << "  <danno_base>" << getDanno() << "</danno_base>\n";
+    file << "  <numero_turni>" << getAttacchiPerTurno().size() << "</numero_turni>\n";
+    file << "  <affilatura>" << affilatura << "</affilatura>\n";
+    file << "  <attacchi_per_turno>" << getAtt() << "</attacchi_per_turno>\n";
+    
+    // Aggiunta dei dati del vettore rDPT (se esiste)
+    file << "  <danni_per_turno>\n";
+    for (const auto& danno : getAttacchiPerTurno()) {
+        file << "    <danno>" << danno << "</danno>\n";
+    }
+    file << "  </danni_per_turno>\n";
+
+    file << "</fisico>";
+
+    file.close();  // Chiudi il file dopo aver scritto
+    return true;   // Restituisce true per indicare il successo dell'operazione
 }
 
 void fisico::accept(Visitor* v) {

@@ -31,6 +31,7 @@ leftSideBar::leftSideBar(content* contentWidget, QWidget* parent)
         }
     });
 
+    connect(salvaSensoreBottone, &QPushButton::clicked, this, &leftSideBar::salvaSensoreXML);
     
 }
 
@@ -69,6 +70,30 @@ void leftSideBar::eliminaSensore(sensoreDanno* sensore) {
     }
 }
 
+void leftSideBar::salvaSensoreXML() {
+    // Verifica se c'è un sensore selezionato
+    QListWidgetItem* selectedItem = sensoreListLabel->currentItem();
+    if (selectedItem) {
+        QString nomeSensore = selectedItem->text();
 
-
-
+        // Trova il sensore corrispondente
+        for (auto sensore : *sensoreList) {
+            if (QString::fromStdString(sensore->getNome()) == nomeSensore) {
+                // Chiedi all'utente dove salvare il file
+                QString fileName = QFileDialog::getSaveFileName(this, tr("Salva Sensore"), "",
+                                                                tr("XML Files (*.xml);;All Files (*)"));
+                if (!fileName.isEmpty()) {
+                    // Salva il sensore in XML e controlla il successo dell'operazione
+                    if (sensore->toXML(fileName.toStdString())) {
+                        QMessageBox::information(this, "Salvataggio", "Sensore salvato con successo!");
+                    } else {
+                        QMessageBox::warning(this, "Errore", "Impossibile salvare il sensore!");
+                    }
+                }
+                return;
+            }
+        }
+    } else {
+        QMessageBox::warning(this, "Attenzione", "Nessun sensore selezionato!");
+    }
+}
