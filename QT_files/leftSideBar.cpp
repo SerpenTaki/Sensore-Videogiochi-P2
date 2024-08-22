@@ -10,7 +10,6 @@ leftSideBar::leftSideBar(content* contentWidget, QWidget* parent)
     salvaSensoreBottone = new QPushButton("Salva Sensore");
     searchBox = new QLineEdit();
     searchBox->setPlaceholderText("Cerca sensore...");
-    sensoreList = new vector<sensoreDanno*>; // Inizializza la lista dei sensori
     sensoreListLabel = new QListWidget();
 
 
@@ -23,12 +22,7 @@ leftSideBar::leftSideBar(content* contentWidget, QWidget* parent)
     connect(aggiungiSensoreBottone, &QPushButton::clicked, this, &leftSideBar::stampaSelSensore);
     connect(searchBox, &QLineEdit::textChanged, this, &leftSideBar::eseguiRicerca);
     connect(sensoreListLabel, &QListWidget::itemClicked, [=](QListWidgetItem* item) {
-        vector<sensoreDanno*>::iterator i;
-        for(i = sensoreList->begin(); i != sensoreList->end(); ++i){
-            if(QString::fromStdString((*i)->getNome()) == item->text()){
-                emit sensoreSelezionato(*i);
-            }
-        }
+        emit sensoreSelezionato(item->text().toStdString());
     });
 
     connect(salvaSensoreBottone, &QPushButton::clicked, this, &leftSideBar::salvaSensoreXML);
@@ -39,13 +33,12 @@ void leftSideBar::stampaSelSensore() { //fa apparire la selezione del sensore
     aggiungiSensore* dialog = new aggiungiSensore(this);
 
     connect(dialog, &aggiungiSensore::sensoreAggiuntoStats, this, &leftSideBar::aggiungiSensoreToList);
-    connect(dialog, &aggiungiSensore::sensoreAggiuntoStats, contentWidget, &content::aggiungiSensoreAlContenuto);
+    connect(dialog, &aggiungiSensore::sensoreAggiuntoStats, contentWidget, &content::aggiungiSensoreAMappa);
 
     dialog->exec(); // Mostra il dialogo come modale
 }
 
 void leftSideBar::aggiungiSensoreToList(sensoreDanno* sensore) {
-    sensoreList->push_back(sensore);
     sensoreListLabel->addItem(QString::fromStdString(sensore->getNome()));
 
 }
@@ -58,7 +51,7 @@ void leftSideBar::eseguiRicerca(const QString& text) {
 }
 
 void leftSideBar::eliminaSensore(sensoreDanno* sensore) {
-    QList<QListWidgetItem*> items = sensoreListLabel->findItems(QString::fromStdString(sensore->getNome()), Qt::MatchExactly);
+  /*  QList<QListWidgetItem*> items = sensoreListLabel->findItems(QString::fromStdString(sensore->getNome()), Qt::MatchExactly);
     if (!items.empty()) {
         delete items.first();  // Rimuovi l'elemento dalla QListWidget
         for(vector<sensoreDanno*>::iterator i = sensoreList->begin(); i != sensoreList->end(); ++i){
@@ -67,11 +60,11 @@ void leftSideBar::eliminaSensore(sensoreDanno* sensore) {
                 i--;
             }
         }
-    }
+    }*/
 }
 
 void leftSideBar::salvaSensoreXML() {
-    // Verifica se c'è un sensore selezionato
+   /* // Verifica se c'è un sensore selezionato
     QListWidgetItem* selectedItem = sensoreListLabel->currentItem();
     if (selectedItem) {
         QString nomeSensore = selectedItem->text();
@@ -95,11 +88,11 @@ void leftSideBar::salvaSensoreXML() {
         }
     } else {
         QMessageBox::warning(this, "Attenzione", "Nessun sensore selezionato!");
-    }
+    }*/
 }
 
 void leftSideBar::updateSensore(sensoreDanno* updatedSensore) {
-    if (!updatedSensore) return;
+   /* if (!updatedSensore) return;
 
     for (size_t i = 0; i < sensoreList->size(); ++i) {
         sensoreDanno* sensor = (*sensoreList)[i];
@@ -118,5 +111,5 @@ void leftSideBar::updateSensore(sensoreDanno* updatedSensore) {
             }
             break;
         }
-    }
+    }*/
 }

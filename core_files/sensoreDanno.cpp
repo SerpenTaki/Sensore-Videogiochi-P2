@@ -2,7 +2,9 @@
 #include <random>
 
 sensoreDanno::sensoreDanno(string n, double d, int nT, int nA)
-: nome(n), danno(d), nTurni(nT), nAtt(nA) { }
+: nome(n), danno(d), nTurni(nT), nAtt(nA) {
+  recordDanniPerTurno.resize(nT);
+}
 
 sensoreDanno::sensoreDanno(string n, double d, int nT, int nA, vector<double> rDPT)
 : nome(n), danno(d), nTurni(nT), nAtt(nA), recordDanniPerTurno(rDPT) { }

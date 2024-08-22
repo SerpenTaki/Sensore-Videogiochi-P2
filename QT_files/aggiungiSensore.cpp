@@ -55,7 +55,7 @@ aggiungiSensore::aggiungiSensore(QWidget* parent) : QDialog(parent) {
     AttPerTurno->setSingleStep(1);
     AttPerTurno->setValue(1);
     nuovoSens->addWidget(AttPerTurno);
-    conferma = new QPushButton("Crea Sensore");
+    conferma = new QPushButton("Conferma");
     annulla = new QPushButton("Annulla");
     nuovoSens->addWidget(conferma);
     nuovoSens->addWidget(annulla);
@@ -126,7 +126,7 @@ void aggiungiSensore::onRadioButtonToggled() {
 }
 
 void aggiungiSensore::confermaClicked() {
-    QString nomeSensoreQString = nomeSensoreInserimento->text();
+    QString nomeSensoreQString = nomeSensoreInserimento->text().trimmed();
     std::string nomeSensore = nomeSensoreQString.toStdString(); // Converti QString in std::string
 
     sensoreDanno* sensore = nullptr;

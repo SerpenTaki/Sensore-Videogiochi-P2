@@ -89,7 +89,7 @@ bool magico::toXML(const std::string& filename) const{
   }
   file << "  </danni_per_turno>\n";
 
-  file << "</fisico>";
+  file << "</magico>";
   
   file.close();
   return true;

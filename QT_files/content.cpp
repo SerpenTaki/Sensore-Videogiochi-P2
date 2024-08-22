@@ -27,33 +27,40 @@ sensoreDanno* content::getSelectedSensore() const {
     return sensore;
 }
 
-void content::aggiungiSensoreAlContenuto(sensoreDanno* nuovoSensore) {
-    if (!nuovoSensore) {
+void content::aggiungiSensoreAMappa(sensoreDanno* sensore){
+    cout << sensore->getNome() << " Aggiunto in memoria" << endl;
+    mapSensor[sensore->getNome()] = sensore;
+}
+
+void content::aggiungiSensoreAlContenuto(string sensoreName) {
+    cout << sensoreName << "debug2" << endl;
+    sensore = mapSensor[sensoreName];
+    if(!sensore){
         return;
     }
 
     QLayoutItem* item; //resetta la visualizzazione alla selezione del sensore
-    while ((item = layout()->takeAt(0)) != 0) {
-        delete item->widget();
-        delete item;
+    while ((item = layout()->takeAt(0)) != nullptr) {
+        if(item->widget()){
+            delete item->widget();
+        }
+     delete item;
     }
 
     //QLabel* nuovoSensoreLabel = new QLabel("Sensore creato: " + QString::fromStdString(nuovoSensore->getNome()), this);
 
     ContentVisitor* visitor = new ContentVisitor();
-    nuovoSensore->accept(visitor);
+    sensore->accept(visitor);
     cout << "Debug";
     QWidget* visitorWidget = visitor->returnQWidget();
     if (visitorWidget) {
-        center->addWidget(visitorWidget);
+       center->addWidget(visitorWidget);
     }
 
-    if(nuovoSensore != nullptr){
-        inizializzaChart();
-        //displayVector(nuovoSensore);
+    if(sensore != nullptr){
+        //inizializzaChart();
+        displayVector(sensore);
     }
-
-    sensore = nuovoSensore; 
 }
 
 void content::inizializzaChart() {
@@ -86,15 +93,16 @@ void content::inizializzaChart() {
 }
 
 void content::displayVector(sensoreDanno *sensore){
-    if (!series) {
+   // if (!series) {
         inizializzaChart();
-    }
+    //}
     series->clear();
     if (sensore) {
-        auto valori = (sensore)->getRecordDanniPerTurno(); //non so perchè non mi displaya i valori giusti debug da fare....
+        auto valori = (sensore)->getRecordDanniPerTurno();
         for (size_t it = 0; it <= valori.size(); ++it) {
             series->append((it), valori[it]);
         }
+        cout << "log1" << endl;
         auto max_danno = std::max_element(valori.begin(), valori.end());
         cout << "il valore massimo è: " << *max_danno << endl;
         axisY->setRange(0, static_cast<double>(*max_danno));
@@ -111,7 +119,7 @@ void content::avviaSimulazione(sensoreDanno* sensore){
     else
         QMessageBox::warning(this, "Errore", "Sensore non valido.");
 }
-
+/*
 void content::updateSensore(sensoreDanno* updatedSensore) {
         if (!updatedSensore) return;
 
@@ -132,4 +140,4 @@ void content::updateSensore(sensoreDanno* updatedSensore) {
 
 void content::addSensore(sensoreDanno* sensor) {
     sensors.push_back(sensor);
-}
+}*/

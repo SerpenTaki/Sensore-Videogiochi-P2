@@ -13,7 +13,6 @@ private:
     QPushButton* importaSensoreBottone;
     QPushButton* salvaSensoreBottone;
     QLineEdit* searchBox;
-    vector<sensoreDanno*>* sensoreList;
     QListWidget* sensoreListLabel;
     content* contentWidget;
 public:
@@ -27,7 +26,7 @@ public slots:
     void salvaSensoreXML();
     void updateSensore(sensoreDanno* updatedSensore);
 signals:
-    void sensoreSelezionato(sensoreDanno* sensore);
+    void sensoreSelezionato(string sensorName);
 };
 
 #endif // LEFTSIDEBAR_H
