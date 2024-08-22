@@ -50,7 +50,7 @@ void leftSideBar::eseguiRicerca(const QString& text) {
     }
 }
 
-void leftSideBar::eliminaSensore(sensoreDanno* sensore) {
+void leftSideBar::eliminaSensore(sensoreDanno* sensore) {//in content e left
   /*  QList<QListWidgetItem*> items = sensoreListLabel->findItems(QString::fromStdString(sensore->getNome()), Qt::MatchExactly);
     if (!items.empty()) {
         delete items.first();  // Rimuovi l'elemento dalla QListWidget
@@ -91,7 +91,7 @@ void leftSideBar::salvaSensoreXML() {
     }*/
 }
 
-void leftSideBar::updateSensore(sensoreDanno* updatedSensore) {
+void leftSideBar::updateSensore(sensoreDanno* updatedSensore) {//sia in left che in right
    /* if (!updatedSensore) return;
 
     for (size_t i = 0; i < sensoreList->size(); ++i) {

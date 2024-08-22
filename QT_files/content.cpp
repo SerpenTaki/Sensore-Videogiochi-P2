@@ -38,25 +38,7 @@ void content::aggiungiSensoreAlContenuto(string sensoreName) {
     if(!sensore){
         return;
     }
-
-    QLayoutItem* item; //resetta la visualizzazione alla selezione del sensore
-    while ((item = layout()->takeAt(0)) != nullptr) {
-        if(item->widget()){
-            delete item->widget();
-        }
-     delete item;
-    }
-
-    //QLabel* nuovoSensoreLabel = new QLabel("Sensore creato: " + QString::fromStdString(nuovoSensore->getNome()), this);
-
-    ContentVisitor* visitor = new ContentVisitor();
-    sensore->accept(visitor);
-    cout << "Debug";
-    QWidget* visitorWidget = visitor->returnQWidget();
-    if (visitorWidget) {
-       center->addWidget(visitorWidget);
-    }
-
+    
     if(sensore != nullptr){
         //inizializzaChart();
         displayVector(sensore);
@@ -93,9 +75,24 @@ void content::inizializzaChart() {
 }
 
 void content::displayVector(sensoreDanno *sensore){
-   // if (!series) {
-        inizializzaChart();
-    //}
+    QLayoutItem* item; //resetta la visualizzazione alla selezione del sensore
+    while ((item = layout()->takeAt(0)) != nullptr) {
+        if(item->widget()){
+            delete item->widget();
+        }
+        delete item;
+    }
+    
+    ContentVisitor* visitor = new ContentVisitor();
+    sensore->accept(visitor);
+    cout << "Debug";
+    QWidget* visitorWidget = visitor->returnQWidget();
+    if (visitorWidget) {
+       center->addWidget(visitorWidget);
+    }
+    
+    
+    inizializzaChart();
     series->clear();
     if (sensore) {
         auto valori = (sensore)->getRecordDanniPerTurno();
@@ -141,3 +138,7 @@ void content::updateSensore(sensoreDanno* updatedSensore) {
 void content::addSensore(sensoreDanno* sensor) {
     sensors.push_back(sensor);
 }*/
+
+// sensoreDanno* getsensoreByName(nomeSensore string){
+//      mapSensore[nomeSensore];
+//}
