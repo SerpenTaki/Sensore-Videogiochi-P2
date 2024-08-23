@@ -128,25 +128,35 @@ void content::avviaSimulazione(sensoreDanno* sensore){
     else
         QMessageBox::warning(this, "Errore", "Sensore non valido.");
 }
-/*
+
 void content::updateSensore(sensoreDanno* updatedSensore) {
-        if (!updatedSensore) return;
+    if (!updatedSensore) {
+        QMessageBox::warning(this, "Errore", "Sensore non valido.");
+        return;
+    }
 
-        for (sensoreDanno* sensor : sensors) {
-            if (sensor->getNome() == updatedSensore->getNome()) {
-                // Update attributes
-                sensor->setNome(updatedSensore->getNome());
-                sensor->setDanno(updatedSensore->getDanno());
-                sensor->setNTurni(updatedSensore->getNTurni());
-                sensor->setAttacchiPerTurno(updatedSensore->getAttacchiPerTurno());
-                sensor->setRecordDanniPerTurno(updatedSensore->getRecordDanniPerTurno());
+    auto it = mapSensor.find(updatedSensore->getNome());
+    if (it != mapSensor.end()) {
+        // Aggiorna l'oggetto sensore esistente nella mappa
+        sensoreDanno* existingSensore = it->second;
+        existingSensore->setNome(updatedSensore->getNome());
+        existingSensore->setDanno(updatedSensore->getDanno());
+        existingSensore->setNTurni(updatedSensore->getNTurni());
+        existingSensore->setAttacchiPerTurno(updatedSensore->getAttacchiPerTurno());
+        existingSensore->setRecordDanniPerTurno(updatedSensore->getRecordDanniPerTurno());
 
-                // Optionally, refresh the display or other necessary actions
-                break;
-            }
+        // Opzionalmente, aggiorna la visualizzazione del sensore se è quello attualmente selezionato
+        if (sensore && sensore->getNome() == updatedSensore->getNome()) {
+            displayVector(existingSensore);
         }
+        
+        cout << "Sensore aggiornato: " << updatedSensore->getNome() << endl;
+    } else {
+        QMessageBox::warning(this, "Errore", "Sensore non trovato nella mappa.");
+    }
 }
 
+/*
 void content::addSensore(sensoreDanno* sensor) {
     sensors.push_back(sensor);
 }*/
@@ -205,3 +215,7 @@ void content::addSensore(sensoreDanno* sensor) {
         }
     }*/
 //}
+
+std::map<string, sensoreDanno*> content::getMapSensor(){
+    return mapSensor;
+}

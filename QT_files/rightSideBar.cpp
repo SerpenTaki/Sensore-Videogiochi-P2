@@ -29,10 +29,10 @@ void rightSideBar::modificaSensore() {
     sensoreDanno* sensore = cont->getSelectedSensore();
     if (sensore) {
         class modificaSensore dialog(this, sensore); 
-       /* if (dialog.exec() == QDialog::Accepted) {
+        if (dialog.exec() == QDialog::Accepted) {
             cont->updateSensore(sensore); 
             leftSide->updateSensore(sensore); 
-        }*/
+        }
     } else {
         QMessageBox::warning(this, "Errore", "Nessun sensore selezionato per la modifica.");
     }

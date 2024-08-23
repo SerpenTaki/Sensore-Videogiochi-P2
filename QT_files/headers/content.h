@@ -37,6 +37,8 @@ public:
     void displayVector(sensoreDanno* sensore);
     void avviaSimulazione(sensoreDanno* sensore);
     void aggiungiSensoreAMappa(sensoreDanno* sensore);
+    void updateSensore(sensoreDanno* updatedSensore);
+    std::map<string, sensoreDanno*> getMapSensor();
 public slots:
     void aggiungiSensoreAlContenuto(string sensoreName);
 };
