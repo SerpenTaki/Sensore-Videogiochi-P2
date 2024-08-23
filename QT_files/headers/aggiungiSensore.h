@@ -21,7 +21,6 @@ private:
     QSpinBox* PAffilatura;
     QSpinBox* SLvMagia;
     QSpinBox* SLvFede;
-    vector<string> setNameSensori;
 public:
     QPushButton* conferma;
     QLineEdit* nomeSensoreInserimento;

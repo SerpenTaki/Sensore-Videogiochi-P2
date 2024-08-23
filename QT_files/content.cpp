@@ -12,15 +12,27 @@ content::content(QWidget* parent)
 }
 
 void content::eliminaSensore(sensoreDanno* sensore) {
-   if (sensore) {
-        cout << "è stato eliminato:\t" << sensore->getNome() << endl;
+    if (sensore) {
+        cout << "È stato eliminato:\t" << sensore->getNome() << endl;
+
+        // Pulire la visualizzazione alla selezione del sensore
+        QLayoutItem* item;
+        while ((item = layout()->takeAt(0)) != nullptr) {
+            if (item->widget()) {
+                delete item->widget();  // Elimina il widget
+            }
+            delete item;  // Elimina l'elemento di layout
+        }
+        // Rimuovi il sensore dalla mappa
+        auto it = mapSensor.find(sensore->getNome());
+        if (it != mapSensor.end()) {
+            delete it->second;  // Distruggi l'oggetto sensore
+            mapSensor.erase(it);  // Rimuovi il sensore dalla mappa
+        }
     }
-    QLayoutItem* item; //pulisci la visualizzazione alla selezione del sensore
-    while ((item = layout()->takeAt(0)) != 0) {
-        delete item->widget();
-        delete item;
-    }
+    return;
 }
+
 
 
 sensoreDanno* content::getSelectedSensore() const {
@@ -38,7 +50,7 @@ void content::aggiungiSensoreAlContenuto(string sensoreName) {
     if(!sensore){
         return;
     }
-    
+
     if(sensore != nullptr){
         //inizializzaChart();
         displayVector(sensore);
@@ -141,4 +153,55 @@ void content::addSensore(sensoreDanno* sensor) {
 
 // sensoreDanno* getsensoreByName(nomeSensore string){
 //      mapSensore[nomeSensore];
+//}
+
+//void leftSideBar::salvaSensoreXML() {
+   /* // Verifica se c'è un sensore selezionato
+    QListWidgetItem* selectedItem = sensoreListLabel->currentItem();
+    if (selectedItem) {
+        QString nomeSensore = selectedItem->text();
+
+        // Trova il sensore corrispondente
+        for (auto sensore : *sensoreList) {
+            if (QString::fromStdString(sensore->getNome()) == nomeSensore) {
+                // Chiedi all'utente dove salvare il file
+                QString fileName = QFileDialog::getSaveFileName(this, tr("Salva Sensore"), "",
+                                                                tr("XML Files (*.xml);;All Files (*)"));
+                if (!fileName.isEmpty()) {
+                    // Salva il sensore in XML e controlla il successo dell'operazione
+                    if (sensore->toXML(fileName.toStdString())) {
+                        QMessageBox::information(this, "Salvataggio", "Sensore salvato con successo!");
+                    } else {
+                        QMessageBox::warning(this, "Errore", "Impossibile salvare il sensore!");
+                    }
+                }
+                return;
+            }
+        }
+    } else {
+        QMessageBox::warning(this, "Attenzione", "Nessun sensore selezionato!");
+    }*/
+//}
+
+//void leftSideBar::updateSensore(sensoreDanno* updatedSensore) {//sia in left che in right
+   /* if (!updatedSensore) return;
+
+    for (size_t i = 0; i < sensoreList->size(); ++i) {
+        sensoreDanno* sensor = (*sensoreList)[i];
+        if (sensor->getNome() == updatedSensore->getNome()) {
+            // Update the sensor attributes
+            sensor->setNome(updatedSensore->getNome());
+            sensor->setDanno(updatedSensore->getDanno());
+            sensor->setNTurni(updatedSensore->getNTurni());
+            sensor->setAttacchiPerTurno(updatedSensore->getAttacchiPerTurno());
+            sensor->setRecordDanniPerTurno(updatedSensore->getRecordDanniPerTurno());
+
+            // Update the QListWidget display
+            sensoreListLabel->clear();
+            for (const auto& s : *sensoreList) {
+                sensoreListLabel->addItem(QString::fromStdString(s->getNome()));
+            }
+            break;
+        }
+    }*/
 //}
