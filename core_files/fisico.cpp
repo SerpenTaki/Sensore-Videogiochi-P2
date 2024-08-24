@@ -64,12 +64,13 @@ bool fisico::toXML(const std::string& filename) const {
     file << "  <affilatura>" << affilatura << "</affilatura>\n";
     file << "  <attacchi_per_turno>" << getAtt() << "</attacchi_per_turno>\n";
     
-    // Aggiunta dei dati del vettore rDPT (se esiste)
+       // Aggiunta dei dati del vettore recordDanniPerTurno
     file << "  <danni_per_turno>\n";
-    for (const auto& danno : getAttacchiPerTurno()) {
+    for (const auto& danno : getRecordDanniPerTurno()) {
         file << "    <danno>" << danno << "</danno>\n";
     }
     file << "  </danni_per_turno>\n";
+
 
     file << "</fisico>";
 
