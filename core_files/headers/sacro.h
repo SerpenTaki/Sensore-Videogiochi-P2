@@ -22,7 +22,7 @@ public:
   
   bool checkLimit();
   void updateLimitbreak();
-  vector<int> getValoriLimitBar();
+  vector<int> getValoriLimitBar() const;
   bool toXML(const std::string& filename) const override;
 
   void accept(Visitor* v) override;

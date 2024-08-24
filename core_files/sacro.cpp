@@ -95,16 +95,12 @@ void sacro::updateLimitbreak() {
       randomValue = dis(gen);
     }
     limitbreak += randomValue;
+    limitBar.push_back(limitbreak);
 }
 
 
-vector<int> sacro::getValoriLimitBar() {
-  vector<int> result;
-  for (auto i = limitBar.begin(); i != limitBar.end(); i++) {
-    int limitPerTurno = *i + limitbreak;
-    result.push_back(limitPerTurno);
-  }
-  return result;
+vector<int> sacro::getValoriLimitBar() const{
+  return limitBar;
 }
 
 bool sacro::toXML(const std::string& filename) const {
@@ -121,13 +117,13 @@ bool sacro::toXML(const std::string& filename) const {
   file << "  <limitbreak>" << getlimitBreak() << "</limitbreak>\n";
 
   file << "  <danni_per_turno>\n";
-  for (double danno : getAttacchiPerTurno()) {
+  for (const auto& danno : getRecordDanniPerTurno()) {
     file << "    <danno>" << danno << "</danno>\n";
   }
   file << "  </danni_per_turno>\n";
 
   file << "  <limitBar>\n";
-  for (int limit : limitBar) {
+  for (const auto& limit : getValoriLimitBar()) {
     file << "    <limit>" << limit << "</limit>\n";
   }
   file << "  </limitBar>\n";
@@ -140,4 +136,53 @@ bool sacro::toXML(const std::string& filename) const {
 
 void sacro::accept(Visitor* v){
   v->visitSacro(this);
+}
+
+
+#include <fstream>
+#include <sstream>
+#include <iostream>
+#include "sacro.h"
+
+bool sacro::fromXML(const std::string& filename) {
+    std::ifstream file(filename);
+    if (!file.is_open()) {
+        std::cerr << "Errore nell'aprire il file XML." << std::endl;
+        return false;
+    }
+
+    std::string line;
+    while (std::getline(file, line)) {
+        std::istringstream iss(line);
+        std::string tag, value;
+        
+        if (line.find("<nome>") != std::string::npos) {
+            tag = "nome";
+            value = line.substr(line.find("<" + tag + ">") + tag.size() + 2, line.find("</" + tag + ">") - tag.size() - 2);
+            setNome(value);
+        } else if (line.find("<danno_base>") != std::string::npos) {
+            tag = "danno_base";
+            value = line.substr(line.find("<" + tag + ">") + tag.size() + 2, line.find("</" + tag + ">") - tag.size() - 2);
+            setDanno(std::stod(value));
+        } else if (line.find("<lvFede>") != std::string::npos) {
+            tag = "lvFede";
+            value = line.substr(line.find("<" + tag + ">") + tag.size() + 2, line.find("</" + tag + ">") - tag.size() - 2);
+            lvFede = std::stoi(value);
+        } else if (line.find("<limitbreak>") != std::string::npos) {
+            tag = "limitbreak";
+            value = line.substr(line.find("<" + tag + ">") + tag.size() + 2, line.find("</" + tag + ">") - tag.size() - 2);
+            limitbreak = std::stoi(value);
+        } else if (line.find("<limit>") != std::string::npos) {
+            tag = "limit";
+            value = line.substr(line.find("<" + tag + ">") + tag.size() + 2, line.find("</" + tag + ">") - tag.size() - 2);
+            limitBar.push_back(std::stoi(value));
+        } else if (line.find("<danno>") != std::string::npos) {
+            tag = "danno";
+            value = line.substr(line.find("<" + tag + ">") + tag.size() + 2, line.find("</" + tag + ">") - tag.size() - 2);
+            recordDanniPerTurno.push_back(std::stod(value));
+        }
+    }
+
+    file.close();
+    return true;
 }

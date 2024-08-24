@@ -84,7 +84,7 @@ bool magico::toXML(const std::string& filename) const{
     
   // Aggiungiamo i dati del vettore rDPT (se esiste)
   file << "  <danni_per_turno>\n";
-  for (const auto& danno : getAttacchiPerTurno()) {
+  for (const auto& danno : getRecordDanniPerTurno()) {
       file << "    <danno>" << danno << "</danno>\n";
   }
   file << "  </danni_per_turno>\n";
