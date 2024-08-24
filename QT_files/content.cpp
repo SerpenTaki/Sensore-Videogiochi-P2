@@ -117,7 +117,7 @@ void content::displayVector(sensoreDanno *sensore){
         axisY->setRange(0, static_cast<double>(*max_danno));
         axisX->setRange(0, static_cast<double>(valori.size()));
         chart->update();
-        if(dynamic_cast<sacro*>(sensore)){
+       /* if(dynamic_cast<sacro*>(sensore)){
             auto valoriLimit = dynamic_cast<sacro*>(sensore)->getValoriLimitBar();
             serieLimit = new QLineSeries();
             for(size_t it = 0; it <= valoriLimit.size(); ++it){
@@ -158,8 +158,7 @@ void content::displayVector(sensoreDanno *sensore){
             chart->update();
             center->addWidget(chartViewLimit);
             valoriLimit.clear();
-        }
-        valori.clear();
+        }*/
     } else {
         QMessageBox::warning(this, "Errore", "Sensore non valido.");
     }

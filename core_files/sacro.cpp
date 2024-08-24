@@ -100,6 +100,7 @@ void sacro::updateLimitbreak() {
 
 
 vector<int> sacro::getValoriLimitBar() const{
+  cout << "grandezza limit "<<limitBar.size() << endl;//bug
   return limitBar;
 }
 
