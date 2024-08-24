@@ -95,6 +95,48 @@ bool magico::toXML(const std::string& filename) const{
   return true;
 }
 
+bool magico::fromXML(const std::string& filename) {
+    std::ifstream file(filename);
+    if (!file.is_open()) {
+        std::cerr << "Errore nell'aprire il file XML." << std::endl;
+        return false;
+    }
+
+    std::string line;
+    while (std::getline(file, line)) {
+        std::istringstream iss(line);
+        std::string tag, value;
+        
+        if (line.find("<nome>") != std::string::npos) {
+            value = line.substr(line.find(">") + 1, line.find("</") - line.find(">") - 1);
+            setNome(value);
+        } else if (line.find("<danno_base>") != std::string::npos) {
+            value = line.substr(line.find(">") + 1, line.find("</") - line.find(">") - 1);
+            setDanno(std::stod(value));
+        } else if (line.find("<numero_turni>") != std::string::npos) {
+            value = line.substr(line.find(">") + 1, line.find("</") - line.find(">") - 1);
+            setNTurni(std::stoi(value));
+        } else if (line.find("<livello_magia>") != std::string::npos) {
+            value = line.substr(line.find(">") + 1, line.find("</") - line.find(">") - 1);
+            lvMagia = std::stoi(value);
+        } else if (line.find("<status>") != std::string::npos) {
+            value = line.substr(line.find(">") + 1, line.find("</") - line.find(">") - 1);
+            isInStatus = (value == "true");
+        } else if (line.find("<attacchi_per_turno>") != std::string::npos) {
+            // Assuming attacchi_per_turno is a single integer value; otherwise, you would need a different approach.
+            value = line.substr(line.find(">") + 1, line.find("</") - line.find(">") - 1);
+            setAttacchiPerTurno({std::stoi(value)});
+        } else if (line.find("<danno>") != std::string::npos) {
+            value = line.substr(line.find(">") + 1, line.find("</") - line.find(">") - 1);
+            getRecordDanniPerTurno().push_back(std::stod(value));
+        }
+    }
+
+    file.close();
+    return true;
+}
+
+
 void magico::accept(Visitor* v){
   v->visitMagico(this);
 }

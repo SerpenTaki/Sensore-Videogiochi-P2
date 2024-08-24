@@ -4,6 +4,16 @@
 #include "viewlib.h"
 #include"aggiungiSensore.h"
 #include"content.h"
+#include"core_files/headers/sensoreDanno.h"
+
+#include <QFile>
+#include <QFileDialog>
+#include <QMessageBox>
+#include <QXmlStreamReader>
+#include <QString>
+#include <QStringList>
+#include <QVector>
+#include <iostream>
 
 class leftSideBar : public QWidget {
     Q_OBJECT
@@ -24,7 +34,11 @@ public slots:
     void aggiungiSensoreToList(sensoreDanno* sensore);
     void eliminaSensore(sensoreDanno* sensore);
     void salvaSensoreXML();
+    std::vector<double> convertQListToStdVector(const QList<double>& list);
+    std::vector<int> convertQListToStdVector(const QList<int>& list);
+    void importaSensore();
     void updateSensore(sensoreDanno* updatedSensore);
+
 signals:
     void sensoreSelezionato(string sensorName);
 };

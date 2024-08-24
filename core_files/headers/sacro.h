@@ -24,6 +24,7 @@ public:
   void updateLimitbreak();
   vector<int> getValoriLimitBar() const;
   bool toXML(const std::string& filename) const override;
+  bool fromXML(const std::string& filename) override;
 
   void accept(Visitor* v) override;
   

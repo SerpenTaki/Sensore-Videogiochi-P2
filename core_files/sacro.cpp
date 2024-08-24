@@ -138,12 +138,6 @@ void sacro::accept(Visitor* v){
   v->visitSacro(this);
 }
 
-
-#include <fstream>
-#include <sstream>
-#include <iostream>
-#include "sacro.h"
-
 bool sacro::fromXML(const std::string& filename) {
     std::ifstream file(filename);
     if (!file.is_open()) {
@@ -154,35 +148,30 @@ bool sacro::fromXML(const std::string& filename) {
     std::string line;
     while (std::getline(file, line)) {
         std::istringstream iss(line);
-        std::string tag, value;
+        string tag, value;
         
-        if (line.find("<nome>") != std::string::npos) {
-            tag = "nome";
-            value = line.substr(line.find("<" + tag + ">") + tag.size() + 2, line.find("</" + tag + ">") - tag.size() - 2);
+        if (line.find("<nome>") != string::npos) {
+            value = line.substr(line.find(">") + 1, line.find("</") - line.find(">") - 1);
             setNome(value);
-        } else if (line.find("<danno_base>") != std::string::npos) {
-            tag = "danno_base";
-            value = line.substr(line.find("<" + tag + ">") + tag.size() + 2, line.find("</" + tag + ">") - tag.size() - 2);
+        } else if (line.find("<danno_base>") != string::npos) {
+            value = line.substr(line.find(">") + 1, line.find("</") - line.find(">") - 1);
             setDanno(std::stod(value));
-        } else if (line.find("<lvFede>") != std::string::npos) {
-            tag = "lvFede";
-            value = line.substr(line.find("<" + tag + ">") + tag.size() + 2, line.find("</" + tag + ">") - tag.size() - 2);
+        } else if (line.find("<lvFede>") != string::npos) {
+            value = line.substr(line.find(">") + 1, line.find("</") - line.find(">") - 1);
             lvFede = std::stoi(value);
-        } else if (line.find("<limitbreak>") != std::string::npos) {
-            tag = "limitbreak";
-            value = line.substr(line.find("<" + tag + ">") + tag.size() + 2, line.find("</" + tag + ">") - tag.size() - 2);
+        } else if (line.find("<limitbreak>") != string::npos) {
+            value = line.substr(line.find(">") + 1, line.find("</") - line.find(">") - 1);
             limitbreak = std::stoi(value);
-        } else if (line.find("<limit>") != std::string::npos) {
-            tag = "limit";
-            value = line.substr(line.find("<" + tag + ">") + tag.size() + 2, line.find("</" + tag + ">") - tag.size() - 2);
+        } else if (line.find("<limit>") != string::npos) {
+            value = line.substr(line.find(">") + 1, line.find("</") - line.find(">") - 1);
             limitBar.push_back(std::stoi(value));
-        } else if (line.find("<danno>") != std::string::npos) {
-            tag = "danno";
-            value = line.substr(line.find("<" + tag + ">") + tag.size() + 2, line.find("</" + tag + ">") - tag.size() - 2);
-            recordDanniPerTurno.push_back(std::stod(value));
+        } else if (line.find("<danno>") != string::npos) {
+            value = line.substr(line.find(">") + 1, line.find("</") - line.find(">") - 1);
+            getRecordDanniPerTurno().push_back(std::stod(value));
         }
     }
 
     file.close();
     return true;
 }
+

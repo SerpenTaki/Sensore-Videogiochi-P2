@@ -19,6 +19,7 @@ public:
   double calcolaDanno() override;
   double getHit() override;
   bool toXML(const std::string& filename) const override;
+  bool fromXML(const std::string& filename) override;
 
   void accept(Visitor* v) override;
 };
