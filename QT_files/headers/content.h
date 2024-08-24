@@ -26,9 +26,13 @@ private:
     QValueAxis *axisY;
     //per grafico
     /*QLineSeries::*/QLineSeries* series; //per inserire i dati
+    QLineSeries* serieLimit;
     /*QChart::*/QChart* chart; //crea chart per interagire con la serie
+    QChart* chartLimit;
     /*QChartView::*/QChartView* chartView; //per proiettare il grafico
+    QChartView* chartViewLimit;
     std::map<string, sensoreDanno*> mapSensor;
+
 public:
     explicit content(QWidget* parent = nullptr);
     void eliminaSensore(sensoreDanno* sensore);

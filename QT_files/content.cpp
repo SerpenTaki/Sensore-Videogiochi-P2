@@ -117,6 +117,49 @@ void content::displayVector(sensoreDanno *sensore){
         axisY->setRange(0, static_cast<double>(*max_danno));
         axisX->setRange(0, static_cast<double>(valori.size()));
         chart->update();
+        if(dynamic_cast<sacro*>(sensore)){
+            auto valoriLimit = dynamic_cast<sacro*>(sensore)->getValoriLimitBar();
+            serieLimit = new QLineSeries();
+            for(size_t it = 0; it <= valoriLimit.size(); ++it){
+                serieLimit->append((it), valoriLimit[it]);
+            }
+            chartLimit = new QChart();
+            chartLimit->legend()->hide();
+            chartLimit->addSeries(serieLimit);
+            chartLimit->setTitle("Valori Limit");
+
+            QValueAxis* axisTurni = new QValueAxis();
+            axisTurni->setRange(0, 5);
+            axisTurni->setLabelFormat("%d");        
+            axisTurni->setTitleText("Turni");
+            chartLimit->addAxis(axisTurni, Qt::AlignBottom);
+            serieLimit->attachAxis(axisTurni); 
+
+            QValueAxis* axisLimit = new QValueAxis();
+            axisLimit->setRange(0, 100);      
+            axisLimit->setLabelFormat("%d");      
+            axisLimit->setTitleText("Limit");
+            chartLimit->addAxis(axisLimit, Qt::AlignLeft);  
+            serieLimit->attachAxis(axisLimit); 
+
+
+            chartViewLimit = new QChartView(chartLimit);
+            chartViewLimit->setRenderHint(QPainter::Antialiasing);
+            //QSpacerItem* spacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding); // Adjust spacing here
+            //center->addWidget(spacer);
+            chartView->setMinimumSize(400, 300); // Imposta le dimensioni minime a 400x300
+            chartView->setMaximumSize(600, 400); // Imposta le dimensioni massime a 800x600
+            chartViewLimit->setMinimumSize(400, 300); // Imposta le dimensioni minime a 400x300
+            chartViewLimit->setMaximumSize(600, 400); // Imposta le dimensioni massime a 800x600
+
+            auto max_Limit = std::max_element(valoriLimit.begin(), valoriLimit.end());
+            axisLimit->setRange(0, static_cast<int>(*max_Limit));
+            axisTurni->setRange(0, static_cast<int>(valoriLimit.size()));
+            chart->update();
+            center->addWidget(chartViewLimit);
+            valoriLimit.clear();
+        }
+        valori.clear();
     } else {
         QMessageBox::warning(this, "Errore", "Sensore non valido.");
     }

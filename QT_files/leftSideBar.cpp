@@ -247,7 +247,7 @@ void leftSideBar::importaSensore() {
     file.close();
 
     if (sensore) {
-       // aggiungiSensoreToList(sensore);
+       aggiungiSensoreToList(sensore);
        contentWidget->aggiungiSensoreAMappa(sensore);
     }
 }
