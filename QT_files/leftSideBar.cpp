@@ -51,17 +51,14 @@ void leftSideBar::eseguiRicerca(const QString& text) {
     }
 }
 
-void leftSideBar::eliminaSensore(sensoreDanno* sensore) {//in content e left
-  /*  QList<QListWidgetItem*> items = sensoreListLabel->findItems(QString::fromStdString(sensore->getNome()), Qt::MatchExactly);
-    if (!items.empty()) {
-        delete items.first();  // Rimuovi l'elemento dalla QListWidget
-        for(vector<sensoreDanno*>::iterator i = sensoreList->begin(); i != sensoreList->end(); ++i){
-            if((*i)->getNome() == sensore->getNome()){
-                sensoreList->erase(i);
-                i--;
-            }
+void leftSideBar::eliminaSensore(string sensorName) {//in content e left
+    for (int i = 0; i < sensoreListLabel->count(); ++i) {
+        QListWidgetItem* item = sensoreListLabel->item(i);
+        if (item && item->text() == QString::fromStdString(sensorName)) {
+            delete sensoreListLabel->takeItem(i);
+            sensoreListLabel->repaint();
         }
-    }*/
+    }
 }
 
 void leftSideBar::salvaSensoreXML() {

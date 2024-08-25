@@ -32,7 +32,7 @@ public slots:
     void stampaSelSensore();
     void eseguiRicerca(const QString& text);
     void aggiungiSensoreToList(sensoreDanno* sensore);
-    void eliminaSensore(sensoreDanno* sensore);
+    void eliminaSensore(string sensorName);
     void salvaSensoreXML();
     std::vector<double> convertQListToStdVector(const QList<double>& list);
     std::vector<int> convertQListToStdVector(const QList<int>& list);

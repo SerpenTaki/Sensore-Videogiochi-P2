@@ -49,9 +49,8 @@ void rightSideBar::eliminaSensore() {
                                       QMessageBox::Yes|QMessageBox::No);
         if (reply == QMessageBox::Yes) {
             // Elimina il sensore dal contenuto
+            leftSide->eliminaSensore(sensore->getNome());
             cont->eliminaSensore(sensore);
-            // Rimuovi il sensore dalla lista di sinistra
-            leftSide->eliminaSensore(sensore);
         }
     } else {
         QMessageBox::warning(this, "Errore", "Nessun sensore selezionato per l'eliminazione.");

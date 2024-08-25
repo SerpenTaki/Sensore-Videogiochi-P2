@@ -9,7 +9,7 @@ sensoreDanno::sensoreDanno(string n, double d, int nT, int nA)
 sensoreDanno::sensoreDanno(string n, double d, int nT, int nA, vector<double> rDPT)
 : nome(n), danno(d), nTurni(nT), nAtt(nA), recordDanniPerTurno(rDPT) { }
 
-sensoreDanno::~sensoreDanno() {cout << "Distrutto" << nome << endl;} //ho notato che elimina sensore non distrugge il sensore alla fine
+sensoreDanno::~sensoreDanno() {cout << "Distrutto " << nome << endl;}
 
 int sensoreDanno::getNTurni() const{
   return nTurni;
