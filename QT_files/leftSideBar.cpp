@@ -56,7 +56,6 @@ void leftSideBar::eliminaSensore(string sensorName) {//in content e left
         QListWidgetItem* item = sensoreListLabel->item(i);
         if (item && item->text() == QString::fromStdString(sensorName)) {
             delete sensoreListLabel->takeItem(i);
-            sensoreListLabel->repaint();
         }
     }
 }
