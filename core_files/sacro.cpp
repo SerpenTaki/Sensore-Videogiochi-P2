@@ -114,6 +114,7 @@ bool sacro::toXML(const std::string& filename) const {
   file << "  <nome>" << getNome() << "</nome>\n";
   file << "  <danno_base>" << getDanno() << "</danno_base>\n";
   file << "  <numero_turni>" << getAttacchiPerTurno().size() << "</numero_turni>\n";
+  file << "  <attacchi_per_turno>" << getAtt() << "</attacchi_per_turno>\n";
   file << "  <lvFede>" << getLvFede() << "</lvFede>\n";
   file << "  <limitbreak>" << getlimitBreak() << "</limitbreak>\n";
 
