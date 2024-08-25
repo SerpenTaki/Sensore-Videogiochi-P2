@@ -21,6 +21,9 @@ public:
   bool toXML(const std::string& filename) const override;
   bool fromXML(const std::string& filename) override;
 
+  void setLvMagia(int lvM);
+  void setTheStatus(bool isInSta);
+
   void accept(Visitor* v) override;
 };
 

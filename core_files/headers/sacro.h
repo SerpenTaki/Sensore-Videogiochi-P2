@@ -26,6 +26,8 @@ public:
   bool toXML(const std::string& filename) const override;
   bool fromXML(const std::string& filename) override;
 
+  void setLvFede(int lvFede);
+
   void accept(Visitor* v) override;
   
 };

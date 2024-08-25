@@ -176,3 +176,7 @@ bool sacro::fromXML(const std::string& filename) {
     return true;
 }
 
+
+void sacro::setLvFede(int lvFede){
+  this->lvFede = lvFede;
+}

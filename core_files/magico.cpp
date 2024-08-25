@@ -140,3 +140,12 @@ bool magico::fromXML(const std::string& filename) {
 void magico::accept(Visitor* v){
   v->visitMagico(this);
 }
+
+
+  void magico::setLvMagia(int lvM){
+    lvMagia = lvM;
+  }
+
+  void magico::setTheStatus(bool isInSta){
+    isInStatus = isInSta;
+  }

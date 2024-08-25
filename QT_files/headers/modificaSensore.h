@@ -10,9 +10,7 @@ private:
     sensoreDanno* sensoreDaModificare;
 
 public:
-    modificaSensore(QWidget* parent = nullptr, sensoreDanno* sensoreDaModificare = nullptr);
-
-    void caricaDatiSensore();  // Funzione per caricare i dati del sensore esistente
+    modificaSensore(QWidget* parent, sensoreDanno* sensoreDaModificare);
     void confermaClicked();
 
 signals:
@@ -20,4 +18,4 @@ signals:
     void sensoreModificatoStats(sensoreDanno* sensoreModificato);
 };
 
-#endif // MODIFICASENSORE_H
+#endif

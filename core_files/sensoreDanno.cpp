@@ -91,3 +91,7 @@ void sensoreDanno::setAttacchiPerTurno(const vector<int>& att) {
 void sensoreDanno::setRecordDanniPerTurno(const vector<double>& record) {
     recordDanniPerTurno = record;
 }
+
+void sensoreDanno::setAtt(int nA){
+    nAtt = nA;
+}

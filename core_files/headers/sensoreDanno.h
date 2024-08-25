@@ -49,6 +49,7 @@ public:
   void setNome(const string& n);
   void setDanno(double d);
   void setNTurni(int nT);
+  void setAtt(int nA);
   void setAttacchiPerTurno(const vector<int>& att);
   void setRecordDanniPerTurno(const vector<double>& record);
 

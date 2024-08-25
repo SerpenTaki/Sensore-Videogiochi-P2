@@ -120,3 +120,7 @@ bool fisico::fromXML(const std::string& filename) {
 void fisico::accept(Visitor* v) {
   v->visitFisico(this);
 }
+
+void fisico::setAff(int aff){
+  affilatura = aff;
+}
