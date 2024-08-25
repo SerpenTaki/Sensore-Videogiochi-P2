@@ -5,6 +5,7 @@ modificaSensore::modificaSensore(QWidget* parent, sensoreDanno* sensoreDaModific
     setWindowTitle("Modifica Sensore");
     // Populate the UI with the existing sensor data
     nomeSensoreInserimento->setText(QString::fromStdString(sensoreDaModificare->getNome()));
+    nomeSensoreInserimento->setReadOnly(true);
     DannoBase->setValue(sensoreDaModificare->getDanno());
     NumeroDiTurni->setValue(sensoreDaModificare->getNTurni());
     AttPerTurno->setValue(sensoreDaModificare->getAtt());
@@ -27,6 +28,7 @@ modificaSensore::modificaSensore(QWidget* parent, sensoreDanno* sensoreDaModific
 void modificaSensore::caricaDatiSensore() {
     if (sensoreDaModificare) {
         nomeSensoreInserimento->setText(QString::fromStdString(sensoreDaModificare->getNome()));
+        nomeSensoreInserimento->setReadOnly(true);
         DannoBase->setValue(sensoreDaModificare->getDanno());
         NumeroDiTurni->setValue(sensoreDaModificare->getNTurni());
         AttPerTurno->setValue(sensoreDaModificare->getAtt());
