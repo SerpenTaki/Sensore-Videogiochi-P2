@@ -31,7 +31,7 @@ leftSideBar::leftSideBar(content* contentWidget, QWidget* parent)
 }
 
 void leftSideBar::stampaSelSensore() { //fa apparire la selezione del sensore
-    aggiungiSensore* dialog = new aggiungiSensore(this);
+    aggiungiSensore* dialog = new aggiungiSensore(this, contentWidget->getMapSensor());
 
     connect(dialog, &aggiungiSensore::sensoreAggiuntoStats, this, &leftSideBar::aggiungiSensoreToList);
     connect(dialog, &aggiungiSensore::sensoreAggiuntoStats, contentWidget, &content::aggiungiSensoreAMappa);

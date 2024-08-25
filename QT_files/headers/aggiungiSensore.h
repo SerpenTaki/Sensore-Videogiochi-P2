@@ -2,6 +2,7 @@
 #define AGGIUNGISENSORE_H
 
 #include"viewlib.h"
+#include<map>
 
 class aggiungiSensore : public QDialog {
     Q_OBJECT
@@ -21,11 +22,12 @@ private:
     QSpinBox* PAffilatura;
     QSpinBox* SLvMagia;
     QSpinBox* SLvFede;
+    std::map<string, sensoreDanno*> existingSensors;
 public:
     QPushButton* conferma;
     QLineEdit* nomeSensoreInserimento;
 
-    aggiungiSensore(QWidget* parent = nullptr);
+    aggiungiSensore(QWidget* parent = nullptr, std::map<string, sensoreDanno*> existingSensors = std::map<string, sensoreDanno*>());
 
     void changeUIForOption1();  // Fisico
     void changeUIForOption2();  // Magico

@@ -1,6 +1,8 @@
 #include "headers/aggiungiSensore.h"
 
-aggiungiSensore::aggiungiSensore(QWidget* parent) : QDialog(parent) {
+aggiungiSensore::aggiungiSensore(QWidget* parent, std::map<string, sensoreDanno*> existingSensors)
+ : QDialog(parent) {
+    this->existingSensors = existingSensors;
     setWindowTitle("Aggiungi Sensore");
     nuovoSens = new QVBoxLayout(this);
 
@@ -161,6 +163,11 @@ void aggiungiSensore::confermaClicked() {
 
     if (!checkBoxFisico->isChecked() && !checkBoxMagico->isChecked() && !checkBoxSacro->isChecked()) {
         QMessageBox::warning(this, "Tipo di Sensore Mancante", "Per favore, seleziona un tipo di sensore.");
+        return;
+    }
+
+    if(existingSensors[nomeSensore]){
+        QMessageBox::warning(this, "Sensore Duplicatp", "Esiste già un sensore con lo stesso nome, cambia nome");
         return;
     }
 
