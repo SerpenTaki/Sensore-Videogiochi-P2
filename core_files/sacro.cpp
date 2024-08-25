@@ -42,7 +42,7 @@ void sacro::setLimit(){
 }
 
 bool sacro::checkLimit() { /*Gestito dalla UI mi fa vincere magari pop-up*/
-  if (limitbreak < 100)
+  if (limitbreak < 33)
     return false;
   else
     return true;

@@ -6,7 +6,7 @@
 class sacro : public sensoreDanno {
 private:
   int lvFede;     /* 0 , 1, 2 */
-  int limitbreak; // quando il parametro raggiunge 10 hai vinto la partita,
+  int limitbreak; // quando il parametro raggiunge 33
   vector<int> limitBar; // mostra nuovo grafico del limit break
   enum { fedeBassa, fedeMedia, fedeAlta };
 public:
