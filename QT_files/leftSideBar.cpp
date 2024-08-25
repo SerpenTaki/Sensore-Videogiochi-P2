@@ -37,6 +37,7 @@ void leftSideBar::stampaSelSensore() { //fa apparire la selezione del sensore
     connect(dialog, &aggiungiSensore::sensoreAggiuntoStats, contentWidget, &content::aggiungiSensoreAMappa);
 
     dialog->exec(); // Mostra il dialogo come modale
+    delete dialog;
 }
 
 void leftSideBar::aggiungiSensoreToList(sensoreDanno* sensore) {
@@ -154,7 +155,7 @@ void leftSideBar::importaSensore() {
                         else if (name == QStringLiteral("numero_turni")) nTurni = value.toInt();
                         else if (name == QStringLiteral("attacchi_per_turno")) nAtt = value.toInt();
                         else if (name == QStringLiteral("affilatura")) affilatura = value.toInt();
-                        else if (name == QStringLiteral("danno_per_turno")) {
+                        else if (name == QStringLiteral("danni_per_turno")) {
                             // Aggiungi i danni per turno al QList
                             rDPT.push_back(value.toDouble());
                         }
@@ -185,7 +186,7 @@ void leftSideBar::importaSensore() {
                         else if (name == QStringLiteral("attacchi_per_turno")) nAtt = value.toInt();
                         else if (name == QStringLiteral("livello_magia")) lvMagia = value.toInt();
                         else if (name == QStringLiteral("status")) isInStatus = (value == QStringLiteral("true"));
-                        else if (name == QStringLiteral("danno_per_turno")) {
+                        else if (name == QStringLiteral("danni_per_turno")) {
                             // Aggiungi i danni per turno al QList
                             rDPT.push_back(value.toDouble());
                         }
@@ -222,7 +223,7 @@ void leftSideBar::importaSensore() {
                                 limitBar.push_back(item.toInt());
                             }
                         }
-                        else if (name == QStringLiteral("danno_per_turno")) {
+                        else if (name == QStringLiteral("danni_per_turno")) {
                             // Aggiungi i danni per turno al QList
                             rDPT.push_back(value.toDouble());
                         }
@@ -243,8 +244,9 @@ void leftSideBar::importaSensore() {
     file.close();
 
     if (sensore) {
-       aggiungiSensoreToList(sensore);
-       contentWidget->aggiungiSensoreAMappa(sensore);
+        cout << "Nome sensore importato: " << sensore->getNome() << endl;
+        aggiungiSensoreToList(sensore);
+        contentWidget->aggiungiSensoreAMappa(sensore);
     }
 }
 

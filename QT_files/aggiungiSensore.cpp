@@ -133,6 +133,11 @@ void aggiungiSensore::confermaClicked() {
 
     sensoreDanno* sensore = nullptr;
 
+    if(existingSensors[nomeSensore]){
+        QMessageBox::warning(this, "Sensore Duplicatp", "Esiste già un sensore con lo stesso nome, cambia nome");
+        return;
+    }
+
     if (checkBoxFisico->isChecked()) {
         if (PAffilatura) {
             sensore = new fisico(nomeSensore, DannoBase->value(), NumeroDiTurni->value(), AttPerTurno->value(), PAffilatura->value());
@@ -163,11 +168,6 @@ void aggiungiSensore::confermaClicked() {
 
     if (!checkBoxFisico->isChecked() && !checkBoxMagico->isChecked() && !checkBoxSacro->isChecked()) {
         QMessageBox::warning(this, "Tipo di Sensore Mancante", "Per favore, seleziona un tipo di sensore.");
-        return;
-    }
-
-    if(existingSensors[nomeSensore]){
-        QMessageBox::warning(this, "Sensore Duplicatp", "Esiste già un sensore con lo stesso nome, cambia nome");
         return;
     }
 

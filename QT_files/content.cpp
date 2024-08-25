@@ -50,11 +50,7 @@ void content::aggiungiSensoreAlContenuto(string sensoreName) {
     if(!sensore){
         return;
     }
-
-    if(sensore != nullptr){
-        //inizializzaChart();
-        displayVector(sensore);
-    }
+    displayVector(sensore);
 }
 
 void content::inizializzaChart() {
