@@ -6,12 +6,12 @@ aggiungiSensore::aggiungiSensore(QWidget* parent, std::map<string, sensoreDanno*
     setWindowTitle("Aggiungi Sensore");
     nuovoSens = new QVBoxLayout(this);
 
-    QLabel* insNome = new QLabel("Inserisci Nome Sensore:");
+    insNome = new QLabel("Inserisci Nome Sensore:");
     nuovoSens->addWidget(insNome);
     nomeSensoreInserimento = new QLineEdit;
     nuovoSens->addWidget(nomeSensoreInserimento);
 
-    QLabel* selezionaTipo = new QLabel("Seleziona tipo Sensore");
+    selezionaTipo = new QLabel("Seleziona tipo Sensore");
     nuovoSens->addWidget(selezionaTipo);
 
     checkBoxFisico = new QRadioButton("Fisico");
@@ -68,7 +68,7 @@ aggiungiSensore::aggiungiSensore(QWidget* parent, std::map<string, sensoreDanno*
 
 void aggiungiSensore::changeUIForOption1() { // Fisico
     clearDynamicWidget();
-    QLabel* labelAff = new QLabel("Seleziona percentuale affilatura");
+    QLabel* labelAff = new QLabel("Seleziona percentuale affilatura 1-100");
     dynamicLayout->addWidget(labelAff);
     PAffilatura = new QSpinBox();
     PAffilatura->setMinimum(1);
@@ -134,7 +134,7 @@ void aggiungiSensore::confermaClicked() {
     sensoreDanno* sensore = nullptr;
 
     if(existingSensors[nomeSensore]){
-        QMessageBox::warning(this, "Sensore Duplicatp", "Esiste già un sensore con lo stesso nome, cambia nome");
+        QMessageBox::warning(this, "Sensore Duplicato", "Esiste già un sensore con lo stesso nome, cambia nome");
         return;
     }
 

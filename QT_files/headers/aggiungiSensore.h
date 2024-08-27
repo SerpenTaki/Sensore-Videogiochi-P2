@@ -12,6 +12,8 @@ private:
     QRadioButton *checkBoxFisico;
     QRadioButton *checkBoxMagico;
     QRadioButton *checkBoxSacro;
+    QLabel* insNome;
+    QLabel* selezionaTipo;
     QSpinBox *DannoBase;
     QSpinBox *NumeroDiTurni;
     QSpinBox *AttPerTurno;
