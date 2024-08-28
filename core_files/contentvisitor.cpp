@@ -7,7 +7,7 @@ ContentVisitor::~ContentVisitor() {
 }
 
 void ContentVisitor::visitFisico(fisico* f){
-    dispWidget = new QLabel("Sensore Fisico \nNome:\t\t\t" + QString::fromStdString(f->getNome()) +
+    dispWidget = new QLabel("Sensore Fisico \nNome:\t\t" + QString::fromStdString(f->getNome()) +
      "\nDannoBase:\t\t" + QString::number(f->getDanno()) + "\tNumero di Hit:\t\t" + QString::number(f->getNHit()) +
      "\nNumero di Turni:\t\t" + QString::number(f->getNTurni()) + "\tNumero di Miss:\t\t" + QString::number(f->getNMiss()) +
      "\nAttacchi per Turno:\t" + QString::number(f->getAtt()) + "\tHit Rate:\t\t\t" + QString::number(f->getHitRate()) + "%" +
@@ -15,7 +15,7 @@ void ContentVisitor::visitFisico(fisico* f){
 }
 
 void ContentVisitor::visitMagico(magico* m){
-    dispWidget = new QLabel("Sensore Magico \nNome:\t\t\t" + QString::fromStdString(m->getNome()) +
+    dispWidget = new QLabel("Sensore Magico \nNome:\t\t" + QString::fromStdString(m->getNome()) +
      "\nDannoBase:\t\t" + QString::number(m->getDanno()) + "\tNumero di Hit:\t\t" + QString::number(m->getNHit()) +
      "\nNumero di Turni:\t\t" + QString::number(m->getNTurni()) + "\tNumero di Miss:\t\t" + QString::number(m->getNMiss()) +
      "\nAttacchi per Turno:\t" + QString::number(m->getAtt()) + "\tHit Rate:\t\t\t" + QString::number(m->getHitRate()) + "%" +
@@ -24,7 +24,7 @@ void ContentVisitor::visitMagico(magico* m){
 }
 
 void ContentVisitor::visitSacro(sacro* s){
-    dispWidget = new QLabel("Sensore Sacro \nNome:\t\t\t" + QString::fromStdString(s->getNome()) +
+    dispWidget = new QLabel("Sensore Sacro \nNome:\t\t" + QString::fromStdString(s->getNome()) +
      "\nDannoBase:\t\t" + QString::number(s->getDanno()) + "\tNumero di Hit:\t\t" + QString::number(s->getNHit()) +
      "\nNumero di Turni:\t\t" + QString::number(s->getNTurni()) + "\tNumero di Miss:\t\t" + QString::number(s->getNMiss()) +
      "\nAttacchi per Turno:\t" + QString::number(s->getAtt()) + "\tHit Rate:\t\t\t" + QString::number(s->getHitRate()) + "%" +

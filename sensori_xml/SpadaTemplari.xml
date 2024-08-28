@@ -1,0 +1,33 @@
+<fisico>
+  <nome>SpadaTemplari</nome>
+  <danno_base>75</danno_base>
+  <numero_turni>20</numero_turni>
+  <affilatura>80</affilatura>
+  <hit>32</hit>
+  <miss>8</miss>
+  <hit_rate>80</hit_rate>
+  <danno_massimo>1200</danno_massimo>
+  <attacchi_per_turno>2</attacchi_per_turno>
+  <danni_per_turno>
+    <danno>1200</danno>
+    <danno>780</danno>
+    <danno>780</danno>
+    <danno>0</danno>
+    <danno>600</danno>
+    <danno>1200</danno>
+    <danno>780</danno>
+    <danno>1200</danno>
+    <danno>1200</danno>
+    <danno>600</danno>
+    <danno>780</danno>
+    <danno>600</danno>
+    <danno>1200</danno>
+    <danno>780</danno>
+    <danno>180</danno>
+    <danno>780</danno>
+    <danno>600</danno>
+    <danno>180</danno>
+    <danno>780</danno>
+    <danno>1200</danno>
+  </danni_per_turno>
+</fisico>

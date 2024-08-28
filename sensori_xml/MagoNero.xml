@@ -1,0 +1,32 @@
+<magico>
+  <nome>MagoNero</nome>
+  <danno_base>75</danno_base>
+  <numero_turni>18</numero_turni>
+  <livello_magia>3</livello_magia>
+  <status>1</status>
+  <hit>21</hit>
+  <miss>33</miss>
+  <hit_rate>38</hit_rate>
+  <danno_massimo>300</danno_massimo>
+  <attacchi_per_turno>3</attacchi_per_turno>
+  <danni_per_turno>
+    <danno>120.12</danno>
+    <danno>200.2</danno>
+    <danno>20.02</danno>
+    <danno>120.12</danno>
+    <danno>100.1</danno>
+    <danno>100.1</danno>
+    <danno>0</danno>
+    <danno>0</danno>
+    <danno>100.1</danno>
+    <danno>100.1</danno>
+    <danno>120.12</danno>
+    <danno>0</danno>
+    <danno>0</danno>
+    <danno>0</danno>
+    <danno>300.3</danno>
+    <danno>200.2</danno>
+    <danno>120.12</danno>
+    <danno>100.1</danno>
+  </danni_per_turno>
+</magico>
