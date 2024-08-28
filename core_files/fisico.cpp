@@ -67,6 +67,7 @@ bool fisico::toXML(const std::string& filename) const {
     file << "  <hit>" << getNHit() << "</hit>\n";
     file << "  <miss>" << getNMiss() << "</miss>\n";
     file << "  <hit_rate>" << getHitRate() << "</hit_rate>\n";
+    file << "  <danno_massimo>" << getMaxDanno() << "</danno_massimo>\n";
     file << "  <attacchi_per_turno>" << getAtt() << "</attacchi_per_turno>\n";
     
        // Aggiunta dei dati del vettore recordDanniPerTurno

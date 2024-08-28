@@ -48,7 +48,7 @@ void content::aggiungiSensoreAMappa(sensoreDanno* sensore){
 }
 
 void content::aggiungiSensoreAlContenuto(string sensoreName) {
-    cout << sensoreName << "debug2" << endl;
+    //cout << sensoreName << "debug2" << endl;
     sensore = mapSensor[sensoreName];
     if(!sensore){
         return;
@@ -109,6 +109,8 @@ void content::displayVector(sensoreDanno *sensore){
         for (size_t it = 0; it <= valori.size(); ++it) {
             series->append((it), valori[it]);
         }
+        auto max_danno = std::max_element(valori.begin(), valori.end());
+        //cout << "il valore massimo è: " << *max_danno << endl;
         axisY->setRange(0, static_cast<double>(*max_danno));
         axisX->setRange(0, static_cast<double>(valori.size()));
         chart->update();

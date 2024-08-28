@@ -50,6 +50,7 @@ public:
   int getNHit() const;
   int getNMiss() const;
   int getHitRate() const;
+  double getMaxDanno() const;
 
   //Metodi setter per modifica sensore
   void setSizeAttacchiPerTurno();

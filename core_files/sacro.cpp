@@ -12,7 +12,7 @@ sacro::sacro(string n, double d, int nT, int nA, int lvFede)
    cout << "Nome: " << getNome() 
          << "\nDanno Base: " << getDanno() 
          << "\nNTurni: " << getAttacchiPerTurno().size()
-         << "\nAff: " << getLvFede()
+         << "\nLvFede: " << getLvFede()
          << "\nAtt per Turno: " << getAtt()
          << endl;
 }
@@ -29,7 +29,7 @@ sacro::sacro(string n, double d, int nT, int nA, vector<double> rDPT, int lvFede
    cout << "Nome: " << getNome() 
          << "\nDanno Base: " << getDanno() 
          << "\nNTurni: " << getAttacchiPerTurno().size()
-         << "\nAff: " << getLvFede()
+         << "\nLvFede: " << getLvFede()
          << "\nAtt per Turno: " << getAtt()
          << endl;
 }
@@ -123,6 +123,7 @@ bool sacro::toXML(const std::string& filename) const {
   file << "  <limitbreak>" << getlimitBreak() << "</limitbreak>\n";
   file << "  <hit>" << getNHit() << "</hit>\n";
   file << "  <miss>" << getNMiss() << "</miss>\n";
+  file << "  <danno_massimo>" << getMaxDanno() << "</danno_massimo>\n";
   file << "  <hit_rate>" << getHitRate() << "</hit_rate>\n";
 
   file << "  <danni_per_turno>\n";

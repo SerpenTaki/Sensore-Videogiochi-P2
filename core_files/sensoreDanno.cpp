@@ -118,3 +118,13 @@ int sensoreDanno::getNMiss() const{
 int sensoreDanno::getHitRate() const{
   return (hit*100)/(nAtt*nTurni);
 }
+
+double sensoreDanno::getMaxDanno() const{
+  int maxDanno = 0;
+  for (int it : recordDanniPerTurno) {
+    if (it > maxDanno) {
+      maxDanno = it;
+    }
+  }
+  return maxDanno;
+}
