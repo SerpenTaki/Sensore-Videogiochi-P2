@@ -46,7 +46,6 @@ bool sacro::checkLimit() {
   if (limitbreak < 50)
     return false;
   else{
-    cout << limitbreak << endl;
     limitbreak = 0; //reset limit
     return true;
   }
