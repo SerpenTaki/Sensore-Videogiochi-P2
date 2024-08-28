@@ -28,7 +28,10 @@ void content::eliminaSensore(sensoreDanno* sensore) {
         if (it != mapSensor.end()) {
             delete it->second;  // Distruggi l'oggetto sensore
             mapSensor.erase(it);  // Rimuovi il sensore dalla mappa
+            cout << "rimosso da mappa" << endl;
         }
+        QLabel* messaggio = new QLabel("seleziona nuovo sensore per continuare");
+        center->addWidget(messaggio);
     }
     return;
 }
