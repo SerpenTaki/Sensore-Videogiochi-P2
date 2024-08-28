@@ -38,7 +38,7 @@ int sacro::getLvFede() const { return lvFede; }
 int sacro::getlimitBreak() const { return limitbreak; }
 
 void sacro::setLimit(){
-  limitBar.resize(getNTurni());
+  limitBar.resize(1);
 }
 
 bool sacro::checkLimit() { /*Gestito dalla UI mi fa vincere magari pop-up*/
@@ -50,8 +50,11 @@ bool sacro::checkLimit() { /*Gestito dalla UI mi fa vincere magari pop-up*/
 
 double sacro::getHit() { /*si collega all'interfaccia grafica*/
   if (getProbHit() > 80) {
+    cout << "hit" << endl;
     return this->calcolaDanno();
   }
+  cout << "miss" << endl;
+  updateLimitbreak();
   return 0.0;
 }
 
@@ -100,13 +103,11 @@ void sacro::updateLimitbreak() {
 
 
 vector<int> sacro::getValoriLimitBar() const{
-  cout << "grandezza limit "<<limitBar.size() << endl;//bug
-  std::cout << "Grandezza limit: " << limitBar.size() << std::endl;
-  std::cout << "Valori di limitBar: ";
+  cout << "Valori di limitBar: ";
   for (int valore : limitBar) {
       std::cout << valore << " ";
   }
-  std::cout << std::endl;
+  cout << endl;
 
   return limitBar;
 }

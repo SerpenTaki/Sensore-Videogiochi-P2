@@ -127,7 +127,7 @@ void content::displayVector(sensoreDanno *sensore){
             QValueAxis* axisTurni = new QValueAxis();
             axisTurni->setRange(0, 5);
             axisTurni->setLabelFormat("%d");        
-            axisTurni->setTitleText("Turni");
+            axisTurni->setTitleText("Attacchi effettuati");
             chartLimit->addAxis(axisTurni, Qt::AlignBottom);
             serieLimit->attachAxis(axisTurni); 
 
@@ -161,10 +161,15 @@ void content::displayVector(sensoreDanno *sensore){
 }
 
 void content::avviaSimulazione(sensoreDanno* sensore){
-    if(sensore)
+    if(sensore){
+        if(dynamic_cast<sacro*>(sensore)){
+            dynamic_cast<sacro*>(sensore)->setLimit(); //riazzera la limit a ogni simulazione
+        }
+
         sensore->generaValoriRandomGrafico();
-    else
+    } else{
         QMessageBox::warning(this, "Errore", "Sensore non valido.");
+    }
 }
 
 void content::updateSensore(sensoreDanno* updatedSensore) {
