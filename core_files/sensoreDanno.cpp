@@ -54,7 +54,18 @@ int sensoreDanno::getAtt() const{
 void sensoreDanno::setSizeAttacchiPerTurno(){
   attacchiPerTurno.resize(nTurni);
 }
+
+void sensoreDanno::incrementaHit(){
+  hit++;
+}
+
+void sensoreDanno::incrementaMiss(){
+  miss++;
+}
+
 void sensoreDanno::generaValoriRandomGrafico() {
+  hit = 0;
+  miss = 0;
   setSizeAttacchiPerTurno();
   if(recordDanniPerTurno.empty() == false){
     recordDanniPerTurno.clear();
@@ -94,4 +105,16 @@ void sensoreDanno::setRecordDanniPerTurno(const vector<double>& record) {
 
 void sensoreDanno::setAtt(int nA){
     nAtt = nA;
+}
+
+int sensoreDanno::getNHit() const{
+  return hit;
+}
+
+int sensoreDanno::getNMiss() const{
+  return miss;
+}
+
+int sensoreDanno::getHitRate() const{
+  return (hit*100)/(nAtt*nTurni);
 }

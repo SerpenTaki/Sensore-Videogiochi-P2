@@ -36,8 +36,10 @@ int fisico::getAffilatura() const { return affilatura; }
 
 double fisico::getHit() { /*si collega all'interfaccia grafica*/
   if (getProbHit() > 30) {
+    incrementaHit();
     return this->calcolaDanno();
   }
+  incrementaMiss();
   return 0.0;
 }
 
@@ -62,6 +64,9 @@ bool fisico::toXML(const std::string& filename) const {
     file << "  <danno_base>" << getDanno() << "</danno_base>\n";
     file << "  <numero_turni>" << getAttacchiPerTurno().size() << "</numero_turni>\n";
     file << "  <affilatura>" << affilatura << "</affilatura>\n";
+    file << "  <hit>" << getNHit() << "</hit>\n";
+    file << "  <miss>" << getNMiss() << "</miss>\n";
+    file << "  <hit_rate>" << getHitRate() << "</hit_rate>\n";
     file << "  <attacchi_per_turno>" << getAtt() << "</attacchi_per_turno>\n";
     
        // Aggiunta dei dati del vettore recordDanniPerTurno

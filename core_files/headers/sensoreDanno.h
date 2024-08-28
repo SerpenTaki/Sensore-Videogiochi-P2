@@ -24,6 +24,8 @@ private:
   int randN;
   int nTurni;
   int nAtt; 
+  int hit;
+  int miss;
   vector<int> attacchiPerTurno;
   vector<double> recordDanniPerTurno;
 public:
@@ -32,6 +34,8 @@ public:
   virtual ~sensoreDanno();
 
   virtual void generaValoriRandomGrafico() final; // metodo per il grafico
+  virtual void incrementaHit() final;
+  virtual void incrementaMiss() final;
   
   // Metodi getter
   double getDanno() const;
@@ -43,6 +47,9 @@ public:
   vector<int> getAttacchiPerTurno() const;
   int getAtt() const;
   vector<double> getRecordDanniPerTurno() const;
+  int getNHit() const;
+  int getNMiss() const;
+  int getHitRate() const;
 
   //Metodi setter per modifica sensore
   void setSizeAttacchiPerTurno();

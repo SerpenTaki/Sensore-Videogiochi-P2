@@ -127,7 +127,7 @@ void content::displayVector(sensoreDanno *sensore){
             QValueAxis* axisTurni = new QValueAxis();
             axisTurni->setRange(0, 5);
             axisTurni->setLabelFormat("%d");        
-            axisTurni->setTitleText("Attacchi effettuati");
+            axisTurni->setTitleText("Hit effettuate");
             chartLimit->addAxis(axisTurni, Qt::AlignBottom);
             serieLimit->attachAxis(axisTurni); 
 

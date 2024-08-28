@@ -45,17 +45,19 @@ void sacro::setLimit(){
 bool sacro::checkLimit() {
   if (limitbreak < 50)
     return false;
-  else
+  else{
+    cout << limitbreak << endl;
+    limitbreak = 0; //reset limit
     return true;
+  }
 }
 
 double sacro::getHit() { /*si collega all'interfaccia grafica*/
   if (getProbHit() > 80) {
-    cout << "hit" << endl;
+    incrementaHit();
     return this->calcolaDanno();
   }
-  cout << "miss" << endl;
-  updateLimitbreak();
+  incrementaMiss();
   return 0.0;
 }
 
@@ -75,7 +77,6 @@ double sacro::calcolaDanno() {
   if(checkLimit() == true){
     nDanni = nDanni * 33; //valore simbolico
     cout << "Hai superato la limit fai un mega danno" << endl;
-    limitbreak = 0; //reset della limit
   }
   return nDanni;
 }
@@ -104,12 +105,6 @@ void sacro::updateLimitbreak() {
 
 
 vector<int> sacro::getValoriLimitBar() const{
-  cout << "Valori di limitBar: ";
-  for (int valore : limitBar) {
-      std::cout << valore << " ";
-  }
-  cout << endl;
-
   return limitBar;
 }
 
@@ -126,6 +121,9 @@ bool sacro::toXML(const std::string& filename) const {
   file << "  <attacchi_per_turno>" << getAtt() << "</attacchi_per_turno>\n";
   file << "  <lvFede>" << getLvFede() << "</lvFede>\n";
   file << "  <limitbreak>" << getlimitBreak() << "</limitbreak>\n";
+  file << "  <hit>" << getNHit() << "</hit>\n";
+  file << "  <miss>" << getNMiss() << "</miss>\n";
+  file << "  <hit_rate>" << getHitRate() << "</hit_rate>\n";
 
   file << "  <danni_per_turno>\n";
   for (const auto& danno : getRecordDanniPerTurno()) {
