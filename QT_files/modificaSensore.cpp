@@ -34,7 +34,7 @@ modificaSensore::modificaSensore(QWidget* parent, sensoreDanno* sensoreDaModific
 void modificaSensore::confermaClicked() {
     sensoreDaModificare->setDanno(DannoBase->value());
     sensoreDaModificare->setNTurni(NumeroDiTurni->value());
-    sensoreDaModificare->setAtt(NumeroDiTurni->value());
+    sensoreDaModificare->setAtt(AttPerTurno->value());
     if (checkBoxFisico->isChecked()) {
         if (PAffilatura) {
             dynamic_cast<fisico*>(sensoreDaModificare)->setAff(PAffilatura->value());
