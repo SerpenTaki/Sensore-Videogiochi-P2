@@ -38,11 +38,12 @@ int sacro::getLvFede() const { return lvFede; }
 int sacro::getlimitBreak() const { return limitbreak; }
 
 void sacro::setLimit(){
-  limitBar.resize(1);
+  limitbreak = 0; //resetta la limitbreak
+  limitBar.resize(1); //resetta la limitbar
 }
 
-bool sacro::checkLimit() { /*Gestito dalla UI mi fa vincere magari pop-up*/
-  if (limitbreak < 33)
+bool sacro::checkLimit() {
+  if (limitbreak < 50)
     return false;
   else
     return true;
