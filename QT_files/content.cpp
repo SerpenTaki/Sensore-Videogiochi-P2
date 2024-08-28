@@ -96,7 +96,6 @@ void content::displayVector(sensoreDanno *sensore){
     
     ContentVisitor* visitor = new ContentVisitor();
     sensore->accept(visitor);
-    cout << "Debug";
     QWidget* visitorWidget = visitor->returnQWidget();
     if (visitorWidget) {
        center->addWidget(visitorWidget);
@@ -110,9 +109,6 @@ void content::displayVector(sensoreDanno *sensore){
         for (size_t it = 0; it <= valori.size(); ++it) {
             series->append((it), valori[it]);
         }
-        cout << "log1" << endl;
-        auto max_danno = std::max_element(valori.begin(), valori.end());
-        cout << "il valore massimo è: " << *max_danno << endl;
         axisY->setRange(0, static_cast<double>(*max_danno));
         axisX->setRange(0, static_cast<double>(valori.size()));
         chart->update();
