@@ -29,7 +29,7 @@ void ContentVisitor::visitSacro(sacro* s){
      "\nNumero di Turni:\t\t" + QString::number(s->getNTurni()) + "\tNumero di Miss:\t\t" + QString::number(s->getNMiss()) +
      "\nAttacchi per Turno:\t" + QString::number(s->getAtt()) + "\tHit Rate:\t\t\t" + QString::number(s->getHitRate()) + "%" +
      "\nLivello Fede:\t\t" + QString::number(s->getLvFede()) + "\tDanno Massimo:\t\t" + QString::number(s->getMaxDanno()) +
-     "\nValore Limit:\t\t" + QString::number(s->getlimitBreak()));
+     "\nUltimo valore Limit:\t" + QString::number(s->getlimitBreak()));
 }
 
 QWidget* ContentVisitor::returnQWidget() {

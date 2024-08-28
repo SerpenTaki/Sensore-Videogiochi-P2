@@ -105,7 +105,7 @@ void content::displayVector(sensoreDanno *sensore){
     inizializzaChart();
     series->clear();
     if (sensore) {
-        auto valori = (sensore)->getRecordDanniPerTurno();
+        auto valori = (sensore)->getRecordDanniPerTurno();  
         for (size_t it = 0; it <= valori.size(); ++it) {
             series->append((it), valori[it]);
         }
@@ -116,6 +116,7 @@ void content::displayVector(sensoreDanno *sensore){
         chart->update();
         if(dynamic_cast<sacro*>(sensore)){
             auto valoriLimit = dynamic_cast<sacro*>(sensore)->getValoriLimitBar();
+            valoriLimit.erase(valoriLimit.begin());  // Rimuovi il primo elemento
             serieLimit = new QLineSeries();
             for(size_t it = 0; it <= valoriLimit.size(); ++it){
                 serieLimit->append((it), valoriLimit[it]);
