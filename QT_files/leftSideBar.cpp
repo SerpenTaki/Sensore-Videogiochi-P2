@@ -162,6 +162,14 @@ void leftSideBar::importaSensore() {
                     }
                     xml.readNext();
                 }
+                // Confronto con gli elementi della QListWidget (sensoreListLabel)
+                for (int i = 0; i < sensoreListLabel->count(); ++i) {
+                    QListWidgetItem* item = sensoreListLabel->item(i);
+                    if (item && item->text() == nome) {  // Confronto della QString con il testo dell'elemento
+                        QMessageBox::warning(this, "Errore", "Sensore con lo stesso nome già presente!");
+                        return;
+                    }
+                }
 
                 // Crea l'oggetto fisico con i dati letti
                 sensore = new fisico(nome.toStdString(), danno, nTurni, nAtt, convertQListToStdVector(rDPT), affilatura);
@@ -193,7 +201,14 @@ void leftSideBar::importaSensore() {
                     }
                     xml.readNext();
                 }
-
+                // Confronto con gli elementi della QListWidget (sensoreListLabel)
+                for (int i = 0; i < sensoreListLabel->count(); ++i) {
+                    QListWidgetItem* item = sensoreListLabel->item(i);
+                    if (item && item->text() == nome) {  // Confronto della QString con il testo dell'elemento
+                        QMessageBox::warning(this, "Errore", "Sensore con lo stesso nome già presente!");
+                        return;
+                    }
+                }
                 // Crea l'oggetto magico con i dati letti
                 sensore = new magico(nome.toStdString(), danno, nTurni, nAtt, convertQListToStdVector(rDPT), lvMagia, isInStatus);
             } 
@@ -230,7 +245,14 @@ void leftSideBar::importaSensore() {
                     }
                     xml.readNext();
                 }
-
+                // Confronto con gli elementi della QListWidget (sensoreListLabel)
+                for (int i = 0; i < sensoreListLabel->count(); ++i) {
+                    QListWidgetItem* item = sensoreListLabel->item(i);
+                    if (item && item->text() == nome) {  // Confronto della QString con il testo dell'elemento
+                        QMessageBox::warning(this, "Errore", "Sensore con lo stesso nome già presente!");
+                        return;
+                    }
+                }
                 // Crea l'oggetto sacro con i dati letti
                 sensore = new sacro(nome.toStdString(), danno, nTurni, nAtt, convertQListToStdVector(rDPT), lvFede, convertQListToStdVector(limitBar));
             }
