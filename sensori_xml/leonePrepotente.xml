@@ -1,0 +1,23 @@
+<fisico>
+  <nome>Leone Prepotente</nome>
+  <danno_base>75</danno_base>
+  <numero_turni>10</numero_turni>
+  <affilatura>95</affilatura>
+  <hit>14</hit>
+  <miss>6</miss>
+  <hit_rate>70</hit_rate>
+  <danno_massimo>1425</danno_massimo>
+  <attacchi_per_turno>2</attacchi_per_turno>
+  <danni_per_turno>
+    <danno>0</danno>
+    <danno>712.5</danno>
+    <danno>427.5</danno>
+    <danno>213.75</danno>
+    <danno>1425</danno>
+    <danno>1425</danno>
+    <danno>1425</danno>
+    <danno>712.5</danno>
+    <danno>1425</danno>
+    <danno>712.5</danno>
+  </danni_per_turno>
+</fisico>
