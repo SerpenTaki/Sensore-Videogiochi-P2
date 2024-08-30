@@ -33,6 +33,7 @@ public:
   sensoreDanno(string n, double d, int nT, int nA, vector<double> rDPT);
   virtual ~sensoreDanno();
 
+  //metodi final no ovveride
   virtual void generaValoriRandomGrafico() final; // metodo per il grafico
   virtual void incrementaHit() final;
   virtual void incrementaMiss() final;

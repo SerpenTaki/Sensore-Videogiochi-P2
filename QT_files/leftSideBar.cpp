@@ -156,8 +156,13 @@ void leftSideBar::importaSensore() {
                         else if (name == QStringLiteral("attacchi_per_turno")) nAtt = value.toInt();
                         else if (name == QStringLiteral("affilatura")) affilatura = value.toInt();
                         else if (name == QStringLiteral("danni_per_turno")) {
-                            // Aggiungi i danni per turno al QList
-                            rDPT.push_back(value.toDouble());
+                            while (!(xml.tokenType() == QXmlStreamReader::EndElement && xml.name() == QStringLiteral("danni_per_turno"))) {
+                                if (xml.tokenType() == QXmlStreamReader::StartElement && xml.name() == QStringLiteral("danno")) {
+                                xml.readNext();
+                                rDPT.push_back(xml.text().toDouble());
+                            }
+                            xml.readNext();  // Move to next element or text
+                            }
                         }
                     }
                     xml.readNext();
@@ -184,22 +189,33 @@ void leftSideBar::importaSensore() {
 
                 while (!(xml.tokenType() == QXmlStreamReader::EndElement && xml.name() == QStringLiteral("magico"))) {
                     if (xml.tokenType() == QXmlStreamReader::StartElement) {
-                        QString name = xml.name().toString();  // Converti QStringView in QString
-                        xml.readNext();  // Move to text
-                        QString value = xml.text().toString();
+                    QString name = xml.name().toString();  // Converti QStringView in QString
+                    xml.readNext();  // Move to text
+                    QString value = xml.text().toString();
 
-                        if (name == QStringLiteral("nome")) nome = value;
-                        else if (name == QStringLiteral("danno_base")) danno = value.toDouble();
-                        else if (name == QStringLiteral("numero_turni")) nTurni = value.toInt();
-                        else if (name == QStringLiteral("attacchi_per_turno")) nAtt = value.toInt();
-                        else if (name == QStringLiteral("livello_magia")) lvMagia = value.toInt();
-                        else if (name == QStringLiteral("status")) isInStatus = (value == QStringLiteral("true"));
-                        else if (name == QStringLiteral("danni_per_turno")) {
-                            // Aggiungi i danni per turno al QList
-                            rDPT.push_back(value.toDouble());
+                     if (name == QStringLiteral("nome")) {
+                        nome = value;
+                    } else if (name == QStringLiteral("danno_base")) {
+                        danno = value.toDouble();
+                    } else if (name == QStringLiteral("numero_turni")) {
+                        nTurni = value.toInt();
+                    } else if (name == QStringLiteral("attacchi_per_turno")) {
+                        nAtt = value.toInt();
+                    } else if (name == QStringLiteral("livello_magia")) {
+                        lvMagia = value.toInt();
+                    } else if (name == QStringLiteral("status")) {
+                        isInStatus = (value == QStringLiteral("true"));
+                    } else if (name == QStringLiteral("danni_per_turno")) {
+                        while (!(xml.tokenType() == QXmlStreamReader::EndElement && xml.name() == QStringLiteral("danni_per_turno"))) {
+                        if (xml.tokenType() == QXmlStreamReader::StartElement && xml.name() == QStringLiteral("danno")) {
+                            xml.readNext();
+                            rDPT.push_back(xml.text().toDouble());
+                        }
+                        xml.readNext();  // Move to next element or text
                         }
                     }
-                    xml.readNext();
+                }
+                xml.readNext();
                 }
                 // Confronto con gli elementi della QListWidget (sensoreListLabel)
                 for (int i = 0; i < sensoreListLabel->count(); ++i) {
@@ -230,17 +246,28 @@ void leftSideBar::importaSensore() {
                         else if (name == QStringLiteral("danno_base")) danno = value.toDouble();
                         else if (name == QStringLiteral("numero_turni")) nTurni = value.toInt();
                         else if (name == QStringLiteral("attacchi_per_turno")) nAtt = value.toInt();
-                        else if (name == QStringLiteral("livello_fede")) lvFede = value.toInt();
-                        else if (name == QStringLiteral("valori_limit_bar")) {
-                            // Aggiungi i valori del limite della barra al QList
-                            QStringList limitList = value.split(",");
-                            for (const QString& item : limitList) {
-                                limitBar.push_back(item.toInt());
+                        else if (name == QStringLiteral("lvFede")) lvFede = value.toInt();
+                        else if (name == QStringLiteral("limitBar")) {
+                        // Aggiungi i valori del limite della barra al QList
+                            while (!(xml.tokenType() == QXmlStreamReader::EndElement && xml.name() == QStringLiteral("limitBar"))) {
+                                if (xml.tokenType() == QXmlStreamReader::StartElement && xml.name() == QStringLiteral("limit")) {
+                                    xml.readNext();  // Sposta al testo dell'elemento <limit>
+                                    limitBar.push_back(xml.text().toInt());
+                                    //cout << "Valore limit:" << (xml.text().toInt()) << endl;
+                                    xml.readNext();  // Sposta al prossimo elemento o al prossimo EndElement
+                                } else {
+                                    xml.readNext();  // Continua al prossimo token se non è un elemento <limit>
+                                }
                             }
                         }
                         else if (name == QStringLiteral("danni_per_turno")) {
-                            // Aggiungi i danni per turno al QList
-                            rDPT.push_back(value.toDouble());
+                            while (!(xml.tokenType() == QXmlStreamReader::EndElement && xml.name() == QStringLiteral("danni_per_turno"))) {
+                                if (xml.tokenType() == QXmlStreamReader::StartElement && xml.name() == QStringLiteral("danno")) {
+                                    xml.readNext();
+                                    rDPT.push_back(xml.text().toDouble());
+                                }
+                            xml.readNext();
+                            }
                         }
                     }
                     xml.readNext();

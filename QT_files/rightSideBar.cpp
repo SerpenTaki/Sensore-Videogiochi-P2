@@ -28,6 +28,7 @@ rightSideBar::rightSideBar(content* c, leftSideBar* l, QWidget* parent)
 void rightSideBar::modificaSensore() {
     sensoreDanno* sensore = cont->getSelectedSensore();
     if (sensore) {
+        cout << "Sensore is valid" << endl;
         class modificaSensore dialog(this, sensore); 
         if (dialog.exec() == QDialog::Accepted) {
             cout << "Log di modifica" << endl;

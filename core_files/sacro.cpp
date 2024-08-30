@@ -25,7 +25,7 @@ sacro::sacro(string n, double d, int nT, int nA, vector<double> rDPT, int lvFede
   }
   cout << "Oggetto sacro Importato" << endl;
     setSizeAttacchiPerTurno();
-    setLimit();
+    //setLimit();
    cout << "Nome: " << getNome() 
          << "\nDanno Base: " << getDanno() 
          << "\nNTurni: " << getAttacchiPerTurno().size()

@@ -32,13 +32,14 @@ void content::eliminaSensore(sensoreDanno* sensore) {
         }
         QLabel* messaggio = new QLabel("seleziona nuovo sensore per continuare");
         center->addWidget(messaggio);
+        this->sensore = nullptr;
     }
     return;
 }
 
 
 
-sensoreDanno* content::getSelectedSensore() const {
+sensoreDanno* content::getSelectedSensore() const{
     return sensore;
 }
 
@@ -116,6 +117,7 @@ void content::displayVector(sensoreDanno *sensore){
         chart->update();
         if(dynamic_cast<sacro*>(sensore)){
             auto valoriLimit = dynamic_cast<sacro*>(sensore)->getValoriLimitBar();
+            cout << "stampa valori limit" << valoriLimit.size() << endl;
             valoriLimit.erase(valoriLimit.begin());  // Rimuovi il primo elemento
             serieLimit = new QLineSeries();
             for(size_t it = 0; it <= valoriLimit.size(); ++it){

@@ -1,7 +1,7 @@
 <sacro>
-  <nome>Eremita</nome>
-  <danno_base>100</danno_base>
-  <numero_turni>30</numero_turni>
+  <nome>Chirichetto</nome>
+  <danno_base>60</danno_base>
+  <numero_turni>20</numero_turni>
   <attacchi_per_turno>3</attacchi_per_turno>
   <lvFede>1</lvFede>
   <limitbreak>13</limitbreak>
