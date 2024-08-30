@@ -100,7 +100,7 @@ bool magico::toXML(const std::string& filename) const{
   file.close();
   return true;
 }
-
+/*
 bool magico::fromXML(const std::string& filename) {
     std::ifstream file(filename);
     if (!file.is_open()) {
@@ -141,7 +141,7 @@ bool magico::fromXML(const std::string& filename) {
     file.close();
     return true;
 }
-
+*/
 
 void magico::accept(Visitor* v){
   v->visitMagico(this);

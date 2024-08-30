@@ -65,7 +65,7 @@ public:
   virtual double calcolaDanno()=0;
   virtual double getHit() =0;
   virtual bool toXML(const std::string& filename) const =0;
-  virtual bool fromXML(const std::string& filename) =0;
+  //virtual bool fromXML(const std::string& filename) =0;
 
   virtual void accept(Visitor* v) = 0;
 };

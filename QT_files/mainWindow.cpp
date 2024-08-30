@@ -2,7 +2,7 @@
 
 MainW::MainW(QWidget* parent)
     : QWidget(parent) {
-    setWindowTitle("Sensore Danni Gioco");
+    setWindowTitle("DamageTrack");
     mainWindow = new QHBoxLayout(this);
     splitter = new QSplitter(Qt::Horizontal, this);
 

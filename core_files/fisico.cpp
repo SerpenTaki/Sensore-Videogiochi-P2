@@ -83,7 +83,7 @@ bool fisico::toXML(const std::string& filename) const {
     file.close();  // Chiudi il file dopo aver scritto
     return true;   // Restituisce true per indicare il successo dell'operazione
 }
-
+/*
 bool fisico::fromXML(const std::string& filename) {
     std::ifstream file(filename);
     if (!file.is_open()) {
@@ -121,7 +121,7 @@ bool fisico::fromXML(const std::string& filename) {
     file.close();
     return true;
 }
-
+*/
 
 void fisico::accept(Visitor* v) {
   v->visitFisico(this);

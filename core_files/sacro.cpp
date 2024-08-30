@@ -147,7 +147,7 @@ bool sacro::toXML(const std::string& filename) const {
 void sacro::accept(Visitor* v){
   v->visitSacro(this);
 }
-
+/*
 bool sacro::fromXML(const std::string& filename) {
     std::ifstream file(filename);
     if (!file.is_open()) {
@@ -184,7 +184,7 @@ bool sacro::fromXML(const std::string& filename) {
     file.close();
     return true;
 }
-
+*/
 
 void sacro::setLvFede(int lvFede){
   this->lvFede = lvFede;

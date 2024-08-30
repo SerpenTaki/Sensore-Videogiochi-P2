@@ -16,7 +16,7 @@ public:
   double getHit() override;
   double calcolaDanno() override;
   bool toXML(const std::string& filename) const override;
-  bool fromXML(const std::string& filename) override;
+  //bool fromXML(const std::string& filename) override;
 
   void setAff(int aff);
 
