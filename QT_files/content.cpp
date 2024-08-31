@@ -117,7 +117,7 @@ void content::displayVector(sensoreDanno *sensore){
         chart->update();
         if(dynamic_cast<sacro*>(sensore)){
             auto valoriLimit = dynamic_cast<sacro*>(sensore)->getValoriLimitBar();
-            cout << "stampa valori limit" << valoriLimit.size() << endl;
+            //cout << "i limit" << valoriLimit.size() << endl;
             valoriLimit.erase(valoriLimit.begin());  // Rimuovi il primo elemento
             serieLimit = new QLineSeries();
             for(size_t it = 0; it <= valoriLimit.size(); ++it){
