@@ -28,6 +28,11 @@ leftSideBar::leftSideBar(content* contentWidget, QWidget* parent)
     connect(salvaSensoreBottone, &QPushButton::clicked, this, &leftSideBar::salvaSensoreXML);
     connect(importaSensoreBottone, &QPushButton::clicked, this, &leftSideBar::importaSensore);
 
+    //implementare scorciatoia
+    QAction *saveAction = new QAction(tr("&Salva"), this);
+    saveAction->setShortcut(QKeySequence(Qt::CTRL | Qt::Key_S));
+    connect(saveAction, &QAction::triggered, this, &leftSideBar::salvaSensoreXML);
+
 }
 
 void leftSideBar::stampaSelSensore() { //fa apparire la selezione del sensore
