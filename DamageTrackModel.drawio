@@ -1,0 +1,94 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.6 Safari/605.1.15" version="24.7.8">
+  <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
+    <mxGraphModel dx="2021" dy="797" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="7dFGbwazJ8FtgxLGFD49-0" value="sensoreDanno" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="-250" y="40" width="450" height="646" as="geometry" />
+        </mxCell>
+        <mxCell id="7dFGbwazJ8FtgxLGFD49-1" value="+ nome: string&lt;div&gt;+ danno: double&lt;/div&gt;&lt;div&gt;+ probHit: int&lt;/div&gt;&lt;div&gt;+ probCrit: int&lt;/div&gt;&lt;div&gt;+ randN : int&lt;/div&gt;&lt;div&gt;+ nAtt: int&lt;/div&gt;&lt;div&gt;+ hit: int&lt;/div&gt;&lt;div&gt;+ miss: int&lt;/div&gt;&lt;div&gt;+ attacchiPerTurno: vector&amp;lt;int&amp;gt;&lt;/div&gt;&lt;div&gt;+ recordDanniPerTurno: vector&amp;lt;double&amp;gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="7dFGbwazJ8FtgxLGFD49-0" vertex="1">
+          <mxGeometry y="30" width="450" height="144" as="geometry" />
+        </mxCell>
+        <mxCell id="7dFGbwazJ8FtgxLGFD49-2" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="7dFGbwazJ8FtgxLGFD49-0" vertex="1">
+          <mxGeometry y="174" width="450" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="7dFGbwazJ8FtgxLGFD49-3" value="+ sensoreDanno(string n, double d, int nT, int nA)&lt;div&gt;+ sensoreDanno(string n, double d, int nT, int nA, vector&amp;lt;double&amp;gt; rDPT)&lt;/div&gt;&lt;div&gt;+ ~sensoreDanno()&lt;/div&gt;&lt;div&gt;+ generaValoriRandomGrafico() final : void&lt;/div&gt;&lt;div&gt;+ incrementaHit() final : void&lt;/div&gt;&lt;div&gt;+ incrementaMiss() final : void&lt;/div&gt;&lt;div&gt;+ getDanno() const : double&lt;/div&gt;&lt;div&gt;+ getProbHit() : int&lt;/div&gt;&lt;div&gt;+ getProbCrit() : int&lt;/div&gt;&lt;div&gt;+ getRand() : int&lt;/div&gt;&lt;div&gt;+ getNome() const : string&lt;/div&gt;&lt;div&gt;+ getNTurni() const: int&lt;/div&gt;&lt;div&gt;+ getAttacchiPerTurno() const: vector&amp;lt;int&amp;gt;&lt;/div&gt;&lt;div&gt;+ getAtt() const: int&lt;/div&gt;&lt;div&gt;+ getRecordDanniPerTurno() const: vector&amp;lt;double&amp;gt;&lt;/div&gt;&lt;div&gt;+ getNHit() const: int&lt;/div&gt;&lt;div&gt;+ getNMiss() const: int&lt;/div&gt;&lt;div&gt;+ getHitRate() const: int&lt;/div&gt;&lt;div&gt;+ getMaxDanno() const: int&lt;/div&gt;&lt;div&gt;+ setSizeAttacchiPerTurno() : void&lt;/div&gt;&lt;div&gt;+ setNome(const string&amp;amp; n): void&lt;/div&gt;&lt;div&gt;+ setDanno(double d): void&lt;/div&gt;&lt;div&gt;+ setNTurni(int nT): void&lt;/div&gt;&lt;div&gt;+ setAtt(int nA): void&lt;/div&gt;&lt;div&gt;+ setAttacchiPerTurno(const vector&amp;lt;int&amp;gt;&amp;amp; att): void&lt;/div&gt;&lt;div&gt;+ setRecordDanniPerTurno(const vector&amp;lt;double&amp;gt;&amp;amp; record) : void&lt;/div&gt;&lt;div&gt;+ setHit(int hit) : void&lt;/div&gt;&lt;div&gt;+ setMiss(int miss) : void&lt;/div&gt;&lt;div&gt;+ calcolaDanno() : double&lt;/div&gt;&lt;div&gt;+ getHit() : double&lt;/div&gt;&lt;div&gt;+ toXML(const string&amp;amp; filename) const: bool&lt;/div&gt;&lt;div&gt;+ accept(Visitor* v) : void&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="7dFGbwazJ8FtgxLGFD49-0" vertex="1">
+          <mxGeometry y="182" width="450" height="464" as="geometry" />
+        </mxCell>
+        <mxCell id="7dFGbwazJ8FtgxLGFD49-4" value="ContentVisitor" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="289" y="240" width="250" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="7dFGbwazJ8FtgxLGFD49-5" value="+ visitFisico(fisico*f) : void&lt;div&gt;+ visitMagico(magico *m) : void&lt;/div&gt;&lt;div&gt;+ visitSacro(sacro *s) : void&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="7dFGbwazJ8FtgxLGFD49-4" vertex="1">
+          <mxGeometry y="26" width="250" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="7dFGbwazJ8FtgxLGFD49-8" value="Fisico" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="-740" y="800" width="380" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="7dFGbwazJ8FtgxLGFD49-9" value="+ affilatura : int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="7dFGbwazJ8FtgxLGFD49-8" vertex="1">
+          <mxGeometry y="26" width="380" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="7dFGbwazJ8FtgxLGFD49-10" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="7dFGbwazJ8FtgxLGFD49-8" vertex="1">
+          <mxGeometry y="52" width="380" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="7dFGbwazJ8FtgxLGFD49-11" value="+ fisico(string n, double d, int nT, int nA, int aff)&lt;div&gt;+ fisico(string n, double d, int nT, int nA, vector&amp;lt;double&amp;gt; rDPT, int aff)&lt;/div&gt;&lt;div&gt;+ getAffilatura() const: int&lt;/div&gt;&lt;div&gt;+ getHit(): double&lt;/div&gt;&lt;div&gt;+ calcolaDanno(): double&lt;/div&gt;&lt;div&gt;+ toXML() : bool&lt;/div&gt;&lt;div&gt;+ setAff(int aff) : void&lt;/div&gt;&lt;div&gt;+ accept(Visitor* v) : void&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="7dFGbwazJ8FtgxLGFD49-8" vertex="1">
+          <mxGeometry y="60" width="380" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="7dFGbwazJ8FtgxLGFD49-12" value="Magico" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="-280" y="800" width="480" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="7dFGbwazJ8FtgxLGFD49-13" value="+ lvMagia : int&lt;div&gt;+ isInStatus : bool&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="7dFGbwazJ8FtgxLGFD49-12" vertex="1">
+          <mxGeometry y="26" width="480" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="7dFGbwazJ8FtgxLGFD49-14" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="7dFGbwazJ8FtgxLGFD49-12" vertex="1">
+          <mxGeometry y="60" width="480" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="7dFGbwazJ8FtgxLGFD49-15" value="+ magico(string n, double d, int nT, int nA, int lvM, bool isInSta)&lt;div&gt;+ magico(string n, double d, int nT, int nA, vector&amp;lt;double&amp;gt; rDPT, int lvM, bool isInSta)&lt;/div&gt;&lt;div&gt;+ getLvMagia() const : int&lt;/div&gt;&lt;div&gt;+ checkCondition() const : bool&lt;/div&gt;&lt;div&gt;+ setStatus(): string&lt;/div&gt;&lt;div&gt;+ calcolaDanno(): double&lt;/div&gt;&lt;div&gt;+ getHit(): double&lt;/div&gt;&lt;div&gt;+ toXML(const string&amp;amp; filename) const : bool&lt;/div&gt;&lt;div&gt;+ setLvMagia(int lvM) : void&lt;/div&gt;&lt;div&gt;+ setTheStatus(bool isInSta): void&lt;/div&gt;&lt;div&gt;+ accept(Visitor* v) : void&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="7dFGbwazJ8FtgxLGFD49-12" vertex="1">
+          <mxGeometry y="68" width="480" height="172" as="geometry" />
+        </mxCell>
+        <mxCell id="7dFGbwazJ8FtgxLGFD49-17" value="Sacro" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="280" y="800" width="500" height="308" as="geometry" />
+        </mxCell>
+        <mxCell id="7dFGbwazJ8FtgxLGFD49-18" value="+ lvFede : int&lt;div&gt;+ limitbreak : int&lt;/div&gt;&lt;div&gt;+ limitBar : vector&amp;lt;int&amp;gt;&lt;/div&gt;&lt;div&gt;+ enum {fedeBassa, fedeMedia, fedeAlta}&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="7dFGbwazJ8FtgxLGFD49-17" vertex="1">
+          <mxGeometry y="26" width="500" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="7dFGbwazJ8FtgxLGFD49-19" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="7dFGbwazJ8FtgxLGFD49-17" vertex="1">
+          <mxGeometry y="100" width="500" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="7dFGbwazJ8FtgxLGFD49-20" value="+ sacro(string n, double d, int nT, int nA, int lvFede)&lt;div&gt;+ sacro(string n, double d, int nT, int nA, vector&amp;lt;double&amp;gt; rDPT, int lvFede, vector&amp;lt;int&amp;gt; limit)&lt;/div&gt;&lt;div&gt;+ getLvFede() const : int&lt;/div&gt;&lt;div&gt;+ getLimitBreak() const : int&lt;/div&gt;&lt;div&gt;+ getHit() : double&lt;/div&gt;&lt;div&gt;+ calcolaDanno() : double&lt;/div&gt;&lt;div&gt;+ setLimit() : void&lt;/div&gt;&lt;div&gt;+ checkLimit() : void&lt;/div&gt;&lt;div&gt;+ getValoriLimitBar() const : &amp;nbsp;vector&amp;lt;int&amp;gt;&lt;/div&gt;&lt;div&gt;+ toXML(const string&amp;amp; filename) const : bool&lt;/div&gt;&lt;div&gt;+ setLvFede(int lvFede) : void&lt;/div&gt;&lt;div&gt;+ setLimitBreak(int limitbreak): void&lt;/div&gt;&lt;div&gt;+ accept(Visitor* v) : void&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="7dFGbwazJ8FtgxLGFD49-17" vertex="1">
+          <mxGeometry y="108" width="500" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="7dFGbwazJ8FtgxLGFD49-22" value="" style="endArrow=none;html=1;rounded=0;fontSize=12;startSize=8;endSize=8;curved=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-570" y="750" as="sourcePoint" />
+            <mxPoint x="520" y="750" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7dFGbwazJ8FtgxLGFD49-23" value="" style="endArrow=classic;html=1;rounded=0;fontSize=12;startSize=8;endSize=8;curved=1;entryX=0.555;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" target="7dFGbwazJ8FtgxLGFD49-3" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint y="750" as="sourcePoint" />
+            <mxPoint y="683.9959999999999" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7dFGbwazJ8FtgxLGFD49-26" value="" style="endArrow=none;html=1;rounded=0;fontSize=12;startSize=8;endSize=8;curved=1;exitX=0.447;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="7dFGbwazJ8FtgxLGFD49-8" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-620" y="770" as="sourcePoint" />
+            <mxPoint x="-570" y="750" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7dFGbwazJ8FtgxLGFD49-27" value="" style="endArrow=none;html=1;rounded=0;fontSize=12;startSize=8;endSize=8;curved=1;entryX=0.479;entryY=-0.003;entryDx=0;entryDy=0;entryPerimeter=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" target="7dFGbwazJ8FtgxLGFD49-17" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="520" y="750" as="sourcePoint" />
+            <mxPoint x="630" y="660" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7dFGbwazJ8FtgxLGFD49-28" value="" style="endArrow=none;html=1;rounded=0;fontSize=12;startSize=8;endSize=8;curved=1;exitX=0.584;exitY=-0.006;exitDx=0;exitDy=0;exitPerimeter=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="7dFGbwazJ8FtgxLGFD49-12" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-130" y="770" as="sourcePoint" />
+            <mxPoint y="750" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
