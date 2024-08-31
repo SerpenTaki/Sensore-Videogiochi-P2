@@ -210,7 +210,7 @@ void leftSideBar::importaSensore() {
                     } else if (name == QStringLiteral("livello_magia")) {
                         lvMagia = value.toInt();
                     } else if (name == QStringLiteral("status")) {
-                        isInStatus = (value == QStringLiteral("true"));
+                        isInStatus = (value == QStringLiteral("1"));
                     }
                     else if (name == QStringLiteral("hit")){
                         hit = value.toInt();
