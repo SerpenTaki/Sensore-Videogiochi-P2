@@ -189,3 +189,7 @@ bool sacro::fromXML(const std::string& filename) {
 void sacro::setLvFede(int lvFede){
   this->lvFede = lvFede;
 }
+
+void sacro::setLimitBreak(int limitBreak){
+  this->limitbreak = limitBreak;
+}

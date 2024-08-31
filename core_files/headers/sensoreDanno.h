@@ -61,6 +61,8 @@ public:
   void setAtt(int nA);
   void setAttacchiPerTurno(const vector<int>& att);
   void setRecordDanniPerTurno(const vector<double>& record);
+  void setHit(int hit);
+  void setMiss(int miss);
 
   // metodi virtuali puri
   virtual double calcolaDanno()=0;

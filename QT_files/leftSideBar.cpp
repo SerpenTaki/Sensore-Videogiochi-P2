@@ -143,6 +143,7 @@ void leftSideBar::importaSensore() {
                 double danno = 0.0;
                 int nTurni = 0, nAtt = 0, affilatura = 0;
                 QList<double> rDPT;
+                int hit = 0, miss = 0;
 
                 while (!(xml.tokenType() == QXmlStreamReader::EndElement && xml.name() == QStringLiteral("fisico"))) {
                     if (xml.tokenType() == QXmlStreamReader::StartElement) {
@@ -155,6 +156,8 @@ void leftSideBar::importaSensore() {
                         else if (name == QStringLiteral("numero_turni")) nTurni = value.toInt();
                         else if (name == QStringLiteral("attacchi_per_turno")) nAtt = value.toInt();
                         else if (name == QStringLiteral("affilatura")) affilatura = value.toInt();
+                        else if (name == QStringLiteral("hit")) hit = value.toInt();
+                        else if (name == QStringLiteral("miss")) miss = value.toInt();
                         else if (name == QStringLiteral("danni_per_turno")) {
                             while (!(xml.tokenType() == QXmlStreamReader::EndElement && xml.name() == QStringLiteral("danni_per_turno"))) {
                                 if (xml.tokenType() == QXmlStreamReader::StartElement && xml.name() == QStringLiteral("danno")) {
@@ -178,6 +181,8 @@ void leftSideBar::importaSensore() {
 
                 // Crea l'oggetto fisico con i dati letti
                 sensore = new fisico(nome.toStdString(), danno, nTurni, nAtt, convertQListToStdVector(rDPT), affilatura);
+                sensore->setHit(hit);
+                sensore->setMiss(miss);
             } 
             else if (elementName == QStringLiteral("magico")) {
                 // Variabili per memorizzare i dati del sensore
@@ -186,6 +191,7 @@ void leftSideBar::importaSensore() {
                 int nTurni = 0, nAtt = 0, lvMagia = 0;
                 bool isInStatus = false;
                 QList<double> rDPT;
+                int hit = 0, miss = 0;
 
                 while (!(xml.tokenType() == QXmlStreamReader::EndElement && xml.name() == QStringLiteral("magico"))) {
                     if (xml.tokenType() == QXmlStreamReader::StartElement) {
@@ -205,7 +211,14 @@ void leftSideBar::importaSensore() {
                         lvMagia = value.toInt();
                     } else if (name == QStringLiteral("status")) {
                         isInStatus = (value == QStringLiteral("true"));
-                    } else if (name == QStringLiteral("danni_per_turno")) {
+                    }
+                    else if (name == QStringLiteral("hit")){
+                        hit = value.toInt();
+                    }
+                    else if (name == QStringLiteral("miss")){
+                        miss = value.toInt();
+                    }
+                    else if (name == QStringLiteral("danni_per_turno")) {
                         while (!(xml.tokenType() == QXmlStreamReader::EndElement && xml.name() == QStringLiteral("danni_per_turno"))) {
                         if (xml.tokenType() == QXmlStreamReader::StartElement && xml.name() == QStringLiteral("danno")) {
                             xml.readNext();
@@ -227,6 +240,8 @@ void leftSideBar::importaSensore() {
                 }
                 // Crea l'oggetto magico con i dati letti
                 sensore = new magico(nome.toStdString(), danno, nTurni, nAtt, convertQListToStdVector(rDPT), lvMagia, isInStatus);
+                sensore->setHit(hit);
+                sensore->setMiss(miss);
             } 
             else if (elementName == QStringLiteral("sacro")) {
                 // Variabili per memorizzare i dati del sensore
@@ -235,6 +250,7 @@ void leftSideBar::importaSensore() {
                 int nTurni = 0, nAtt = 0, lvFede = 0;
                 QList<int> limitBar;
                 QList<double> rDPT;
+                int hit = 0, miss = 0, limitbreak = 0;
 
                 while (!(xml.tokenType() == QXmlStreamReader::EndElement && xml.name() == QStringLiteral("sacro"))) {
                     if (xml.tokenType() == QXmlStreamReader::StartElement) {
@@ -247,6 +263,9 @@ void leftSideBar::importaSensore() {
                         else if (name == QStringLiteral("numero_turni")) nTurni = value.toInt();
                         else if (name == QStringLiteral("attacchi_per_turno")) nAtt = value.toInt();
                         else if (name == QStringLiteral("lvFede")) lvFede = value.toInt();
+                        else if (name == QStringLiteral("limitbreak")) limitbreak = value.toInt();
+                        else if (name == QStringLiteral("hit")) hit = value.toInt();
+                        else if (name == QStringLiteral("miss")) miss = value.toInt();
                         else if (name == QStringLiteral("limitBar")) {
                         // Aggiungi i valori del limite della barra al QList
                             while (!(xml.tokenType() == QXmlStreamReader::EndElement && xml.name() == QStringLiteral("limitBar"))) {
@@ -282,6 +301,9 @@ void leftSideBar::importaSensore() {
                 }
                 // Crea l'oggetto sacro con i dati letti
                 sensore = new sacro(nome.toStdString(), danno, nTurni, nAtt, convertQListToStdVector(rDPT), lvFede, convertQListToStdVector(limitBar));
+                sensore->setHit(hit);
+                sensore->setMiss(miss);
+                dynamic_cast<sacro*>(sensore)->setLimitBreak(limitbreak);
             }
         }
     }

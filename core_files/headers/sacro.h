@@ -27,6 +27,7 @@ public:
  // bool fromXML(const std::string& filename) override;
 
   void setLvFede(int lvFede);
+  void setLimitBreak(int limitbreak);
 
   void accept(Visitor* v) override;
   

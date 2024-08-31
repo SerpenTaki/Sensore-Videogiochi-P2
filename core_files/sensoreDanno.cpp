@@ -128,3 +128,11 @@ double sensoreDanno::getMaxDanno() const{
   }
   return maxDanno;
 }
+
+void sensoreDanno::setHit(int hit){
+  this->hit = hit;
+}
+
+void sensoreDanno::setMiss(int miss){
+  this->miss = miss;
+}
