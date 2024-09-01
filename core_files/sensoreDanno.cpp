@@ -4,6 +4,8 @@
 sensoreDanno::sensoreDanno(string n, double d, int nT, int nA)
 : nome(n), danno(d), nTurni(nT), nAtt(nA) {
   recordDanniPerTurno.resize(nT);
+  hit = 0;
+  miss = 0;
 }
 
 sensoreDanno::sensoreDanno(string n, double d, int nT, int nA, vector<double> rDPT)
