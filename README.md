@@ -17,6 +17,7 @@ QT += xml
 dopodichè rieseguire `qmake` e `make`
 
 --
+
 #Valutazione
 ````
 Feedback Progetto di Programmazione ad Oggetti
