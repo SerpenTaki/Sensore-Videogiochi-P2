@@ -16,9 +16,9 @@ QT += xml
 
 dopodichè rieseguire `qmake` e `make`
 
---
+---
 
-#Valutazione
+# Valutazione
 ````
 Feedback Progetto di Programmazione ad Oggetti
 Studente: Di Pietro Gabriele
