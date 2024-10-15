@@ -15,3 +15,48 @@ QT += xml
 ````
 
 dopodichè rieseguire `qmake` e `make`
+
+--
+#Valutazione
+````
+Feedback Progetto di Programmazione ad Oggetti
+Studente: Di Pietro Gabriele
+Valutazione del progetto: Eccellente
+
+Vincoli obbligatori
++ Soddisfatti
+
+
+Orientamento ad oggetti
++ Incapsulamento
++ Modularità (modello logico e la GUI sono separati)
++ Estensibilità ed evolvibilità, polimorfismo
++ Efficienza e robustezza
+
+
+Funzionalità
++ Funzionalità di ricerca e filtro
++ Ricerca in tempo reale
++ Ricerca case-insensitive
++ Ricerca parziale
++ Possibilità di modificare i parametri dei sensori
+
+
+GUI
++ Visualizza i diversi tipi di dato in maniera opportuna
++ Usabile e intuitiva
++ Robusta, gestisce ridimensionamento
+- Migliorabile utilizzando icone, immagini e stili grafici
+- Migliorabile il modo in cui viene creato il widget in ContentVisitor:
+  anziché creare una singola QLabel andrebbero costruiti widget appositi,
+  in questo caso usando un QGridLayout (per mantenere l'impaginazione
+  scelta) con dentro un'etichetta per ogni informazione
+
+
+Relazione
++ Adeguata
+
+
+Suggerimenti non collegati alla valutazione
+Nessuno.
+````
