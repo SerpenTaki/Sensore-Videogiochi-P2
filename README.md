@@ -14,7 +14,10 @@ QT += charts
 QT += xml
 ````
 
-dopodichè rieseguire `qmake` e `make`
+dopodichè rieseguire `qmake` e `make`.
+
+## Per problemi con QtCharts
+Per utenti **linux** decommentare la riga 14 di `content.h` su mac e su altri sistemi operativi non ne ho avuto bisogno ma se da problemi per le librerie **QtCharts** mettere il namespace aiuta e risolve il problema.
 
 ---
 
@@ -61,3 +64,4 @@ Relazione
 Suggerimenti non collegati alla valutazione
 Nessuno.
 ````
+
