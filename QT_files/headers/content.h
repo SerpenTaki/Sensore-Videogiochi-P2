@@ -11,6 +11,7 @@
 #include <QtCharts/QValueAxis>
 #include<map>
 
+using namespace QtCharts;  
 //QT_CHARTS_USE_NAMESPACE
 
 #include "core_files/headers/sensoreDanno.h" 
